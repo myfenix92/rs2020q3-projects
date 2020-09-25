@@ -7,6 +7,14 @@ body {
   background-color: green;
 }
 
+.text-info {
+  background-color: white;
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: -50px;
+  outline: none;
+}
+
 .calculator_grid {
   display: grid;
   justify-content: center;
@@ -31,6 +39,7 @@ body {
   word-break: break-all;
   border: 1px solid black;
   font-size: 24px;
+  font-weight: bold;
 }
 
 button {
