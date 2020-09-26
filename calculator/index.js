@@ -19,15 +19,32 @@ class Calculator {
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return;
+    if (number === '-') {
+      if (this.currentOperand.includes('-')) {
+        this.currentOperand = this.currentOperand.split('-');
+        this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5)
+      } else
+      if (this.currentOperand === '' || number === '-' || this.operation !== null) {
+        this.currentOperand = this.currentOperand.toString() + number.toString();
+        return;
+      } else {
+        calculator.compute();
+        calculator.updateDisplay();
+      }
+    }
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
   chooseOperation(operation) {
+    if (this.currentOperand.includes('-')) {
+      this.currentOperand = this.currentOperand.split('-');
+      console.log(1)
+      this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5)
+    }
     if (this.currentOperand === '') return;
     if (this.prevOperand !== '' && this.prevOperand !== '') {
       this.compute();
     }
-
     this.operation = operation;
     this.prevOperand = this.currentOperand;
     this.currentOperand = '';
@@ -42,14 +59,13 @@ class Calculator {
       case '+':
         computation = +(prev + current).toFixed(5);
         break;
-      case '-':
-        computation = +(prev - current).toFixed(5);
-        break;
       case '*':
         computation = +(prev * current).toFixed(5);
         break;
       case '/':
-        computation = +(prev / current).toFixed(5);
+        if (current === 0) {} else {
+          computation = +(prev / current).toFixed(5);
+        }
         break;
       case '√':
         computation = Math.pow(prev, 1 / current);
@@ -63,6 +79,7 @@ class Calculator {
     if (isNaN(computation)) {
       this.clear();
       this.currentOperand = 'Error';
+      this.readyToReset = true;
     } else {
       this.readyToReset = true;
       this.currentOperand = computation;
