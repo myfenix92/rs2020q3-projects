@@ -38,7 +38,6 @@ class Calculator {
   chooseOperation(operation) {
     if (this.currentOperand.includes('-')) {
       this.currentOperand = this.currentOperand.split('-');
-      console.log(1)
       this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5)
     }
     if (this.currentOperand === '') return;
@@ -129,6 +128,10 @@ operationBtns.forEach(buttons => {
 })
 
 equalsBtn.addEventListener('click', buttons => {
+  if (calculator.currentOperand.includes('-')) {
+    calculator.currentOperand = calculator.currentOperand.split('-');
+    calculator.currentOperand = +(calculator.currentOperand[0] - calculator.currentOperand[1]).toFixed(5)
+  }
   calculator.compute();
   calculator.updateDisplay();
 })
