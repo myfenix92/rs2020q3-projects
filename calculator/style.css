@@ -4,15 +4,17 @@ body {
 }
 
 .wrapper {
-  background-color: green;
+  background: linear-gradient(to left, #4f8314, #91e598);
+  position: relative;
 }
 
 .text-info {
   background-color: white;
   width: 500px;
-  margin: 0 auto;
-  margin-bottom: -50px;
-  outline: none;
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  left: 5%;
 }
 
 .calculator_grid {
