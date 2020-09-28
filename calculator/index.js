@@ -19,26 +19,41 @@ class Calculator {
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return;
-    if (number === '-') {
-      if (this.currentOperand.includes('-')) {
-        this.currentOperand = this.currentOperand.split('-');
-        this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5)
-      } else
-      if (this.currentOperand === '' || number === '-' || this.operation !== null) {
-        this.currentOperand = this.currentOperand.toString() + number.toString();
-        return;
-      } else {
+ //   if (number === '-' && this.operation === undefined) {
+      // if (this.currentOperand.includes('-')) {
+      //   this.currentOperand = this.currentOperand.split('-');
+      //   // if (this.currentOperand[0] === '') {
+      //   //   this.currentOperand = +((this.currentOperand[1] * (-1)) - this.currentOperand[2]).toFixed(5);
+      //   // } else {
+      //    this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5);
+      //   // }
+  
+  //}
+   //else
+      // if (this.currentOperand === '' || number === '-' || this.operation !== null) {
+      //   this.currentOperand = this.currentOperand.toString() + number.toString();
+      //   return;
+      // } else {
+        if (number === '-')
+        
         calculator.compute();
         calculator.updateDisplay();
-      }
-    }
+        
+   //   }
+    //}
+    
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
   chooseOperation(operation) {
     if (this.currentOperand.includes('-')) {
       this.currentOperand = this.currentOperand.split('-');
-      this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5)
+      if (this.currentOperand[0] === '') {
+        this.currentOperand = +((this.currentOperand[1] * (-1)) - this.currentOperand[2]).toFixed(5);
+      } else {
+        this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5);
+      }
+   
     }
     if (this.currentOperand === '') return;
     if (this.prevOperand !== '' && this.prevOperand !== '') {
@@ -130,10 +145,16 @@ operationBtns.forEach(buttons => {
 equalsBtn.addEventListener('click', buttons => {
   if (calculator.currentOperand.includes('-')) {
     calculator.currentOperand = calculator.currentOperand.split('-');
-    calculator.currentOperand = +(calculator.currentOperand[0] - calculator.currentOperand[1]).toFixed(5)
+    if (calculator.currentOperand[0] === '') {
+      calculator.currentOperand = +((calculator.currentOperand[1] * (-1)) - calculator.currentOperand[2]).toFixed(5);
+    } else {
+      calculator.currentOperand = +(calculator.currentOperand[0] - calculator.currentOperand[1]).toFixed(5)
+    }
   }
   calculator.compute();
   calculator.updateDisplay();
+  calculator.readyToReset = true;
+  calculator.currentOperand = currentText.innerText;
 })
 
 allClearBtn.addEventListener('click', buttons => {
