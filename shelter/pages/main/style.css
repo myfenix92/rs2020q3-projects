@@ -1,14 +1,165 @@
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
 }
 
 .wrapper {
-    width: 1920px;
-    margin: 0 auto;
+	width: 1920px;
+}
+
+header,
+footer {
+	margin: 0 auto;
+	width: 62.5vw;
+	padding: 0 40px;
+}
+
+section {
+	margin: 0 auto;
+	padding: 0 40px;
+	width: 62.5vw;
+}
+
+
+header {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding-top: 60px;
+	padding-bottom: 49px;
+	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
+}
+
+h1 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 32px;
+	letter-spacing: 0.06em;
+	color: #F1CDB3;
+	font-weight: normal;
+}
+
+.logo_text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	padding: 10px 5px;
+	letter-spacing: 0.1em;
+	color: #FFFFFF;
+}
+
+.header_menu_item>a {
+	color: #CDCDCD;
+}
+
+.header_menu_items {
+	display: flex;
+	justify-content: space-between;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	padding-top: 20px;
+	padding-left: 157px;
+}
+
+.active {
+	border-bottom: 3px solid #F1CDB3;
+	padding-bottom: 3px;
+}
+
+.start_screen {
+	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	margin-bottom: -4px;
+}
+
+
+.screen_text_h2 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 44px;
+	color: #FFFFFF;
+	font-weight: normal;
+	line-height: 1.25em;
+	padding: 166px 110px 44px 0;
+}
+
+.screen_text_info {
+	color: #CDCDCD;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	line-height: 1.5rem;
+	letter-spacing: 0.01rem;
+	padding: 0 33px 40px 0;
+}
+
+button {
+	color: #292929;
+	background-color: #F1CDB3;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 207px;
+	height: 52px;
+	border-radius: 26px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 17px;
+	letter-spacing: 0.06rem;
+}
+
+.about {
+	background-color: #FFFFFF;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding-top: 80px;
+	padding-bottom: 96px;
+}
+
+.about_img {
+	margin-left: 175px;
+}
+
+.about_text {
+	margin-right: 186px;
+	margin-left: -5px;
+}
+
+.about_text_h3 {
+	color: #545454;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 35px;
+	font-weight: normal;
+	padding-top: 17px;
+	padding-right: 52px;
+	padding-bottom: 26px;
+	letter-spacing: 0.13rem;
+	line-height: 2.7rem;
+}
+
+.about_text_info {
+	color: #4C4C4C;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	line-height: 1.5rem;
+}
+
+.p1 {
+	padding-bottom: 25px;
+}
+
+.pets {
+	background-color: #F6F6F6;
+}
+
+footer {
+	background-color: gray;
 }
