@@ -15,49 +15,49 @@ class Calculator {
 
   delete() {
     this.currentOperand = this.currentOperand.toString().slice(0, -1);
+    if (isNaN(this.currentOperand)) {
+      this.currentOperand = '';
+    }
   }
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return;
- //   if (number === '-' && this.operation === undefined) {
-      // if (this.currentOperand.includes('-')) {
-      //   this.currentOperand = this.currentOperand.split('-');
-      //   // if (this.currentOperand[0] === '') {
-      //   //   this.currentOperand = +((this.currentOperand[1] * (-1)) - this.currentOperand[2]).toFixed(5);
-      //   // } else {
-      //    this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5);
-      //   // }
-  
-  //}
-   //else
-      // if (this.currentOperand === '' || number === '-' || this.operation !== null) {
-      //   this.currentOperand = this.currentOperand.toString() + number.toString();
-      //   return;
-      // } else {
-        if (number === '-')
-        
+    if (number === '-') {
+      if (this.operation !== undefined && this.currentOperand !== '' && this.prevOperand !== '') {
         calculator.compute();
         calculator.updateDisplay();
-        
-   //   }
-    //}
-    
+        this.readyToReset = false;
+        this.currentOperand = +(this.currentText.innerText);
+      } else {
+        if (this.currentOperand.includes('-')) {
+          if (this.currentOperand.split('-')[0] === '' && this.currentOperand.split('-').length === 3) {
+            this.currentOperand = this.currentOperand.split('-');
+            this.currentOperand = +((this.currentOperand[1] * (-1)) - this.currentOperand[2]).toFixed(5);
+          } else
+          if (this.currentOperand.split('-')[0] !== '' && this.currentOperand.split('-').length === 2) {
+            this.currentOperand = this.currentOperand.split('-');
+            this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5);
+          }
+        }
+      }
+    }
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
   chooseOperation(operation) {
-    if (this.currentOperand.includes('-')) {
-      this.currentOperand = this.currentOperand.split('-');
-      if (this.currentOperand[0] === '') {
-        this.currentOperand = +((this.currentOperand[1] * (-1)) - this.currentOperand[2]).toFixed(5);
-      } else {
-        this.currentOperand = +(this.currentOperand[0] - this.currentOperand[1]).toFixed(5);
-      }
-   
-    }
     if (this.currentOperand === '') return;
     if (this.prevOperand !== '' && this.prevOperand !== '') {
       this.compute();
+    }
+    if (this.prevOperand.includes('-')) {
+      if (this.prevOperand.split('-')[0] === '' && this.prevOperand.split('-').length === 3) {
+        this.prevOperand = this.prevOperand.split('-');
+        this.prevOperand = +((this.prevOperand[1] * (-1)) - this.prevOperand[2]).toFixed(5);
+      } else
+      if (this.prevOperand.split('-')[0] !== '' && this.prevOperand.split('-').length === 2) {
+        this.prevOperand = this.prevOperand.split('-');
+        this.prevOperand = +(this.prevOperand[0] - this.prevOperand[1]).toFixed(5);
+      }
     }
     this.operation = operation;
     this.prevOperand = this.currentOperand;
@@ -90,7 +90,7 @@ class Calculator {
       default:
         return
     }
-    if (isNaN(computation)) {
+    if (isNaN(computation) || !isFinite(computation)) {
       this.clear();
       this.currentOperand = 'Error';
       this.readyToReset = true;
@@ -142,27 +142,29 @@ operationBtns.forEach(buttons => {
   })
 })
 
-equalsBtn.addEventListener('click', buttons => {
+equalsBtn.addEventListener('click', () => {
   if (calculator.currentOperand.includes('-')) {
-    calculator.currentOperand = calculator.currentOperand.split('-');
-    if (calculator.currentOperand[0] === '') {
+    if (calculator.currentOperand.split('-')[0] === '' && calculator.currentOperand.split('-').length === 3) {
+      calculator.currentOperand = calculator.currentOperand.split('-');
       calculator.currentOperand = +((calculator.currentOperand[1] * (-1)) - calculator.currentOperand[2]).toFixed(5);
-    } else {
-      calculator.currentOperand = +(calculator.currentOperand[0] - calculator.currentOperand[1]).toFixed(5)
+    } else
+    if (calculator.currentOperand.split('-')[0] !== '' && calculator.currentOperand.split('-').length === 2) {
+      calculator.currentOperand = calculator.currentOperand.split('-');
+      calculator.currentOperand = +(calculator.currentOperand[0] - calculator.currentOperand[1]).toFixed(5);
     }
   }
   calculator.compute();
   calculator.updateDisplay();
   calculator.readyToReset = true;
-  calculator.currentOperand = currentText.innerText;
+  calculator.currentOperand = +(currentText.innerText);
 })
 
-allClearBtn.addEventListener('click', buttons => {
+allClearBtn.addEventListener('click', () => {
   calculator.clear();
   calculator.updateDisplay();
 })
 
-deleteBtn.addEventListener('click', buttons => {
+deleteBtn.addEventListener('click', () => {
   calculator.delete();
   calculator.updateDisplay();
 })
