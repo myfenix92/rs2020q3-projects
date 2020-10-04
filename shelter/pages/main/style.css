@@ -58,7 +58,7 @@ h1 {
 	color: #FFFFFF;
 }
 
-.header_menu_item>a {
+a {
 	color: #CDCDCD;
 }
 
@@ -74,6 +74,7 @@ h1 {
 .active {
 	border-bottom: 3px solid #F1CDB3;
 	padding-bottom: 3px;
+	color: #FFFFFF;
 }
 
 .start_screen {
@@ -105,7 +106,6 @@ button {
 	background-color: #F1CDB3;
 	border: none;
 	outline: none;
-	cursor: pointer;
 	width: 207px;
 	height: 52px;
 	border-radius: 26px;
@@ -412,4 +412,30 @@ footer {
 .img_block {
 	padding-left: 24px;
 	padding-top: 8px;
+}
+
+button:hover,
+.donation_account:hover,
+.slider_arrow:hover{
+	background-color: #FDDCC4;
+	cursor: pointer;
+}
+
+.slider_btn:hover,
+.slider_arrow:hover {
+	border-color: #FDDCC4;
+}
+
+h1 {
+	cursor: pointer;
+}
+
+.header_menu_item > a:hover {
+	color: #ffffff;
+}
+
+.slider:hover {
+	background-color: #ffffff;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
