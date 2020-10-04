@@ -17,27 +17,26 @@ ul {
 }
 
 .wrapper {
-	width: 100%;
-	margin: 0 auto;
+	width: 62.5vw;
+  padding: 0 40px;
+  margin: 0 auto;
 }
 
-header,
-footer {
-	margin: 0 auto;
-	width: 62.5vw;
-	padding: 0 40px;
+.wrapper_header,
+.wrapper_start_screen,
+.wrapper_about,
+.wrapper_donation {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 section {
 	margin: 0 auto;
 	padding: 0 40px;
-	width: 62.5vw;
 }
 
-
 header {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	margin: 0 auto;
 	padding-top: 60px;
 	padding-bottom: 49px;
 	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
@@ -79,8 +78,6 @@ h1 {
 
 .start_screen {
 	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
 	margin-bottom: -4px;
 }
 
@@ -119,8 +116,6 @@ button {
 
 .about {
 	background-color: #FFFFFF;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
 	padding-top: 80px;
 	padding-bottom: 96px;
 }
@@ -184,8 +179,6 @@ button {
 }
 
 .slider {
-	/* width: 270px;
-	height: 435px; */
 	text-align: center;
 	background-color: #FAFAFA;
 	border-radius: 12px;
@@ -289,6 +282,57 @@ button {
 
 .donation {
 	background-color: #F6F6F6;
+	gap: 154px;
+	padding-top: 83px;
+	padding-bottom: 99px;
+}
+
+.donation_h3 {
+	color: #545454;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 35px;
+	font-weight: normal;
+	padding-right: 223px;
+	letter-spacing: 0.06em;
+	line-height: 130%;
+}
+
+.donation_text_bank {
+	color: #545454;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 15px;
+	font-weight: normal;
+	letter-spacing: 0.06em;
+	padding-top: 18px;
+	padding-bottom: 31px;
+}
+
+.donation_account {
+	border: 1px solid #F1CDB3;
+	border-radius: 9px;
+	background-color: #F1CDB3;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 20px;
+	color: #545454;
+	padding: 10px 15px 9px 60px;
+	letter-spacing: 0.055em;
+	background-image: url('/shelter/assets/credit-card.png');
+	background-repeat: no-repeat;
+	background-position: 14px 9px;
+}
+
+.dontation_text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	color: #B2B2B2;
+	padding-top: 32px;
+	padding-right: 150px;
+	line-height: 1.5em;
+}
+
+.donation_img {
+	padding: 9px 30px 0 142px;
 }
 
 footer {
