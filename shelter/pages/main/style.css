@@ -336,5 +336,80 @@ button {
 }
 
 footer {
-	background-color: gray;
+	padding-top: 32px;
+	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
+}
+
+.wrapper_footer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0 114px;
+}
+
+.footer_h3 {
+	color: #ffffff;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: normal;
+	font-size: 35px;
+	line-height: 130%;
+	letter-spacing: 0.06em;
+}
+
+.question_block,
+.map_block {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-self: flex-start;
+	padding-top: 31px;
+	margin-right: 14px;
+}
+
+.footer_link {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: normal;
+	font-size: 20px;
+	color: #F1CDB3;
+	padding-top: 0;
+	margin-top: -20px;
+}
+
+.footer_email {
+	padding: 10px 60px;
+	background-image: url('/shelter/assets/icon-email.png');
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	letter-spacing: 0.06em;
+	margin-top: 33px;
+}
+
+.footer_phone {
+	padding: 10px 60px;
+	background-image: url('/shelter/assets/icon-phone.png');
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	letter-spacing: 0.06em;
+	margin-top: 30px;
+}
+
+.footer_map {
+	padding: 1px 14px 0 41px;
+	background-image: url('/shelter/assets/icon-marker.png');
+	background-repeat: no-repeat;
+	background-position: 0px 8px;
+	letter-spacing: 0.06em;
+	margin-top: 30px;
+}
+
+.footer_map_2 {
+	padding: 60px 35px 10px 41px;
+	background-image: url('/shelter/assets/icon-marker.png');
+	background-repeat: no-repeat;
+	background-position: 0px 55px;
+	letter-spacing: 0.06em;
+}
+
+.img_block {
+	padding-left: 24px;
+	padding-top: 8px;
 }
