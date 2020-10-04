@@ -17,7 +17,8 @@ ul {
 }
 
 .wrapper {
-	width: 1920px;
+	width: 1280px;
+	margin: 0 auto;
 }
 
 header,
@@ -158,6 +159,86 @@ button {
 
 .pets {
 	background-color: #F6F6F6;
+}
+
+.pets_h3 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 35px;
+	font-weight: normal;
+	text-align: center;
+	color: #545454;
+	padding: 82px 370px 58px;
+	line-height: 130%;
+	letter-spacing: 0.13rem;
+}
+
+.slider_content {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 90px;
+	margin: 0 105px 60px;
+}
+
+.slider_block {
+	position: relative;
+}
+
+.slider {
+	/* width: 270px;
+	height: 435px; */
+	text-align: center;
+	background-color: #FAFAFA;
+	border-radius: 12px;
+}
+
+.slider_img {
+	padding: 30px 35px 26px;
+}
+
+.slider_name-pets {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 20px;
+	color: #545454;
+	letter-spacing: 0.06rem;
+	padding-bottom: 31px;
+}
+
+.slider_btn {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 17px;
+	color: #292929;
+	border: 2px solid #F1CDB3;
+	border-radius: 30px;
+	background-color: transparent;
+	width: 187px;
+	margin-bottom: 30px;
+}
+
+.slider_arrow {
+	width: 48px;
+	height: 48px;
+	border: 2px solid #F1CDB3;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.arrow-left {
+	top: 44%;
+	left: 0;
+}
+
+.arrow-right {
+	top: 44%;
+	right: 0;
+}
+
+.slider_arrow > svg {
+	padding: 21px 17px;
+}
+
+.pets_btn {
+	width: 261px;
+	margin: 0 470px 100px;
 }
 
 footer {
