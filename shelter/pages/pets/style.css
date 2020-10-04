@@ -70,7 +70,7 @@ a {
 .active {
 	border-bottom: 3px solid #F1CDB3;
 	padding-bottom: 3px;
-	color: #292929;
+  color: #292929;
 }
 
 main {
@@ -136,8 +136,35 @@ button {
 	letter-spacing: 0.06rem;
 }
 
+.pagination_block {
+  margin: 70px 410px -21px 430px;
+}
+
+.pagination {
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 20px;
+  margin-right: 16px;
+  letter-spacing: -0.1em;
+  text-align: center;
+}
+
+.start_pagination,
+.prev_pagination {
+  color: #CDCDCD;
+  background-color: transparent;
+  border: 2px solid #CDCDCD;
+}
+
+.next_pagination,
+.end_pagination {
+  background-color: transparent;
+  border: 2px solid #F1CDB3;
+}
+
 footer {
-	padding-top: 32px;
+	padding-top: 26px;
 	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
 }
 
@@ -212,5 +239,31 @@ footer {
 
 .img_block {
 	padding-left: 24px;
-	padding-top: 8px;
+	padding-top: 11px;
+}
+
+.slider_btn:hover,
+.active_pagination:hover,
+.next_pagination:hover,
+.end_pagination:hover
+h1:hover {
+  cursor: pointer;
+}
+
+.header_menu_item > a:hover {
+	color: #292929;
+}
+
+.slider_btn:hover,
+.active_pagination:hover,
+.next_pagination:hover,
+.end_pagination:hover {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+}
+
+.slider:hover {
+  background-color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
