@@ -82,10 +82,6 @@ a {
 	margin-bottom: -4px;
 }
 
-.screen_img > img {
-	width: 100%;
-}
-
 .screen_text_h2 {
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 44px;
@@ -235,6 +231,10 @@ button {
 .pets_btn {
 	width: 261px;
 	margin: 0 470px 100px;
+}
+
+.media_layout {
+	display: none;
 }
 
 .help {
@@ -527,5 +527,71 @@ h1 {
 	
 	.about_img {
 		margin-left: 170px;
+	}
+
+	.pets > .wrapper {
+		width: 697px;
+		padding: 0 12px;
+		overflow: hidden;
+	}
+
+	.pets_h3 {
+		padding: 80px 145px 50px;
+	}
+
+	.pets {
+		margin: 0 -16px;
+	}
+
+	.slider_content {
+		gap: 40px;
+		width: 620px;
+		overflow: hidden;
+		padding: 10px 0 60px 58px;
+		margin: 0;
+	}
+
+	.arrow-left {
+		left: -1%;
+		top: 40%;
+	}
+
+	.arrow-right {
+		right: -1%;
+		top: 40%;
+	}
+
+	.pets_btn {
+		margin-left: 217px;
+		margin-right: 217px;
+	}
+
+	.help_h3 {
+		padding-left: 120px;
+		padding-right: 220px;
+	}
+
+	.first_layout, .second_layout {
+		display: none;
+	}
+
+	.media_layout {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(170px, 1fr));
+    grid-gap: 55px 60px;
+    margin-left: -12px;
+		margin-right: 90px;
+		padding-bottom: 99px;
+	}
+
+	.layout_item {
+		display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+	}
+
+	.layout_item:nth-child(2) > svg {
+		margin-right: 22px;	
 	}
 }
