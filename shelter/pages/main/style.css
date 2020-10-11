@@ -459,7 +459,7 @@ h1 {
 	header {
 		padding-top: 30px;
 		padding-bottom: 49px;
-		margin: 0 -16px;
+		margin: 0 -12px 0 -16px;
 	}
 
 	.header_menu_items {
@@ -476,7 +476,7 @@ h1 {
 
 	.start_screen {
 		padding: 0 99px;
-		margin: 0 -16px -4px -16px;
+		margin: 0 -12px -0px -16px;
 	}
 
 	.screen_text_h2,
@@ -496,7 +496,7 @@ h1 {
 	}
 
 	.screen_text {
-		padding: 0 71px;
+		padding: 0 73px;
 	}
 
 	.screen_btn {
@@ -504,7 +504,7 @@ h1 {
 	}
 
 	.screen_img {
-		padding: 56px 0 0 86px;
+		padding: 52px 0 0 86px;
 	}
 
 	.screen_img > img {
@@ -512,7 +512,7 @@ h1 {
 	}
 
 	.about {
-		margin: 0 -16px;
+		margin: 0 -12px 0 -16px;
 	}
 
 	.wrapper_about {
@@ -540,7 +540,7 @@ h1 {
 	}
 
 	.pets {
-		margin: 0 -16px;
+		margin: 0 -12px 0 -16px;
 	}
 
 	.slider_content {
@@ -580,7 +580,7 @@ h1 {
 		grid-template-columns: repeat(3, minmax(170px, 1fr));
     grid-gap: 55px 60px;
     margin-left: -12px;
-		margin-right: 90px;
+		margin-right: 95px;
 		padding-bottom: 99px;
 	}
 
@@ -593,5 +593,63 @@ h1 {
 
 	.layout_item:nth-child(2) > svg {
 		margin-right: 22px;	
+	}
+
+	.donation {
+		margin: 0 -12px 0 -16px;
+	}
+
+	.wrapper_donation {
+		display: flex;
+		flex-direction: column-reverse;
+		margin-bottom: -3px;
+	}
+
+	.donation_img {
+		padding: 60px 67px 0;
+	}
+
+	.donation_text_block {
+		padding: 0 130px;
+	}
+
+	.donation_h3 {
+		padding-right: 160px;
+	}
+
+	.dontation_text {
+		padding-top: 29px;
+		padding-right: 113px;
+	}
+
+	footer {
+		margin: 0 -12px 0 -16px;
+	}
+
+	.question_block {
+		grid-area: q;
+		padding-top: 0;
+		margin-right: 0;
+		margin-left: 40px;
+	}
+
+	.map_block {
+		grid-area: m;
+		padding-top: 0;
+		margin-right: 15px;
+	}
+
+	.img_block {
+		grid-area: i;
+		padding: 58px 210px 0;
+	}
+
+	.wrapper_footer {
+		grid-template-areas: 
+		"q m"
+		"i i";
+		gap: 0 27px;
+		grid-template-columns: none;
+		grid-auto-columns: 1fr;
 	}
 }
