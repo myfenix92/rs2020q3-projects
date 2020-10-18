@@ -165,16 +165,66 @@ button {
 	font-weight: normal;
 	text-align: center;
 	color: #545454;
-	padding: 82px 370px 58px;
+	padding: 82px 370px 50px;
 	line-height: 130%;
 	letter-spacing: 0.13rem;
 }
 
+.slider {
+	display: none;
+}
+
+.active_slider,
+.next {
+	display: block;
+}
+
+
+.to-left {
+  animation-name: left;
+}
+
+.to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+
+.from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes right {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
 .slider_content {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(8, 1fr);
 	gap: 90px;
-	margin: 0 105px 60px;
+	padding: 8px 105px 60px;
+	max-width: 970px;
+	overflow: hidden;
 }
 
 .slider_block {
@@ -185,10 +235,11 @@ button {
 	text-align: center;
 	background-color: #FAFAFA;
 	border-radius: 12px;
+	width: 270px;
 }
 
 .slider_img {
-	padding: 30px 35px 26px;
+	padding: 0 0 26px;
 }
 
 .slider_name-pets {
@@ -219,12 +270,12 @@ button {
 }
 
 .arrow-left {
-	top: 44%;
+	top: 40%;
 	left: 0;
 }
 
 .arrow-right {
-	top: 44%;
+	top: 40%;
 	right: 0;
 }
 
@@ -235,6 +286,87 @@ button {
 .pets_btn {
 	width: 261px;
 	margin: 0 470px 100px;
+}
+
+#message_pets_block {
+	position: fixed;
+  background: #0008;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#message_pet {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	position: absolute;
+	top: 30%;
+	left: 26%;
+	border: none;
+	border-radius: 10px;
+	background: #FAFAFA;
+	height: 510px;
+	max-width: 900px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0 30px;
+}
+
+.message_pet_img {
+	width: 500px;
+	height: 500px;
+}
+
+.message_pet_img > img {
+	width: 100%;
+}
+
+.pet_name {
+	font-size: 35px;
+	padding: 53px 0 11px;
+	letter-spacing: 0.06em;
+}
+
+.pet_about {
+	font-size: 20px;
+	letter-spacing: 0.06em;
+}
+
+.pet_description,
+.pet_item {
+	font-size: 15px;
+}
+
+.pet_description {
+	padding: 40px 20px 40px 0;
+	letter-spacing: 0.06em;
+}
+
+.pet_list {
+	padding: 0 0 0 16px;
+}
+
+.pet_item {
+	color: #F1CDB3;
+	padding-bottom: 12px;
+	letter-spacing: 0.05em;
+}
+
+.pet_item_value {
+	font-weight: 700;
+	color: black;
+}
+
+.pet_age,
+.pet_inoculations,
+ .pet_diseases, 
+ .pet_parasites {
+	font-weight: 400;
+	color: black;
+}
+
+.pet_list {
+	list-style: disc;
 }
 
 .media_layout {
@@ -659,7 +791,19 @@ h1 {
 		padding: 0;
 	}
 
+	.filter_menu {
+		background-color: #2D303A;
+    opacity: 50%;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+		z-index: 6;
+		margin-top: -148px;
+	}
 	/* запрет прокрутки, сделать на js при открытом меню */
+
+
+	
 
 	#menu__toggle {
 		opacity: 0;
@@ -693,7 +837,7 @@ h1 {
     width: 30px;
 		height: 26px;
 		cursor: pointer;
-		z-index: 1;
+		z-index: 11;
 	}
 
 	.menu__btn>span,
@@ -718,17 +862,19 @@ h1 {
 	}
 
 	.header_menu_items {
+		z-index: 10;
 		display: block;
 		position: fixed;
 		visibility: hidden;
 		text-align: center;
 		top: 0;
 		right: -100%;
-		width: 100%;
+		width: 320px;
 		height: 100%;
 		margin: 0;
 		padding: 80px 0;
-		background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
+		font-size: 32px;
+		background-color: #292929;
 		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
 		transition-duration: .25s;
 	}
