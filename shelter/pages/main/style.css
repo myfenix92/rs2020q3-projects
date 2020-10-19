@@ -294,7 +294,8 @@ button {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+	height: 100vh;
+	display: none;
 }
 
 #message_pet {
@@ -367,6 +368,16 @@ button {
 
 .pet_list {
 	list-style: disc;
+}
+
+.message_btn {
+	width: 52px;
+	height: 52px;
+	background-color: transparent;
+	border: 2px solid #F1CDB3;
+	position: absolute;
+	top: 24%;
+	left: 72.5%;
 }
 
 .media_layout {
