@@ -296,6 +296,7 @@ button {
   width: 100vw;
 	height: 100vh;
 	display: none;
+	cursor: pointer;
 }
 
 #message_pet {
@@ -311,6 +312,7 @@ button {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0 30px;
+	cursor: auto;
 }
 
 .message_pet_img {
