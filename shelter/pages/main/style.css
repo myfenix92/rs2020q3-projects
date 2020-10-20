@@ -43,7 +43,7 @@ header {
 	margin: 0 auto;
 	padding-top: 60px;
 	padding-bottom: 49px;
-	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
+	background: url('../../assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
 }
 
 h1 {
@@ -82,7 +82,7 @@ a {
 }
 
 .start_screen {
-	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
+	background: url('../../assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
 	margin-bottom: -4px;
 }
 
@@ -307,7 +307,6 @@ button {
 	border: none;
 	border-radius: 10px;
 	background: #FAFAFA;
-	height: 510px;
 	max-width: 900px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -468,7 +467,7 @@ button {
 	color: #545454;
 	padding: 10px 15px 9px 60px;
 	letter-spacing: 0.055em;
-	background-image: url('/shelter/assets/credit-card.png');
+	background-image: url('../../assets/credit-card.png');
 	background-repeat: no-repeat;
 	background-position: 14px 9px;
 }
@@ -489,7 +488,7 @@ button {
 
 footer {
 	padding-top: 32px;
-	background: url('/shelter/assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
+	background: url('../../assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
 }
 
 .wrapper_footer {
@@ -528,7 +527,7 @@ footer {
 
 .footer_email {
 	padding: 10px 60px;
-	background-image: url('/shelter/assets/icon-email.png');
+	background-image: url('../../assets/icon-email.png');
 	background-repeat: no-repeat;
 	background-position: 0px 5px;
 	letter-spacing: 0.06em;
@@ -537,7 +536,7 @@ footer {
 
 .footer_phone {
 	padding: 10px 60px;
-	background-image: url('/shelter/assets/icon-phone.png');
+	background-image: url('../../assets/icon-phone.png');
 	background-repeat: no-repeat;
 	background-position: 0px 5px;
 	letter-spacing: 0.06em;
@@ -546,7 +545,7 @@ footer {
 
 .footer_map {
 	padding: 1px 14px 0 41px;
-	background-image: url('/shelter/assets/icon-marker.png');
+	background-image: url('../../assets/icon-marker.png');
 	background-repeat: no-repeat;
 	background-position: 0px 8px;
 	letter-spacing: 0.06em;
@@ -555,7 +554,7 @@ footer {
 
 .footer_map_2 {
 	padding: 60px 35px 10px 41px;
-	background-image: url('/shelter/assets/icon-marker.png');
+	background-image: url('../../assets/icon-marker.png');
 	background-repeat: no-repeat;
 	background-position: 0px 55px;
 	letter-spacing: 0.06em;
@@ -705,6 +704,36 @@ h1 {
 		top: 40%;
 	}
 
+	
+	#message_pet {
+		max-width: 630px;
+		top: 38%;
+    left: 11%;
+	}
+
+	.message_pet_img {
+		width: 350px;
+		height: 350px;
+	}
+
+	.pet_name {
+		padding: 10px 0;
+	}
+
+	.pet_description {
+		font-size: 13px;
+		padding: 20px 10px 20px 0;
+	}
+
+	.pet_item {
+		padding-bottom: 5px;
+	}
+
+	.message_btn {
+		top: 32%;
+    left: 92.5%;
+	}
+
 	.pets_btn {
 		margin-left: 217px;
 		margin-right: 217px;
@@ -808,15 +837,13 @@ h1 {
 		background-color: #2D303A;
     opacity: 50%;
     width: 100vw;
-    height: 100vh;
+    height: 200vh;
     position: fixed;
 		z-index: 6;
 		margin-top: -148px;
 	}
 	/* запрет прокрутки, сделать на js при открытом меню */
 
-
-	
 
 	#menu__toggle {
 		opacity: 0;
@@ -853,6 +880,11 @@ h1 {
 		z-index: 11;
 	}
 
+	.logo {
+		position: absolute;
+		z-index: 12;
+	}
+
 	.menu__btn>span,
 	.menu__btn>span::before,
 	.menu__btn>span::after {
@@ -885,7 +917,7 @@ h1 {
 		width: 320px;
 		height: 100%;
 		margin: 0;
-		padding: 80px 0;
+		padding: 158px 0;
 		font-size: 32px;
 		background-color: #292929;
 		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
@@ -894,7 +926,7 @@ h1 {
 
 	.header_menu_item {
 		display: block;
-		padding: 12px 24px;
+		padding: 40px 38px;
 		transition-duration: .25s;
 	}
 
@@ -910,6 +942,7 @@ h1 {
 
 	header {
 		padding-top: 29px;
+		padding-bottom: 98px;
 	}
 
 	.screen_text_h2 {
@@ -1005,6 +1038,38 @@ h1 {
 
 	.slider_content {
 		padding-left: 15px;
+	}
+
+	#message_pet {
+		display: block;
+		left: 12%;
+		max-width: 230px;
+		padding: 10px;
+	}
+
+	.message_pet_img {
+		display: none;
+	}
+
+	.pet_name,
+	.pet_about {
+		text-align: center;
+		padding: 	0 0 10px;
+	}
+
+	.pet_description {
+		font-size: 13px;
+		text-align: justify;
+		padding: 10px 0 24px;
+	}
+
+	.pet_item {
+		padding-bottom: 5px;
+	}
+
+	.message_btn {
+		top: 24%;
+    left: 83.5%;
 	}
 	
 	.pets_btn {
