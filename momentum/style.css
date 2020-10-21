@@ -7,12 +7,6 @@
 }
 
 body {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh; */
   text-align: center;
   font-family: 'Fira Sans', sans-serif;
   background: url(/assest/wrapper-bg.jpg) center/cover no-repeat fixed;
@@ -106,8 +100,6 @@ button > svg {
 
 .input_name {
   padding: 0.46rem;
-  font-family: 'Fira Sans', sans-serif;
-  border: 1px solid black;
   outline: none;
   font-size: 1em;
 }
@@ -119,8 +111,6 @@ button > svg {
 
 .input_focus {
   padding: 0.46rem;
-  font-family: 'Fira Sans', sans-serif;
-  border: 1px solid black;
   outline: none;
   font-size: 2em;
   color: rgb(202, 202, 202);
