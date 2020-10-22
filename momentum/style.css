@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=swap');
 
 * {
   margin: 0;
@@ -9,18 +10,25 @@
 body {
   text-align: center;
   font-family: 'Fira Sans', sans-serif;
-  background: url(/assest/wrapper-bg.jpg) center/cover no-repeat fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url(/assest/wrapper-bg.jpg);
+  transition: background-image 1s ease-in-out;
 }
 
 header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  margin: 1em 1em 7em;
+  width: 70vw;
+  margin: 1em auto 4em;
 }
 
 form {
   position: relative;
+  text-align: left;
 }
 
 .input_city {
@@ -40,6 +48,14 @@ form {
   outline: none;
   position: absolute;
   font-size: 1em;
+  background-image: linear-gradient(45deg,#d6d6c8,#d9dbc9 50%,#7e8072);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  transition: .5s;
+}
+
+.input_city_btn:hover {
+  background-position: 0 0;
 }
 
 .weather_city {
@@ -53,13 +69,18 @@ form {
 }
 
 main {
+  width: 70vw;
+  margin: 0 auto;
   color: #fff;
-
+  background: rgba(83, 83, 94, 0.7);
+  padding: 0 0 1rem;
 }
 
 .time_block {
   font-size: 12rem;
   margin-bottom: 1rem;
+  font-family: 'DM Mono', monospace;
+  opacity: 1;
 }
 
 .date_block {
@@ -84,14 +105,13 @@ main {
   outline: none;
   cursor: pointer;
   top: 50%;
+  right: 5%;
 }
 
-.left_arrow {
-  left: 0;
-}
-
-.right_arrow {
-  right: 0;
+.arrow > svg:hover {
+  fill: lightgoldenrodyellow;
+  transform: scale(1.5);
+  transition: all 1s ease-in;
 }
 
 button > svg {
@@ -117,10 +137,14 @@ button > svg {
 }
 
 footer {
-  padding: 3rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  max-width: 70vw;
+  padding: 2rem 3rem 1rem;
   color: #fff;
   font-size: 1.5em;
-  font-style: italic; 
+  font-style: italic;
+  background: rgba(83, 83, 94, 0.7);
 }
 
 .quote_block {
@@ -130,11 +154,27 @@ footer {
   overflow-x: auto;
 }
 
+.quote_author {
+  text-align: right;
+  font-style: normal;
+}
+
 .quote_btn {
+  cursor: pointer;
   background: transparent;
   border: none;
   outline: none;
   width: 1.5rem;
   height: 1.5rem;
   margin: 1em 1em 0;
+}
+
+.quote_btn > svg:hover {
+  animation: rot 1s linear  infinite;
+}
+
+@keyframes rot {
+  from {
+      transform: rotate(-1turn)
+  }
 }
