@@ -3,10 +3,12 @@ class Momentum {
   constructor() {
     this.name = document.querySelector('.input_name');
     this.focus = document.querySelector('.input_focus');
+    this.nameCity = document.querySelector('.name_city');
     this.imgArrNum = []
     this.newMas = []
     this.bodyImg = []
     this.i_time = ''
+    this.hour
   }
 
   getName() {
@@ -19,8 +21,11 @@ class Momentum {
 
   setName(e) {
     if (e.type === 'keypress') {
-      if (e.code === 'Enter') {
+      if (e.code === 'Enter' && e.target.innerText.length !== 0) {
         localStorage.setItem('name', e.target.innerText);
+        document.querySelector('.input_name').blur()
+      } else if (e.code === 'Enter' && e.target.innerText.length === 0) {
+        document.querySelector('.input_name').textContent = '[Enter Your Name]'
         document.querySelector('.input_name').blur()
       }
     } else {
@@ -38,9 +43,12 @@ class Momentum {
   }
 
   setFocus(e) {
-    if (e.type === 'keypress') {
-      if (e.code === 'Enter') {
+    if (e.type === 'keypress' || e.type === 'click') {
+      if (e.code === 'Enter' && e.target.innerText.length !== 0) {
         localStorage.setItem('focus', e.target.innerText);
+        document.querySelector('.input_focus').blur()
+      } if ((e.code === 'Enter' || e.type === 'click') && e.target.innerText.length === 0) {
+        document.querySelector('.input_focus').textContent = '[Enter Your Focus]'
         document.querySelector('.input_focus').blur()
       }
     } else {
@@ -48,8 +56,32 @@ class Momentum {
     }
   }
 
+   getNameCity() {
+    if (localStorage.getItem('name_city') === null) {
+        this.nameCity.textContent = 'Moscow'
+    } else if (localStorage.getItem('name_city') === null) {
+      this.nameCity.textContent = localStorage.getItem('name_city')
+    } else {
+      this.nameCity.textContent = localStorage.getItem('name_city')
+    }
+}
+
+ setNameCity(e) {
+    if (e.type === 'keypress') {
+        if (e.code === 'Enter') {
+            localStorage.setItem('name_city', e.target.innerText)
+           document.querySelector('.name_city').blur()
+        }
+    } else {
+        localStorage.setItem('name_city', e.target.innerText)
+        getWeather()
+    }
+}
+
   getTime() {
-    const time = document.querySelector('.time_block');
+    const timeSecond = document.querySelector('.time_block_second');
+    const timeMinute = document.querySelector('.time_block_minute');
+    const timeHour = document.querySelector('.time_block_hour');
     const date = document.querySelector('.date_block');
     const curDate = new Date();
     const weekArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -60,7 +92,9 @@ class Momentum {
     date.textContent = `${dayOfWeek} ${dayOfMonth} ${month}`;
     const curSeconds = curDate.getSeconds() < 10 ? `0${curDate.getSeconds()}` : curDate.getSeconds();
     const curMinute = curDate.getMinutes() < 10 ? `0${curDate.getMinutes()}` : curDate.getMinutes();
-    time.textContent = `${curDate.getHours()}:${curMinute}:${curSeconds}`;
+    timeHour.textContent =  `${curDate.getHours()}`
+    timeMinute.textContent = `:${curMinute}`;
+    timeSecond.textContent = `:${curSeconds}`;
   }
 
   async getQuote() {
@@ -81,13 +115,13 @@ class Momentum {
     if (hourData >= 0 && hourData < 6) {
       timeDay.textContent = timeDayArray[3];
     }
-    if (hourData > 5 && hourData < 12) {
+    if (hourData >= 6 && hourData < 12) {
       timeDay.textContent = timeDayArray[0];
     }
-    if (hourData > 11 && hourData < 18) {
+    if (hourData >= 12 && hourData < 18) {
       timeDay.textContent = timeDayArray[1];
     }
-    if (hourData > 17 && hourData <= 23) {
+    if (hourData >= 18 && hourData <= 23) {
       timeDay.textContent = timeDayArray[2];
     }
     return timeDay;
@@ -127,9 +161,14 @@ class Momentum {
     for (let i = 18; i < 24; i++) {
       this.bodyImg.push(`url(/assest/evening/${this.newMas[i]}.jpg)`)
     }
-    this.i_time = new Date().getHours()
-    document.querySelector('body').style.backgroundImage = `${this.bodyImg[this.i_time]}`
     return this.bodyImg
+  }
+
+  changeHour() {
+    if (this.hour !== document.querySelector('.time_block_hour').textContent) {
+      this.hour = document.querySelector('.time_block_hour').textContent;
+   changeHourBody(this.hour)
+    }
   }
 }
 
@@ -144,18 +183,61 @@ function changeBody() {
   document.querySelector('body').style.backgroundImage = `${momentum.bodyImg[momentum.i_time]}`;
 }
 
+function changeHourBody(hourValue) {
+  document.querySelector('body').style.backgroundImage = `${momentum.bodyImg[hourValue]}`
+}
+
+async function getWeather() {
+  let nameCityValue = document.querySelector('.name_city')
+  const aboutWeather = document.querySelector('.about_weather')
+  const iconWeather = document.querySelector('.icon_weather > img')
+  const tempWeather = document.querySelector('.temp_weather')
+  const humidityweather = document.querySelector('.humidity_weather')
+  const speedWindWeather = document.querySelector('.speed_wind_weather')
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${nameCityValue.textContent}&lang=en&appid=cfab30bb66d89e8952405563767c1480&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+  try {
+    if (nameCityValue.textContent === '') {
+      nameCityValue.textContent = 'Please, enter city'
+      return
+    }
+    aboutWeather.textContent = data.weather[0].main;
+    iconWeather.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+    tempWeather.innerHTML = `${Math.floor(data.main.temp)} &deg;C`;
+    humidityweather.textContent = `${data.main.humidity}%`;
+    speedWindWeather.textContent = `${data.wind.speed} m/s`;
+  } catch (error) {
+    nameCityValue.textContent = 'Invalid request, try again'
+  }
+}
+
+function setCity(e) {
+  if (e.code === 'Enter') {
+    getWeather();
+   city.blur();
+  }
+}
+
 momentum.getName()
 momentum.getFocus()
-momentum.getTimeDay()
+momentum.getNameCity()
+setInterval(momentum.getTimeDay, 1000)
+
 document.querySelector('.input_name').addEventListener('keypress', momentum.setName);
 document.querySelector('.input_name').addEventListener('blur', momentum.setName);
 document.querySelector('.input_focus').addEventListener('keypress', momentum.setFocus);
+document.querySelector('.input_focus').addEventListener('click', momentum.setFocus);
 document.querySelector('.input_focus').addEventListener('blur', momentum.setFocus);
 document.querySelector('.quote_btn').addEventListener('click', momentum.getQuote)
+document.querySelector('.name_city').addEventListener('keypress', momentum.setNameCity)
+document.querySelector('.name_city').addEventListener('blur', momentum.setNameCity)
 document.querySelector('.arrow').addEventListener('click', changeBody)
 
 window.addEventListener('DOMContentLoaded', () => {
   setInterval(momentum.getTime, 1000);
+  setInterval(momentum.changeHour, 1000)
+  getWeather()
   momentum.getQuote();
   momentum.fillArr()
 })
