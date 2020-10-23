@@ -181,6 +181,8 @@ function changeBody() {
     momentum.i_time++
   }
   document.querySelector('body').style.backgroundImage = `${momentum.bodyImg[momentum.i_time]}`;
+  document.querySelector('.arrow').disabled = true;
+  setTimeout(function() { document.querySelector('.arrow').disabled = false }, 1000);
 }
 
 function changeHourBody(hourValue) {
@@ -235,9 +237,9 @@ document.querySelector('.name_city').addEventListener('blur', momentum.setNameCi
 document.querySelector('.arrow').addEventListener('click', changeBody)
 
 window.addEventListener('DOMContentLoaded', () => {
+  momentum.fillArr()
   setInterval(momentum.getTime, 1000);
   setInterval(momentum.changeHour, 1000)
   getWeather()
   momentum.getQuote();
-  momentum.fillArr()
 })
