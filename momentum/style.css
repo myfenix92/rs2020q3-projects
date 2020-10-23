@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  font-family: 'Fira Sans', sans-serif;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url(/assest/wrapper-bg.jpg);
+  transition: background-image 1.5s linear;
+}
+
+header {
+  width: 12vw;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.name_city {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  padding: 0 0 0 1rem;
+  text-align-last: left;
+}
+
+.name_city:hover,
+.input_name:hover,
+.input_focus:hover {
+  cursor: pointer;
+}
+
+.about_weather {
+  grid-column: 1 / 2;
+  grid-row-start: 2 / 3;
+}
+
+.icon_weather {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.temp_weather {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.humidity_weather {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.speed_wind_weather {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+
+.weather_city {
+  display: grid;
+  grid-auto-columns: 5rem;
+  grid-auto-rows: 2.3rem;
+  align-items: center;
+  background-color:rgba(148, 148, 156, 0.7);
+}
+
+main {
+  width: 70vw;
+  margin: 7rem auto 0;
+  color: #fff;
+  background: rgba(83, 83, 94, 0.7);
+  padding: 0 0 1rem;
+}
+
+.time_block {
+  font-size: 12rem;
+  margin-bottom: 1rem;
+  font-family: 'DM Mono', monospace;
+  opacity: 1;
+}
+
+.date_block {
+  margin-bottom: 2rem;
+}
+
+.welcome_block,
+.date_block,
+.focus_text {
+  font-size: 3rem;
+}
+
+.name_block {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.arrow {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  top: 50%;
+  right: 5%;
+}
+
+.arrow > svg:hover {
+  fill: lightgoldenrodyellow;
+  transform: scale(1.5);
+  transition: all 0.5s ease-in;
+}
+
+button > svg {
+  fill: #fff;
+}
+
+.input_name {
+  padding: 0.46rem;
+  outline: none;
+  font-size: 1em;
+}
+
+.focus_text {
+  color: rgb(202, 202, 202);
+  margin-bottom: 1rem;
+}
+
+.input_focus {
+  padding: 0.46rem;
+  outline: none;
+  font-size: 2em;
+  color: rgb(202, 202, 202);
+}
+
+footer {
+  margin: 0 auto;
+  margin-top: 1rem;
+  max-width: 70vw;
+  padding: 2rem 3rem 1rem;
+  color: #fff;
+  font-size: 1.5em;
+  font-style: italic;
+  background: rgba(83, 83, 94, 0.7);
+}
+
+.quote_block {
+  display: block;
+  max-height: 90px;
+}
+
+.quote_author {
+  text-align: right;
+  font-style: normal;
+}
+
+.quote_btn {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 1em 1em 0;
+}
+
+.quote_btn > svg:hover {
+  animation: rot 1s linear  infinite;
+}
+
+@keyframes rot {
+  from {
+      transform: rotate(-1turn)
+  }
+}
+
+/* media */
+
+@media screen and (max-width: 1899px) {
+  .weather_city {
+    font-size: 0.8rem;
+    grid-auto-columns: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1898px) {
+  .weather_city {
+    font-size: 0.7rem;
+    grid-auto-columns: 2.5rem;
+  }
+
+  .time_block {
+    font-size: 8rem;
+  }
+
+  .welcome_block,
+  .date_block,
+  .focus_text {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .weather_city {
+    font-size: 0.7rem;
+    grid-auto-columns: 2.5rem;
+  }
+
+  .icon_weather {
+    grid-column: 2 / 3;
+  }
+
+  .icon_weather > img {
+    width: 100%;
+  }
+
+  .speed_wind_weather {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+  }
+
+  .time_block {
+    font-size: 6.5rem;
+  }
+
+  main {
+    margin-top: 10rem;
+  }
+
+  .welcome_block,
+  .date_block,
+  .focus_text {
+    font-size: 2rem;
+  }
+
+  footer {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+  header {
+    width: 100vw;
+    margin: 0 auto;
+  }
+
+  .time_block {
+    font-size: 2.5rem;
+  }
+  
+  .arrow {
+    right: 0;
+    top: 40%;
+  }
+
+  .arrow > svg {
+    width: 45px;
+  }
+
+  main {
+    margin-top: 10rem;
+  }
+
+  .name_block {
+    margin-bottom: 1.5rem;
+  }
+
+  .welcome_block,
+  .date_block,
+  .focus_text,
+  .input_focus {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: 0.8em;
+    padding: 1rem;
+  }
+
+  .quote_author {
+    padding-top: 1rem;
+  }
+}
