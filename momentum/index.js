@@ -150,16 +150,16 @@ class Momentum {
     }
 
     for (let i = 0; i < 6; i++) {
-      this.bodyImg.push(`url(/assest/night/${this.newMas[i]}.jpg)`)
+      this.bodyImg.push(`url(assest/night/${this.newMas[i]}.jpg)`)
     }
     for (let i = 6; i < 12; i++) {
-      this.bodyImg.push(`url(/assest/morning/${this.newMas[i]}.jpg)`)
+      this.bodyImg.push(`url(assest/morning/${this.newMas[i]}.jpg)`)
     }
     for (let i = 12; i < 18; i++) {
-      this.bodyImg.push(`url(/assest/day/${this.newMas[i]}.jpg)`)
+      this.bodyImg.push(`url(assest/day/${this.newMas[i]}.jpg)`)
     }
     for (let i = 18; i < 24; i++) {
-      this.bodyImg.push(`url(/assest/evening/${this.newMas[i]}.jpg)`)
+      this.bodyImg.push(`url(assest/evening/${this.newMas[i]}.jpg)`)
     }
     return this.bodyImg
   }
