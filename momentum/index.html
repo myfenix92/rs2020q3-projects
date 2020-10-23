@@ -9,19 +9,15 @@
 </head>
 <body>
   <header>
-    <form action="">
-      <input class="input_city" type="text" placeholder="Enter City">
-      <button class="input_city_btn">Search</button>
-    </form>
     <div class="weather_city">
-      <p class="name_city">Moscow</p>
-      <div class="about_weather">Пасмурно</div>
+      <p class="name_city" contenteditable="true"></p>
+      <div class="about_weather"></div>
       <div class="icon_weather">
-        <img src="/assest/animated/cloudy-day-1.svg" alt="">
+        <img src="" alt="">
       </div>
-      <p class="temp_weather">21 &deg;C</p>
-      <p class="humidity_weather">21%</p>
-      <p class="speed_wind_weather">5 m/s</p>
+      <p class="temp_weather"></p>
+      <p class="humidity_weather"></p>
+      <p class="speed_wind_weather"></p>
     </div>
   </header>
   <button class="arrow"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +31,7 @@
     </svg></button>
   <main>
     <p class="time_block">
+      <span class="time_block_hour"></span><span class="time_block_minute"></span><span class="time_block_second"></span>
     </p>
     <p class="date_block"></p>
     <div class="name_block">
