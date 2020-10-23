@@ -174,16 +174,50 @@ class Momentum {
 
 let momentum = new Momentum();
 
-function changeBody() {
+// function changeBody() {
+//   if (momentum.i_time > 22) {
+//     momentum.i_time = 0;
+//   } else {
+//     momentum.i_time++
+//   }
+
+//   //const src = data;
+//   const img = document.createElement('img');
+    
+//   //img.src = src;
+//   img.onload = () => {
+//     console.log(img)
+//     document.querySelector('body').style.backgroundImage.style.backgroundImage = `${momentum.bodyImg[momentum.i_time]}`;
+//   }; 
+
+//   //document.querySelector('body').style.backgroundImage = `${momentum.bodyImg[momentum.i_time]}`;
+//   //document.querySelector('.arrow').disabled = true;
+//   //setTimeout(function() { document.querySelector('.arrow').disabled = false }, 1000);
+// }
+
+
+
+function viewBgImage(data) {
+  const body = document.querySelector('body');
+  const src = data
+  const img = document.createElement('img');
+  img.src = src.replace('url', '').replace('(', '').replace(')', '')
+  img.onload = () => {      
+    body.style.backgroundImage = src;
+  }; 
+}
+
+function getImage() {
   if (momentum.i_time > 22) {
-    momentum.i_time = 0;
-  } else {
-    momentum.i_time++
-  }
-  document.querySelector('body').style.backgroundImage = `${momentum.bodyImg[momentum.i_time]}`;
+        momentum.i_time = 0;
+      } else {
+        momentum.i_time++
+      }
+  const imageSrc = momentum.bodyImg[momentum.i_time]; 
+  viewBgImage(imageSrc);
   document.querySelector('.arrow').disabled = true;
   setTimeout(function() { document.querySelector('.arrow').disabled = false }, 1000);
-}
+} 
 
 function changeHourBody(hourValue) {
   document.querySelector('body').style.backgroundImage = `${momentum.bodyImg[hourValue]}`
@@ -234,7 +268,8 @@ document.querySelector('.input_focus').addEventListener('blur', momentum.setFocu
 document.querySelector('.quote_btn').addEventListener('click', momentum.getQuote)
 document.querySelector('.name_city').addEventListener('keypress', momentum.setNameCity)
 document.querySelector('.name_city').addEventListener('blur', momentum.setNameCity)
-document.querySelector('.arrow').addEventListener('click', changeBody)
+document.querySelector('.arrow').addEventListener('click', getImage)
+//document.querySelector('.arrow').addEventListener('click', changeBody)
 
 window.addEventListener('DOMContentLoaded', () => {
   momentum.fillArr()
