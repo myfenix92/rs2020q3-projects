@@ -46,10 +46,11 @@ class Momentum {
 
   setName(e) {
     if (e.type === 'keypress') {
-      if (e.code === 'Enter' && e.target.innerText.length !== 0) {
+      if (e.code === 'Enter' && e.target.textContent[0].match(/\s/gi) === null) {
+       console.log(e.target.textContent[0])
         localStorage.setItem('name', e.target.innerText);
         document.querySelector('.input_name').blur();
-      } else if (e.code === 'Enter' && e.target.innerText.length === 0) {
+      } else if (e.code === 'Enter' && (e.target.innerText.length === 0 || e.target.textContent[0].match(/\s/gi) !== null)) {
         document.querySelector('.input_name').textContent = localStorage.getItem('name');
         document.querySelector('.input_name').blur();
       }
@@ -68,12 +69,12 @@ class Momentum {
   }
 
   setFocus(e) {
-    if (e.type === 'keypress' || e.type === 'click') {
-      if (e.code === 'Enter' && e.target.innerText.length !== 0) {
+    if (e.type === 'keypress') {
+      if (e.code === 'Enter' && e.target.textContent[0].match(/\s/gi) === null) {
         localStorage.setItem('focus', e.target.innerText);
         document.querySelector('.input_focus').blur();
       } 
-      if ((e.code === 'Enter' || e.type === 'click') && e.target.innerText.length === 0) {
+      if (e.code === 'Enter' && (e.target.innerText.length === 0 || e.target.textContent[0].match(/\s/gi) !== null)) {
         document.querySelector('.input_focus').textContent = localStorage.getItem('focus');
         document.querySelector('.input_focus').blur();
       }
