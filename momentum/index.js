@@ -19,14 +19,39 @@ class Momentum {
     }
   }
 
+  setDefaultName(e) {
+    if (e.target.className === 'input_name' && (document.querySelector('.input_name').textContent === '' || document.querySelector('.input_name').textContent[0].match(/\s/gi) !== null)) {
+     document.querySelector('.input_name').textContent = localStorage.getItem('name');
+    }
+    if (document.querySelector('.input_name').textContent !== '')
+    {
+      localStorage.setItem('name', e.target.innerText);
+    } 
+    else {
+      document.querySelector('.input_name').textContent = '[Enter Your Name]';
+    }
+  }
+
+  setDefaultFocus(e) {
+    if (e.target.className === 'input_focus' && (document.querySelector('.input_focus').textContent === '' || document.querySelector('.input_focus').textContent[0].match(/\s/gi) !== null)) {
+      document.querySelector('.input_focus').textContent = localStorage.getItem('focus');
+    }
+    if (document.querySelector('.input_focus').textContent !== '')
+    {
+      localStorage.setItem('focus', e.target.innerText);
+    } else {
+      document.querySelector('.input_focus').textContent = '[Enter Your Focus]';
+    }
+  }
+
   setName(e) {
     if (e.type === 'keypress') {
       if (e.code === 'Enter' && e.target.innerText.length !== 0) {
         localStorage.setItem('name', e.target.innerText);
-        document.querySelector('.input_name').blur()
+        document.querySelector('.input_name').blur();
       } else if (e.code === 'Enter' && e.target.innerText.length === 0) {
-        document.querySelector('.input_name').textContent = '[Enter Your Name]'
-        document.querySelector('.input_name').blur()
+        document.querySelector('.input_name').textContent = localStorage.getItem('name');
+        document.querySelector('.input_name').blur();
       }
     } else {
       localStorage.setItem('name', e.target.innerText);
@@ -46,10 +71,11 @@ class Momentum {
     if (e.type === 'keypress' || e.type === 'click') {
       if (e.code === 'Enter' && e.target.innerText.length !== 0) {
         localStorage.setItem('focus', e.target.innerText);
-        document.querySelector('.input_focus').blur()
-      } if ((e.code === 'Enter' || e.type === 'click') && e.target.innerText.length === 0) {
-        document.querySelector('.input_focus').textContent = '[Enter Your Focus]'
-        document.querySelector('.input_focus').blur()
+        document.querySelector('.input_focus').blur();
+      } 
+      if ((e.code === 'Enter' || e.type === 'click') && e.target.innerText.length === 0) {
+        document.querySelector('.input_focus').textContent = localStorage.getItem('focus');
+        document.querySelector('.input_focus').blur();
       }
     } else {
       localStorage.setItem('focus', e.target.innerText);
@@ -174,29 +200,6 @@ class Momentum {
 
 let momentum = new Momentum();
 
-// function changeBody() {
-//   if (momentum.i_time > 22) {
-//     momentum.i_time = 0;
-//   } else {
-//     momentum.i_time++
-//   }
-
-//   //const src = data;
-//   const img = document.createElement('img');
-    
-//   //img.src = src;
-//   img.onload = () => {
-//     console.log(img)
-//     document.querySelector('body').style.backgroundImage.style.backgroundImage = `${momentum.bodyImg[momentum.i_time]}`;
-//   }; 
-
-//   //document.querySelector('body').style.backgroundImage = `${momentum.bodyImg[momentum.i_time]}`;
-//   //document.querySelector('.arrow').disabled = true;
-//   //setTimeout(function() { document.querySelector('.arrow').disabled = false }, 1000);
-// }
-
-
-
 function viewBgImage(data) {
   const body = document.querySelector('body');
   const src = data
@@ -255,21 +258,41 @@ function setCity(e) {
   }
 }
 
+let range = new Range();
+
+function resetName() {
+  let name = document.querySelector('.input_name')
+  name.innerHTML = document.querySelector('.input_name').textContent
+  range.selectNodeContents(name)
+  range.deleteContents()
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+}
+
+function resetFocus() {
+  let focus = document.querySelector('.input_focus')
+  focus.innerHTML = document.querySelector('.input_focus').textContent
+  range.selectNodeContents(focus)
+  range.deleteContents()
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+}
+
 momentum.getName()
 momentum.getFocus()
 momentum.getNameCity()
 setInterval(momentum.getTimeDay, 1000)
+document.querySelector('.input_name').addEventListener('focus', resetName)
+document.querySelector('.input_focus').addEventListener('focus', resetFocus)
 
 document.querySelector('.input_name').addEventListener('keypress', momentum.setName);
-document.querySelector('.input_name').addEventListener('blur', momentum.setName);
+document.querySelector('.input_name').addEventListener('blur', momentum.setDefaultName);
 document.querySelector('.input_focus').addEventListener('keypress', momentum.setFocus);
-document.querySelector('.input_focus').addEventListener('click', momentum.setFocus);
-document.querySelector('.input_focus').addEventListener('blur', momentum.setFocus);
+document.querySelector('.input_focus').addEventListener('blur', momentum.setDefaultFocus);
 document.querySelector('.quote_btn').addEventListener('click', momentum.getQuote)
 document.querySelector('.name_city').addEventListener('keypress', momentum.setNameCity)
 document.querySelector('.name_city').addEventListener('blur', momentum.setNameCity)
 document.querySelector('.arrow').addEventListener('click', getImage)
-//document.querySelector('.arrow').addEventListener('click', changeBody)
 
 window.addEventListener('DOMContentLoaded', () => {
   momentum.fillArr()
