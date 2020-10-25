@@ -379,6 +379,7 @@ button {
 	position: absolute;
 	top: 24%;
 	left: 72.5%;
+	cursor: pointer;
 }
 
 .media_layout {
@@ -731,7 +732,7 @@ h1 {
 
 	.message_btn {
 		top: 32%;
-    left: 92.5%;
+		left: 92.5%;
 	}
 
 	.pets_btn {
@@ -842,8 +843,6 @@ h1 {
 		z-index: 6;
 		margin-top: -148px;
 	}
-	/* запрет прокрутки, сделать на js при открытом меню */
-
 
 	#menu__toggle {
 		opacity: 0;
@@ -1069,7 +1068,7 @@ h1 {
 
 	.message_btn {
 		top: 24%;
-    left: 83.5%;
+		left: 83.5%;
 	}
 	
 	.pets_btn {
