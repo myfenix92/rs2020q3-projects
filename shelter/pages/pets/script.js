@@ -92,11 +92,6 @@ const pets = [{
 
 document.querySelector('.menu__btn').onclick = function () {
   document.getElementById('overlay').classList.toggle('filter_menu')
-  if (document.getElementById('overlay').classList.contains('filter_menu')) {
-    document.querySelector('body').style.overflow = 'hidden'
-  } else {
-    document.querySelector('body').style.overflow = 'auto'
-  }
 };
 
 document.querySelector('.header_menu_items').addEventListener('click', (event) => {
