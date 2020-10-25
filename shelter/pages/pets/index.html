@@ -10,7 +10,7 @@
   <header>
     <div class="wrapper wrapper_header">
       <div class="logo">
-        <h1>Cozy House</h1>
+        <h1><a href="../main/index.html">Cozy House</a></h1>
         <p class="logo_text">Shelter for pets in Boston</p>
       </div>
       <div class="header_menu">
@@ -20,62 +20,44 @@
         </label>
         <ul class="header_menu_items">
           <li class="header_menu_item"><a href="../main/index.html">About the shelter</a></li>
-          <li class="header_menu_item"><a class="active" href="#">Our pets</a></li>
+          <li class="header_menu_item"><a class="active" href="../pets/index.html">Our pets</a></li>
           <li class="header_menu_item"><a href="#">Help the shelter</a></li>
           <li class="header_menu_item"><a href="#">Contacts</a></li>
         </ul>
       </div>
     </div>
   </header>
+  <div id="overlay"></div>
   <main>
     <div class="wrapper">
       <h3 class="pets_h3">Our friends who <br> are looking for a house</h3>
       <div class="layout_block">
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/Katrine.png" alt="">
-          <p class="slider_name-pets">Katrine</p>
-          <button class="slider_btn">Learn more</button>
-        </div>
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/Jennifer.png" alt="">
-          <p class="slider_name-pets">Jennifer</p>
-          <button class="slider_btn">Learn more</button>
-        </div>
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/Woody.png" alt="">
-          <p class="slider_name-pets">Woody</p>
-          <button class="slider_btn">Learn more</button>
-        </div>
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/pets-sophia.png" alt="">
-          <p class="slider_name-pets">Sophia</p>
-          <button class="slider_btn">Learn more</button>
-        </div>
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/pets-timmy.png" alt="">
-          <p class="slider_name-pets">Timmy</p>
-          <button class="slider_btn">Learn more</button>
-        </div>
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/pets-charly.png" alt="">
-          <p class="slider_name-pets">Charly</p>
-          <button class="slider_btn">Learn more</button>
-        </div>
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/pets-scarlet.png" alt="">
-          <p class="slider_name-pets">Scarlett</p>
-          <button class="slider_btn">Learn more</button>
-        </div>
-        <div class="slider">
-          <img class="slider_img" src="/shelter/assets/pets-freddie.png" alt="">
-          <p class="slider_name-pets">Freddie</p>
-          <button class="slider_btn">Learn more</button>
+      </div>
+      <div id="message_pets_block">
+        <button class="message_btn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929"/>
+          </svg></button>
+        <div id="message_pet">
+          <div class="message_pet_img">
+            <img src="" alt="">
+          </div>
+          <div class="message_pet_info">
+            <p class="pet_name"></p>
+            <p class="pet_about"> <span class="pet_type"></span> - <span class="pet_breed"></span></p>
+            <p class="pet_description"></p>
+            <ul class="pet_list">
+              <li class="pet_item"><span class="pet_item_value">Age: </span><span class="pet_age"></span></li>
+              <li class="pet_item"><span class="pet_item_value">Inoculations: </span><span class="pet_inoculations"></span></li>
+              <li class="pet_item"><span class="pet_item_value">Diseases: </span><span class="pet_diseases"></span></li>
+              <li class="pet_item"><span class="pet_item_value">Parasites: </span><span class="pet_parasites"></span></li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="pagination_block">
-        <button class="pagination start_pagination" disabled>&lt; &lt;</button>
-        <button class="pagination prev_pagination" disabled>&lt;</button>
-        <button class="pagination active_pagination">1</button>
+        <button class="pagination start_pagination disabled_btn" disabled>&lt; &lt;</button>
+        <button class="pagination prev_pagination disabled_btn" disabled>&lt;</button>
+        <button class="pagination active_pagination"></button>
         <button class="pagination next_pagination">&gt;</button>
         <button class="pagination end_pagination">&gt; &gt;</button>
       </div>
@@ -98,9 +80,10 @@
           18 South Park, London </a>
       </div>
       <div class="img_block">
-        <img src="/shelter/assets/footer-puppy.png" alt="">
+        <img src="../../assets/footer-puppy.png" alt="">
       </div>
     </div>
   </footer>
+  <script src="../pets/script.js"></script>
 </body>
 </html>
