@@ -221,13 +221,22 @@ button {
 
 .slider_content {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(8, 1fr);
 	gap: 5.63rem;
-	padding: 0.5em 6.6em 3.7em;
+  padding: 0.5em 7.6em 3.7em;
 }
 
 .slider_block {
 	position: relative;
+}
+
+.slider {
+	display: none;
+}
+
+.active_slider,
+.next {
+	display: block;
 }
 
 .slider {
