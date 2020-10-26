@@ -175,10 +175,6 @@ button {
 	letter-spacing: 0.13rem;
 }
 
-.slider {
-	display: none;
-}
-
 .active_slider,
 .next {
 	display: block;
@@ -931,13 +927,13 @@ h1 {
 
 	.wrapper_header,
 	section {
-		padding: 0 10px;
+		padding: 0 0.65em;
 		margin: 0;
 	}
 
 	header {
-		padding-top: 29px;
-		padding-bottom: 98px;
+		padding-top: 1.75rem;
+    padding-bottom: 7.5rem;
 	}
 
 	.screen_text_h2 {
@@ -982,7 +978,7 @@ h1 {
 	}
 
 	.about_text_h3 {
-		padding-bottom: 7px;
+		padding-bottom: 10px;
 		padding-right: 0;
 	}
 
@@ -992,12 +988,9 @@ h1 {
 
 	.about_text {
 		margin: 0;
-		padding: 0 15px;
+		padding: 0 0.8rem;;
 	}
 
-	.p1 {
-		padding-bottom: 22px;
-	}
 	.about_img {
 		padding: 41px 18px 0;
 		margin-left: 0;
@@ -1009,16 +1002,16 @@ h1 {
 	}
 
 	.slider_content {
-		width: 293px;
 		overflow: hidden;
 		padding: 10px 0 60px 58px;
 		margin: 0;
+		height: 27.2rem;
 	}
 
 	.pets_h3 {
 		font-size: 25px;
 		text-align: center;
-		padding: 42px 0 0;
+		padding: 2.5rem 0 0;
 	}
 
 	.arrow-left {
@@ -1078,19 +1071,23 @@ h1 {
 
 	.help_h3 {
 		font-size: 25px;
-    padding: 43px 25px 27px;
+    padding: 1.7em 1em 0.2em;
 	}
 
 	.help_text {
 		font-size: 15px;
-		padding-top: 10px;
+		padding: 0;
 	}
 
 	.media_layout {
 		display: grid;
-		grid-template-columns: repeat(2, 140px);
-		gap: 3px 21px;
-		margin-top: 4px;
+		grid-template-areas: 
+		"a a"
+		"a a"
+		"a a"
+		"a a"
+		"a a";
+		padding: 1.4rem 0.7rem 1rem;	
 		margin-bottom: 32px;
 	}
 
@@ -1104,7 +1101,18 @@ h1 {
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-evenly;
+		padding: 0;
 	}
+
+	.layout_item:nth-child(6),
+	.layout_item:nth-child(7),
+	.layout_item:nth-child(8),
+	.layout_item:nth-child(9),
+	.layout_item:nth-child(6) > .help_text,
+	.layout_item:nth-child(8) > .help_text  {
+		padding: 0;
+	}
+	
 
 	.donation_h3 {
 		font-size: 25px;
@@ -1138,7 +1146,8 @@ h1 {
 	}
 	
 	.donation {
-		padding-top: 44px;
+		padding-top: 2.7rem;
+		padding-bottom: 6rem;
 	}
 
 	.donation_img > img {
@@ -1146,8 +1155,8 @@ h1 {
 	}
 
 	.donation_img {
-		padding: 14px 17px;
-		margin-bottom: -76px;
+		padding: 0.8rem 1.2rem;
+		margin-bottom: -71px;
 	}
 
 	.wrapper_footer {
