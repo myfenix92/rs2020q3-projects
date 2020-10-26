@@ -21,21 +21,26 @@ ul {
 }
 
 .wrapper {
-	width: 62.5vw;
-  padding: 0 40px;
+	width: 1200px;
+  padding: 0 2.5rem;
   margin: 0 auto;
 }
 
-.wrapper_header,
 .wrapper_footer {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 }
 
+.wrapper_header {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+  gap: 0 33.5rem;
+}
+
 header {
 	margin: 0 auto;
-	padding-top: 30px;
-	padding-bottom: 19px;
+	padding-top: 1.75rem;
+	padding-bottom: 1.24rem;
   background: #ffffff;
   position: fixed;
   top: 0;
@@ -44,7 +49,7 @@ header {
 
 h1 {
 	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-size: 32px;
+	font-size: 2em;
 	letter-spacing: 0.06em;
 	color: #545454;
 	font-weight: normal;
@@ -52,8 +57,8 @@ h1 {
 
 .logo_text {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	padding: 10px 5px;
+	font-size: 0.81em;
+	padding: 0.8em 0.39em;
 	letter-spacing: 0.1em;
 	color: #292929;
 }
@@ -66,9 +71,8 @@ a {
 	display: flex;
 	justify-content: space-between;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 15px;
-	padding-top: 20px;
-	padding-left: 157px;
+	font-size: 0.94em;
+	padding-top: 1.25rem;
 }
 
 .active {
@@ -78,17 +82,17 @@ a {
 }
 
 main {
-  padding: 121px;
+  padding-top: 7.5rem;
   background-color: #F6F6F6;
 }
 
 .pets_h3 {
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 35px;
+  font-size: 2.19em;
   font-weight: normal;
   color: #545454;
   text-align: center;
-  padding: 80px 400px 59px;
+	padding: 2.3em 1em 1.7em;
   letter-spacing: 0.06em;
   line-height: 130%;
 }
@@ -192,7 +196,7 @@ main {
   grid-template-areas:
   "a a a a"
 	"a a a a";
-  gap: 40px;
+  gap: 1.9rem 2.5rem;
 }
 
 .slider {
@@ -203,11 +207,11 @@ main {
 
 .slider_name-pets {
 	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-size: 20px;
+	font-size: 1.2em;
 	color: #545454;
   letter-spacing: 0.06rem;
-  padding-top: 26px;
-	padding-bottom: 31px;
+	padding-top: 1.6rem;
+	padding-bottom: 1.99rem;
 }
 
 .slider_btn {
@@ -218,7 +222,7 @@ main {
 	border-radius: 30px;
 	background-color: transparent;
 	width: 187px;
-	margin-bottom: 20px;
+	margin-bottom: 1.84rem;
 }
 
 button {
@@ -240,7 +244,7 @@ button:hover {
 }
 
 .pagination_block {
-  margin: 70px 410px -21px 430px;
+  padding: 3.7rem 26.8rem 6.3rem;
 }
 
 .pagination {
@@ -272,21 +276,21 @@ button:hover {
 }
 
 footer {
-	padding-top: 26px;
+	padding-top: 1.7rem;
 	background: url('../../assets/noise_transparent@2x.png'), linear-gradient(to right, #544336, #292929);
 }
 
 .wrapper_footer {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 0 114px;
+	gap: 0 7.1em;
 }
 
 .footer_h3 {
 	color: #ffffff;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-weight: normal;
-	font-size: 35px;
+	font-size: 2.2em;
 	line-height: 130%;
 	letter-spacing: 0.06em;
 }
@@ -297,57 +301,57 @@ footer {
 	flex-direction: column;
 	justify-content: space-between;
 	align-self: flex-start;
-	padding-top: 31px;
-	margin-right: 14px;
+	padding-top: 1.9em;
+	margin-right: 0.7em;
 }
 
 .footer_link {
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-weight: normal;
-	font-size: 20px;
+	font-size: 1.25em;
 	color: #F1CDB3;
 	padding-top: 0;
 	margin-top: -20px;
 }
 
 .footer_email {
-	padding: 10px 60px;
+	padding: 0.5em 3em;
 	background-image: url('../../assets/icon-email.png');
 	background-repeat: no-repeat;
-	background-position: 0px 5px;
+	background-position: 0 0.25em;
 	letter-spacing: 0.06em;
-	margin-top: 33px;
+	margin-top: 1.65em;
 }
 
 .footer_phone {
-	padding: 10px 60px;
+	padding: 0.5em 3em;
 	background-image: url('../../assets/icon-phone.png');
 	background-repeat: no-repeat;
-	background-position: 0px 5px;
+	background-position: 0 0.25em;
 	letter-spacing: 0.06em;
-	margin-top: 30px;
+	margin-top: 1.5em;
 }
 
 .footer_map {
-	padding: 1px 14px 0 41px;
+	padding: 0.05em 0 0 2.1em;
 	background-image: url('../../assets/icon-marker.png');
 	background-repeat: no-repeat;
-	background-position: 0px 8px;
+	background-position: 0px 0.35em;
 	letter-spacing: 0.06em;
-	margin-top: 30px;
+	margin-top: 1.5em;
 }
 
 .footer_map_2 {
-	padding: 60px 35px 10px 41px;
+	padding: 3em 0 1em 2.1em;
 	background-image: url('../../assets/icon-marker.png');
 	background-repeat: no-repeat;
-	background-position: 0px 55px;
+	background-position: 0px 2.7em;
 	letter-spacing: 0.06em;
 }
 
 .img_block {
-	padding-left: 24px;
-	padding-top: 11px;
+	padding-left: 1.6em;
+	padding-top: 0.5em;
 }
 
 .slider_btn:hover,
@@ -391,16 +395,18 @@ h1:hover {
 
 	.wrapper {
 		width: auto;
+		padding: 0 1rem;
 	}
 
 	.wrapper_header {
-		padding: 0 30px;
+		padding: 0 1.9rem;
 		grid-template-columns: 1fr 2fr;
+		gap: 0;
 	}
 
 	header {
-		padding-top: 30px;
-		padding-bottom: 19px;
+		padding-top: 1.8rem;
+    padding-bottom: 1.2rem;
 	}
 
 	.header_menu_items {
@@ -412,7 +418,7 @@ h1:hover {
 	}
 
 	.pets_h3 {
-		padding: 202px 130px 28px;
+		padding: 5.7em 1em 0.85em;;
 	}
 
 	#message_pet {
@@ -450,7 +456,7 @@ h1:hover {
 		"a a"
 		"a a"
 		"a a";
-		gap: 30px 40px;
+		padding: 0 5rem;
 	}
 
 	.slider_btn {
@@ -458,34 +464,32 @@ h1:hover {
 	}
 
 	.pagination_block {
-		margin: 0;
-		padding: 40px 173px 76px;
+		padding: 2.4rem 12.3rem 4.73rem;
 	}
 
 	.question_block {
 		grid-area: q;
-		padding-top: 6px;
-    margin-right: 0;
-    margin-left: 25px;
+		padding-top: 0.2rem;
+		margin-right: 1rem;
+		margin-left: 3rem;
 	}
 
 	.map_block {
 		grid-area: m;
-		padding-top: 5px;
-		margin-right: 15px;
-		margin-left: 14px;
+		padding-top: 0.2rem;
+		margin-right: 2rem;
 	}
 
 	.img_block {
 		grid-area: i;
-		padding: 58px 194px 0;
+		padding: 3rem 13.6rem 0;
 	}
 
 	.wrapper_footer {
 		grid-template-areas:
 			"q m"
 			"i i";
-		gap: 0 11px;
+		gap: 0 0.7rem;
 		grid-template-columns: none;
 		grid-auto-columns: 1fr;
 	}
@@ -586,7 +590,7 @@ h1:hover {
 		width: 320px;
 		height: 100%;
 		margin: 0;
-		padding: 80px 0;
+		padding: 158px 0;
 		font-size: 32px;
 		background-color: #fff;
 		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
@@ -595,7 +599,7 @@ h1:hover {
 
 	.header_menu_item {
 		display: block;
-		padding: 12px 24px;
+		padding: 40px 38px;
 		transition-duration: .25s;
 	}
 
@@ -605,12 +609,13 @@ h1:hover {
 
 	.wrapper_header,
 	section {
-		padding: 0 10px;
+		padding: 0 0.65em;
 		margin: 0;
 	}
 
 	header {
-		padding-top: 30px;
+		padding-top: 1.75rem;
+		padding-bottom: 5.7rem;
 	}
 
 	main {
@@ -619,7 +624,7 @@ h1:hover {
 
 	.pets_h3 {
 		font-size: 25px;
-    padding: 162px 4px 42px;
+		padding: 6.5em 0em 1.7em;
 	}
 
 	#message_pet {
@@ -665,6 +670,7 @@ h1:hover {
 		gap: 30px 40px;
 		max-height: 1365px;
 		max-width: 271px;
+		overflow: hidden;
 	}
 
 	.slider_btn {
@@ -672,12 +678,11 @@ h1:hover {
 	}
 
 	.pagination_block {
-		margin: 42px -2px 0;
-		padding-bottom: 42px;
+		padding: 2.5rem 0 2.66rem;
 	}
 
 	.pagination {
-		margin-right: 6px;
+		margin-right: 0.3rem;
 	}
 
 	.end_pagination {
@@ -704,7 +709,7 @@ h1:hover {
 	}
 
 	.footer_phone {
-		padding: 10px 53px;
+		padding: 10px 46px 10px 61px;
 		margin-bottom: 22px;
 	}
 
