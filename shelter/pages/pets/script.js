@@ -90,20 +90,38 @@ const pets = [{
 
 //menu
 
+// document.querySelector('.menu__btn').onclick = function () {
+//   document.getElementById('overlay').classList.toggle('filter_menu')
+// };
+
+// document.querySelector('.header_menu_items').addEventListener('click', (event) => {
+//   if (event.target.tagName === 'A') {
+//     document.getElementById('overlay').classList.remove('filter_menu')
+//   }
+// })
+
+// document.getElementById('overlay').addEventListener('click', () => {
+//   document.getElementById('menu__toggle').checked = false;
+//   document.getElementById('overlay').classList.remove('filter_menu');
+// })
+
 document.querySelector('.menu__btn').onclick = function () {
-  document.getElementById('overlay').classList.toggle('filter_menu')
-};
-
-document.querySelector('.header_menu_items').addEventListener('click', (event) => {
-  if (event.target.tagName === 'A') {
-    document.getElementById('overlay').classList.remove('filter_menu')
+  if (document.getElementById('overlay').classList.contains('filter_menu')) {
+    close()
+  } else if (!document.getElementById('overlay').classList.contains('filter_menu')) {
+    open()
   }
-})
+}
 
-document.getElementById('overlay').addEventListener('click', () => {
-  document.getElementById('menu__toggle').checked = false;
-  document.getElementById('overlay').classList.remove('filter_menu');
-})
+function open() {
+  document.getElementById('overlay').classList.add('filter_menu')
+  document.querySelector('body').style.overflow = 'hidden';
+}
+
+function close() {
+  document.getElementById('overlay').classList.remove('filter_menu')
+  document.querySelector('body').style.overflow = 'auto';
+}
 
 //popup
 
@@ -120,7 +138,8 @@ let petDiseases = document.querySelector('.pet_diseases')
 let petParasites = document.querySelector('.pet_parasites')
 
 function closePopUp() {
-  MESSAGE_BLOCK.style.display = 'none'
+  MESSAGE_BLOCK.style.display = 'none';
+  document.querySelector('body').style.overflow = 'auto';
 }
 
 function openPopUp(event) {
@@ -139,8 +158,9 @@ function openPopUp(event) {
       petInoculations.innerText = pets[i].inoculations
       petDiseases.innerText = pets[i].diseases
       petParasites.innerText = pets[i].parasites
+      document.querySelector('body').style.overflow = 'hidden';
       }
-    } else if (!event.target.closest('.slider') && !event.target.closest('#message_pet')) {
+    } else if (event.target.className === 'message_pet') {
       closePopUp()
     }
   }
