@@ -90,21 +90,6 @@ const pets = [{
 
 //menu
 
-// document.querySelector('.menu__btn').onclick = function () {
-//   document.getElementById('overlay').classList.toggle('filter_menu')
-// };
-
-// document.querySelector('.header_menu_items').addEventListener('click', (event) => {
-//   if (event.target.tagName === 'A') {
-//     document.getElementById('overlay').classList.remove('filter_menu')
-//   }
-// })
-
-// document.getElementById('overlay').addEventListener('click', () => {
-//   document.getElementById('menu__toggle').checked = false;
-//   document.getElementById('overlay').classList.remove('filter_menu');
-// })
-
 document.querySelector('.menu__btn').onclick = function () {
   if (document.getElementById('overlay').classList.contains('filter_menu')) {
     close()
@@ -122,6 +107,19 @@ function close() {
   document.getElementById('overlay').classList.remove('filter_menu')
   document.querySelector('body').style.overflow = 'auto';
 }
+
+document.querySelector('.header_menu_items').addEventListener('click', (event) => {
+  if (event.target.tagName === 'A') {
+    document.getElementById('overlay').classList.remove('filter_menu')
+    document.querySelector('body').style.overflow = 'auto';
+  }
+})
+
+document.getElementById('overlay').addEventListener('click', () => {
+  document.getElementById('menu__toggle').checked = false;
+  document.getElementById('overlay').classList.remove('filter_menu');
+  document.querySelector('body').style.overflow = 'auto';
+})
 
 //popup
 
