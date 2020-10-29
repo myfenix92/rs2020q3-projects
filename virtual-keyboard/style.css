@@ -1,0 +1,101 @@
+.wrapper {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.text {
+  width: 100%;
+  height: 200px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.keyboard {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 5px 0;
+  background: #bc5ad4;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-radius: 15px;
+}
+
+#micro_btn {
+  background: url(/images/microphone.svg) rgba(255, 255, 255, 0.2);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  background-position: 30px 5px;
+  color: transparent;
+}
+
+#volume_btn {
+  background: url(/images/volume.svg) rgba(255, 255, 255, 0.2);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 5px 12px;
+  color: transparent;
+}
+
+.pressed::after {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.pressed-active::after {
+  background: #08ff00;
+}
+
+.key {
+  height: 45px;
+  width: 45px;
+  margin: 8px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.key:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid white;
+  top: 0.2em;
+  left: 0.1em;
+}
+
+.key_wide {
+  width: 88px;
+}
+
+.key_meta {
+  width: 70px;
+}
+
+.key_middle-wide {
+  width: 130px;
+}
+
+.key_extra-wide {
+  width: 270px;
+}
+
+p {
+  font-size: 1.1rem;
+  text-align: center;
+}
