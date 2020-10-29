@@ -188,6 +188,8 @@ class Momentum {
     for (let i = 18; i < 24; i++) {
       this.bodyImg.push(`url(assest/evening/${this.newMas[i]}.jpg)`)
     }
+    this.i_time = new Date().getHours()
+    document.querySelector('body').style.backgroundImage = `${this.bodyImg[this.i_time]}`
     return this.bodyImg
   }
 
