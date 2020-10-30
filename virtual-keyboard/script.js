@@ -23,7 +23,7 @@ let microBool = false;
 let volumeBool = false;
 let visibleBool = false;
 let key = '';
-const systemKeys = [13, 14, 27, 28, 41, 42, 53, 55, 58, 59, 60, 61, 62];
+const systemKeys = [13, 14, 27, 28, 41, 42, 53, 55, 56, 58, 59, 60, 61, 62];
 let numberSystemKey = 0;
 
 const dictionary = {
@@ -664,7 +664,7 @@ function systemKeyClick(event) {
 }
 
 function keyDown(event) {
-  event.preventDefault();
+ //event.preventDefault();
   if (!visibleBool) {
     textArea.focus();
     open();
