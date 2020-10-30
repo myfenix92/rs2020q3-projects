@@ -1,0 +1,288 @@
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.text {
+  display: block;
+  width: 70vw;
+  margin: 10px auto;
+  height: 200px;
+  padding: 3px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.keyboard {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 5px 0;
+  background: linear-gradient(to right, green, yellow, red, magenta, blue);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-radius: 12px;
+  border: 10px solid black;
+  visibility: visible;
+  transition: 0.6s opacity, 0.6s visibility;
+}
+
+.keyboard-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.6s opacity, 0.6s visibility;
+}
+
+#visible_btn {
+  color: transparent;
+}
+
+#visible_btn::before {
+  content: url(images/down.svg);
+  top: 10px;
+  right: 28px;
+  position: absolute;
+}
+
+#micro_btn {
+  color: transparent;
+}
+
+#micro_btn::before {
+  content: url(images/microphone30.svg);
+  top: 7px;
+  right: 26px;
+  position: absolute;
+}
+
+#volume_btn {
+  color: transparent;
+}
+
+#volume_btn::before {
+  content: url(images/volume30.svg);
+  top: 7px;
+  right: 48px;
+  position: absolute;
+}
+
+.pressed {
+  background-color: black;
+}
+
+.pressed::after {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.pressed-active::after {
+  background: #08ff00;
+}
+
+.key {
+  height: 45px;
+  width: 45px;
+  margin: 8px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.6),
+    inset 0 0 5px 3px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  background-color: black;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 3px 2px black,
+    inset 0 0 5px 3px rgba(0, 0, 0, 0.4);
+  top: 0.2em;
+  left: 0.1em;
+}
+
+.key_wide {
+  width: 88px;
+}
+
+.key_meta {
+  width: 70px;
+}
+
+.key_middle-wide {
+  width: 130px;
+}
+
+.key_extra-wide {
+  width: 270px;
+}
+
+p {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+@media (max-width: 1300px) and (min-width: 1100px) {
+  .keyboard {
+    width: 800px;
+  }
+
+  #micro_btn::before {
+    top: 4px;
+    right: 19px;
+  }
+  
+  #volume_btn::before {
+    top: 7px;
+    right: 28px;
+  }
+
+  #visible_btn::before {
+    top: 6px;
+    right: 16px;
+  }
+
+  .pressed::after {
+    top: 2px;
+    right: 4px;
+  }
+
+  .key {
+    font-size: 0.9rem;
+    width: 40px;
+    height: 40px;
+    margin: 6px;
+  }
+
+  .key_wide {
+    width: 65px;
+  }
+
+  .key_meta {
+    width: 60px;
+  }
+
+  .key_middle-wide {
+    width: 85px;
+  }
+
+  .key_extra-wide {
+    width: 240px;
+  }
+}
+
+@media (max-width: 1099px) and (min-width: 650px) {
+  .keyboard {
+    width: 600px;
+  }
+
+  .pressed::after {
+    top: 1px;
+    right: 2px;
+  }
+
+  #micro_btn::before {
+    content: url(images/microphone25.svg);
+    top: 2px;
+    right: 14px;
+  }
+  
+  #volume_btn::before {
+    content: url(images/volume25.svg);
+    top: 2px;
+    right: 18px;
+  }
+
+  #visible_btn::before {
+    top: 2px;
+    right: 11px;
+  }
+
+  .key {
+    font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
+    margin: 4px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.6), inset 0 0 5px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .key_wide {
+    width: 55px;
+  }
+
+  .key_meta {
+    width: 55px;
+  }
+
+  .key_middle-wide {
+    width: 65px;
+  }
+
+  .key_extra-wide {
+    width: 155px;
+  }
+}
+
+@media (max-width: 649px) and (min-width: 500px) {
+  .keyboard {
+    width: 450px;
+  }
+
+  .pressed::after {
+    top: 2px;
+    right: 2px;
+  }
+
+
+  #micro_btn::before {
+    content: url(images/microphone15.svg);
+    top: 2px;
+    right: 14px;
+  }
+  
+  #volume_btn::before {
+    content: url(images/volume15.svg);
+    top: 2px;
+    right: 32px;
+  }
+
+  #visible_btn::before {
+    top: -4px;
+    right: 4px;
+  }
+
+  .key {
+    font-size: 0.7rem;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.6), inset 0 0 5px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .key_wide {
+    width: 40px;
+  }
+
+  .key_meta {
+    width: 60px;
+  }
+
+  .key_middle-wide {
+    width: 80px;
+  }
+
+  .key_extra-wide {
+    width: 115px;
+  }
+}
