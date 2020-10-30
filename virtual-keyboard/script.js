@@ -4,11 +4,11 @@ keyboard.classList.add('keyboard-hidden');
 const keyboardKeys = document.createElement('div');
 const textArea = document.createElement('textarea');
 const aboutKeyboard = document.createElement('p');
-const audioSrcBackspace = new Audio('/audio/backspace.mp3');
-const audioSrcCapsLock = new Audio('/audio/caps.mp3');
-const audioSrcEnter = new Audio('/audio/enter.mp3');
-const audioSrcShift = new Audio('/audio/shift.mp3');
-const audioSrcSpace = new Audio('/audio/space.mp3');
+const audioSrcBackspace = new Audio('audio/backspace.mp3');
+const audioSrcCapsLock = new Audio('audio/caps.mp3');
+const audioSrcEnter = new Audio('audio/enter.mp3');
+const audioSrcShift = new Audio('audio/shift.mp3');
+const audioSrcSpace = new Audio('audio/space.mp3');
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
@@ -592,9 +592,9 @@ function mutedVolumeKeys() {
 
 function systemKeyClick(event) {
   if (langValue === 'en') {
-    audioSrcKey = new Audio('/audio/enKey.mp3');
+    audioSrcKey = new Audio('audio/enKey.mp3');
   } else {
-    audioSrcKey = new Audio('/audio/key.mp3');
+    audioSrcKey = new Audio('audio/key.mp3');
   }
   mutedVolumeKeys();
   const {
