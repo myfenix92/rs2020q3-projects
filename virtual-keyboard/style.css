@@ -8,7 +8,7 @@
   width: 70vw;
   margin: 10px auto;
   height: 200px;
-  padding: 0;
+  padding: 3px;
   box-sizing: border-box;
   outline: none;
 }
@@ -20,24 +20,52 @@
   background: linear-gradient(to right, green, yellow, red, magenta, blue);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   text-align: center;
-  border-radius: 15px;
+  border-radius: 12px;
+  border: 10px solid black;
+  visibility: visible;
+  transition: 0.6s opacity, 0.6s visibility;
+}
+
+.keyboard-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.6s opacity, 0.6s visibility;
+}
+
+#visible_btn {
+  color: transparent;
+}
+
+#visible_btn::before {
+  content: url(/images/down.svg);
+  top: 10px;
+  right: 28px;
+  position: absolute;
 }
 
 #micro_btn {
-  background: url(/images/microphone.svg) rgba(255, 255, 255, 0.2);
-  background-repeat: no-repeat;
-  background-size: 30px 30px;
-  background-position: 30px 5px;
   color: transparent;
-  background-color: black;
+}
+
+#micro_btn::before {
+  content: url(/images/microphone30.svg);
+  top: 7px;
+  right: 26px;
+  position: absolute;
 }
 
 #volume_btn {
-  background: url(/images/volume.svg);
-  background-repeat: no-repeat;
-  background-size: 30px 30px;
-  background-position: 50px 7px;
   color: transparent;
+}
+
+#volume_btn::before {
+  content: url(/images/volume30.svg);
+  top: 7px;
+  right: 48px;
+  position: absolute;
+}
+
+.pressed {
   background-color: black;
 }
 
@@ -105,18 +133,24 @@ p {
   text-align: center;
 }
 
-@media (max-width: 1200px) and (min-width: 1100px) {
+@media (max-width: 1300px) and (min-width: 1100px) {
   .keyboard {
     width: 800px;
   }
 
-  #micro_btn {
-    background-size: 30px 30px;
-    background-position: 18px 4px;
+  #micro_btn::before {
+    top: 4px;
+    right: 19px;
+  }
+  
+  #volume_btn::before {
+    top: 7px;
+    right: 28px;
   }
 
-  #volume_btn {
-    background-position: 29px 6px;
+  #visible_btn::before {
+    top: 6px;
+    right: 16px;
   }
 
   .pressed::after {
@@ -158,14 +192,21 @@ p {
     right: 2px;
   }
 
-  #micro_btn {
-    background-size: 25px 25px;
-    background-position: 13px 2px;
+  #micro_btn::before {
+    content: url(/images/microphone25.svg);
+    top: 2px;
+    right: 14px;
+  }
+  
+  #volume_btn::before {
+    content: url(/images/volume25.svg);
+    top: 2px;
+    right: 18px;
   }
 
-  #volume_btn {
-    background-size: 25px 25px;
-    background-position: 22px 3px;
+  #visible_btn::before {
+    top: 2px;
+    right: 11px;
   }
 
   .key {
@@ -203,14 +244,22 @@ p {
     right: 2px;
   }
 
-  #micro_btn {
-    background-size: 15px 15px;
-    background-position: 12px 2px;
+
+  #micro_btn::before {
+    content: url(/images/microphone15.svg);
+    top: 2px;
+    right: 14px;
+  }
+  
+  #volume_btn::before {
+    content: url(/images/volume15.svg);
+    top: 2px;
+    right: 32px;
   }
 
-  #volume_btn {
-    background-size: 15px 15px;
-    background-position: 32px 2px;
+  #visible_btn::before {
+    top: -4px;
+    right: 4px;
   }
 
   .key {
