@@ -3,11 +3,17 @@ const keyboard = document.createElement('div')
 const keyboardKeys = document.createElement('div')
 const textArea = document.createElement('textarea')
 const aboutKeyboard = document.createElement('p')
-
+const audioSrcBackspace = new Audio('/audio/backspace.mp3');
+const audioSrcCapsLock = new Audio('/audio/caps.mp3');
+const audioSrcEnter = new Audio('/audio/enter.mp3');
+let audioSrcKey;
+const audioSrcShift = new Audio('/audio/shift.mp3');
+const audioSrcSpace = new Audio('/audio/space.mp3');
 let langValue = localStorage.getItem('lang') || 'en'
 let keyCaps
 let keyShift
 let microBool = false
+let volumeBool = false
 let key = ''
 const systemKeys = [13, 14, 27, 28, 41, 42, 54, 55, 56, 57, 58, 59, 63]
 let numberSystemKey = 0
@@ -446,11 +452,11 @@ const dictionary = {
     }
   },
   ShiftRight: {
-    en: 'Shift',
-    ru: 'Shift',
+    en: 'VB',
+    ru: 'VB',
     shift: {
-      en: 'Shift',
-      ru: 'Shift'
+      en: 'VB',
+      ru: 'VB'
     }
   },
   ControlLeft: {
@@ -547,18 +553,31 @@ document.addEventListener('mouseup', (event) => onMouseUp(event));
 document.addEventListener('mousedown', (event) => onMouseDown(event));
 document.addEventListener('mouseout', (event) => onMouseOut(event));
 
+function mutedVolumeKeys() {
+  if (!volumeBool) {
+    audioSrcBackspace.muted = true;
+    audioSrcCapsLock.muted = true;
+    audioSrcEnter.muted = true;
+    audioSrcKey.muted = true;
+    audioSrcShift.muted = true;
+    audioSrcSpace.muted = true;
+  } else {
+    audioSrcBackspace.muted = false;
+    audioSrcCapsLock.muted = false;
+    audioSrcEnter.muted = false;
+    audioSrcKey.muted = false;
+    audioSrcShift.muted = false;
+    audioSrcSpace.muted = false;
+  }
+}
+
 function systemKeyClick(event) {
-  const audioSrcBackspace = new Audio('/audio/backspace.mp3');
-  const audioSrcCapsLock = new Audio('/audio/caps.mp3');
-  const audioSrcEnter = new Audio('/audio/enter.mp3');
-  let audioSrcKey;
-  const audioSrcShift = new Audio('/audio/shift.mp3');
-  const audioSrcSpace = new Audio('/audio/space.mp3');
   if (localStorage.getItem('lang') === null || localStorage.getItem('lang') === 'en') {
     audioSrcKey = new Audio('/audio/enKey.mp3');
   } else {
     audioSrcKey = new Audio('/audio/key.mp3');
   }
+  mutedVolumeKeys()
   const {
     value: textValue,
     selectionStart: textAreaStart,
@@ -570,7 +589,6 @@ function systemKeyClick(event) {
       break;
     case 'Shift':
     case 'ShiftLeft':
-    case 'ShiftRight':
       audioSrcShift.play();
       break;
     case 'Tab':
@@ -626,10 +644,10 @@ function keyDown(event) {
   event.preventDefault();
   textArea.focus()
   systemKeyClick(event.code)
-  if (event.ctrlKey && event.shiftKey) {
+  if (event.ctrlKey && event.code === 'ShiftLeft') {
     changeLang()
   } else
-  if (!event.shiftKey && event.code === 'CapsLock') {
+  if (event.code !== 'ShiftLeft' && event.code === 'CapsLock') {
     keyShift = false
     if (keyCaps) {
       keyCaps = false
@@ -640,20 +658,18 @@ function keyDown(event) {
     keyboard.querySelectorAll('.pressed')[0].classList.toggle('pressed-active', keyCaps)
     changeKeyboard(key, langValue, keyShift, keyCaps)
   } else
-  if (event.shiftKey && !keyCaps) {
+  if (event.code === 'ShiftLeft' && !keyCaps) {
     keyCaps = false
     keyShift = true
     changeKeyboard(key, langValue, keyShift, keyCaps)
     keyboard.querySelectorAll('.pressed')[1].classList.toggle('pressed-active', keyShift)
-    keyboard.querySelectorAll('.pressed')[2].classList.toggle('pressed-active', keyShift)
   } else
-  if (event.shiftKey && keyCaps) {
+  if (event.code === 'ShiftLeft' && keyCaps) {
     keyCaps = true
     keyShift = true
     changeKeyboard(key, langValue, keyShift, keyCaps)
     keyboard.querySelectorAll('.pressed')[1].classList.toggle('pressed-active', keyShift)
-    keyboard.querySelectorAll('.pressed')[2].classList.toggle('pressed-active', keyShift)
-  } else 
+  } else
   if (event.code === 'AltLeft' && microBool) {
     microBool = false
     keyboard.querySelector('#micro_btn').classList.toggle('pressed-active', microBool)
@@ -665,7 +681,17 @@ function keyDown(event) {
     recognition.addEventListener('end', recognition.start);
     recognition.start()
   }
-  
+
+  if (event.code === 'ShiftRight' && volumeBool) {
+    volumeBool = false
+    mutedVolumeKeys()
+    keyboard.querySelector('#volume_btn').classList.toggle('pressed-active', microBool)
+  } else if (event.code === 'ShiftRight' && !volumeBool) {
+    volumeBool = true
+    mutedVolumeKeys()
+    keyboard.querySelector('#volume_btn').classList.toggle('pressed-active', volumeBool)
+  }
+
   numberSystemKey = 0
   for (key in dictionary) {
     if (event.code === key) {
@@ -694,7 +720,6 @@ function keyUp(event) {
     if (event.code === key) {
       keyboard.querySelectorAll('button')[numberSystemKey].classList.remove('active')
       keyboard.querySelectorAll('.pressed')[1].classList.toggle('pressed-active', keyShift)
-      keyboard.querySelectorAll('.pressed')[2].classList.toggle('pressed-active', keyShift)
       break;
     } else {
       numberSystemKey += 1
@@ -735,7 +760,6 @@ function onMouseDown(event) {
         }
         changeKeyboard(key, langValue, keyShift, keyCaps)
         keyboard.querySelectorAll('.pressed')[1].classList.toggle('pressed-active', keyShift)
-        keyboard.querySelectorAll('.pressed')[2].classList.toggle('pressed-active', keyShift)
         textArea.value += ''
         break;
       case 'Ru | Eng':
@@ -753,6 +777,16 @@ function onMouseDown(event) {
           recognition.abort()
         }
         keyboard.querySelector('#micro_btn').classList.toggle('pressed-active', microBool)
+        textArea.value += ''
+      case 'VB':
+        if (!volumeBool) {
+          volumeBool = true
+          mutedVolumeKeys()
+        } else {
+          volumeBool = false
+          mutedVolumeKeys()
+        }
+        keyboard.querySelector('#volume_btn').classList.toggle('pressed-active', volumeBool)
         textArea.value += ''
       case 'Backspace':
       case 'Tab':
@@ -787,10 +821,10 @@ recognition.addEventListener('result', (e) => {
     .map((result) => result[0])
     .map((result) => result.transcript)
     .join('');
-    
-    if (e.results[0].isFinal) {
-      textArea.value = `${textArea.value} ${transcript}`
-    }
+
+  if (e.results[0].isFinal) {
+    textArea.value = `${textArea.value} ${transcript}`
+  }
 });
 
 
@@ -851,10 +885,16 @@ function createKeys() {
         keyCreate.classList.add('key_middle-wide')
         break;
       case 'ShiftLeft':
+
+        keyCreate.classList.add('key')
+        keyCreate.classList.add('key_middle-wide')
+        keyCreate.classList.add('pressed')
+        break;
       case 'ShiftRight':
         keyCreate.classList.add('key')
         keyCreate.classList.add('key_middle-wide')
         keyCreate.classList.add('pressed')
+        keyCreate.id = 'volume_btn'
         break;
       case 'Tab':
       case 'MetaLeft':
