@@ -37,7 +37,7 @@
 }
 
 #visible_btn::before {
-  content: url(/images/down.svg);
+  content: url(images/down.svg);
   top: 10px;
   right: 28px;
   position: absolute;
@@ -48,7 +48,7 @@
 }
 
 #micro_btn::before {
-  content: url(/images/microphone30.svg);
+  content: url(images/microphone30.svg);
   top: 7px;
   right: 26px;
   position: absolute;
@@ -59,7 +59,7 @@
 }
 
 #volume_btn::before {
-  content: url(/images/volume30.svg);
+  content: url(images/volume30.svg);
   top: 7px;
   right: 48px;
   position: absolute;
@@ -193,13 +193,13 @@ p {
   }
 
   #micro_btn::before {
-    content: url(/images/microphone25.svg);
+    content: url(images/microphone25.svg);
     top: 2px;
     right: 14px;
   }
   
   #volume_btn::before {
-    content: url(/images/volume25.svg);
+    content: url(images/volume25.svg);
     top: 2px;
     right: 18px;
   }
@@ -246,13 +246,13 @@ p {
 
 
   #micro_btn::before {
-    content: url(/images/microphone15.svg);
+    content: url(images/microphone15.svg);
     top: 2px;
     right: 14px;
   }
   
   #volume_btn::before {
-    content: url(/images/volume15.svg);
+    content: url(images/volume15.svg);
     top: 2px;
     right: 32px;
   }
