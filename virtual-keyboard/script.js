@@ -546,7 +546,7 @@ function init() {
   textArea.classList.add('text');
   keyboard.classList.add('keyboard');
   keyboardKeys.id = 'keyboard_keys';
-  aboutKeyboard.innerHTML = 'Клавиатура сделана в ОС Windows, смена языка клавиша Ru или Eng.';
+  aboutKeyboard.innerHTML = 'Клавиатура сделана в ОС Windows, смена языка левый Ctrl+Shift для физической клавиатуры или клавиша Ru/Eng.';
 
   keyboardKeys.append(createKeys());
   keyboard.append(keyboardKeys);
@@ -555,11 +555,11 @@ function init() {
   document.body.append(wrapper);
 }
 
-document.addEventListener('keydown', (event) => keyDown(event));
-document.addEventListener('keyup', (event) => keyUp(event));
-document.addEventListener('mouseup', (event) => onMouseUp(event));
-document.addEventListener('mousedown', (event) => onMouseDown(event));
-document.addEventListener('mouseout', (event) => onMouseOut(event));
+document.addEventListener('keydown', keyDown);
+document.addEventListener('keyup', keyUp);
+document.addEventListener('mouseup', onMouseUp);
+document.addEventListener('mousedown', onMouseDown);
+document.addEventListener('mouseout', onMouseOut);
 textArea.addEventListener('focus', open)
 
 function open() {
@@ -611,15 +611,18 @@ function systemKeyClick(event) {
       audioSrcShift.play();
       break;
     case 'Tab':
-      textArea.value += '\t'
+      textArea.value = `${textValue.substring(0, textAreaEnd)}\t${textValue.substring(textAreaStart)}`;
+      PosCursor(textAreaStart + 1);
       audioSrcKey.play();
       break;
     case 'Enter':
-      textArea.value += '\n';
+        textArea.value = `${textValue.substring(0, textAreaEnd)}\n${textValue.substring(textAreaStart)}`;
+        PosCursor(textAreaStart + 1);
       audioSrcEnter.play();
       break;
     case 'Space':
-      textArea.value += ' ';
+        textArea.value = `${textValue.substring(0, textAreaEnd)} ${textValue.substring(textAreaStart)}`;
+        PosCursor(textAreaStart + 1);
       audioSrcSpace.play();
       break;
     case 'Backspace':
@@ -664,13 +667,15 @@ function systemKeyClick(event) {
 }
 
 function keyDown(event) {
- //event.preventDefault();
+ event.preventDefault();
   if (!visibleBool) {
     textArea.focus();
     open();
   }
   systemKeyClick(event.code);
   if (event.ctrlKey && event.code === 'ShiftLeft') {
+    keyShift = true;
+    keyboard.querySelectorAll('.pressed')[1].classList.toggle('pressed-active', keyShift);
     changeLang();
   } else
   if (event.code !== 'ShiftLeft' && event.code === 'CapsLock') {
@@ -694,7 +699,7 @@ function keyDown(event) {
     keyShift = true;
     changeKeyboard(key, langValue, keyShift, keyCaps);
     keyboard.querySelectorAll('.pressed')[1].classList.toggle('pressed-active', keyShift);
-  } else
+  } 
     numberSystemKey = 0;
   for (key in dictionary) {
     if (event.code === key) {
