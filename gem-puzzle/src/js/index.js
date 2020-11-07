@@ -32,8 +32,11 @@ document.querySelector('.pause_btn').addEventListener('click', () => {
 class CreatePuzzle {
   constructor() {
     this.mainBox = document.createElement('div');
+    this.navBox = document.createElement('div');
     this.main = document.createElement('main');
     this.box = this.mainBox.querySelectorAll('.box');
+    this.ul = document.createElement('ul');
+    this.liArray = ['New Game', 'Saved Game', 'Best Scores', 'Rules', 'Setting'];
     this.arrayBoxes = [];
     this.fragment = [];
     this.randomArray = [];
@@ -43,8 +46,17 @@ class CreatePuzzle {
 
   init() {
     this.mainBox.classList.add('main_box');
+    this.navBox.classList.add('menu_game');
+    this.ul.classList.add('menu_game_items');
+    for (let i = 0; i < 5; i += 1) {
+      this.li = document.createElement('li');
+      this.li.textContent = this.liArray[i];
+      this.ul.append(this.li);
+    }
+
+    this.navBox.append(this.ul);
     this.mainBox.append(...this.createBoxes());
-    this.main.append(this.mainBox);
+    this.main.append(this.mainBox, this.navBox);
     document.body.append(this.main);
   }
 
