@@ -5,29 +5,29 @@ import '../css/style.scss';
 let min = 0;
 let sec = 0;
 
-document.querySelector('.pause_btn').addEventListener('click', () => {
-  const initTimer = setInterval(() => {
-    sec += 1;
-    if (sec >= 60) {
-      min += 1;
-      sec -= 60;
-    }
-    if (sec < 10) {
-      if (min < 10) {
-        document.querySelector('.time_value').innerHTML = `0${min}:0${sec}`;
-      } else {
-        document.querySelector('.time_value').innerHTML = `${min}:0${sec}`;
-      }
-    } else if (min < 10) {
-      document.querySelector('.time_value').innerHTML = `0${min}:${sec}`;
-    } else {
-      document.querySelector('.time_value').innerHTML = `${min}:${sec}`;
-    }
-    if (createPuzzle.randomArray.join('') === createPuzzle.arrayBoxes.join('')) {
-      clearInterval(initTimer);
-    }
-  }, 1000);
-});
+// document.querySelector('.pause_btn').addEventListener('click', () => {
+//   const initTimer = setInterval(() => {
+//     sec += 1;
+//     if (sec >= 60) {
+//       min += 1;
+//       sec -= 60;
+//     }
+//     if (sec < 10) {
+//       if (min < 10) {
+//         document.querySelector('.time_value').innerHTML = `0${min}:0${sec}`;
+//       } else {
+//         document.querySelector('.time_value').innerHTML = `${min}:0${sec}`;
+//       }
+//     } else if (min < 10) {
+//       document.querySelector('.time_value').innerHTML = `0${min}:${sec}`;
+//     } else {
+//       document.querySelector('.time_value').innerHTML = `${min}:${sec}`;
+//     }
+//     if (createPuzzle.randomArray.join('') === createPuzzle.arrayBoxes.join('')) {
+//       clearInterval(initTimer);
+//     }
+//   }, 1000);
+// });
 
 class CreatePuzzle {
   constructor() {
@@ -37,6 +37,12 @@ class CreatePuzzle {
     this.box = this.mainBox.querySelectorAll('.box');
     this.ul = document.createElement('ul');
     this.liArray = ['New Game', 'Saved Game', 'Best Scores', 'Rules', 'Settings'];
+    this.headerArray = ['time_block', 'move_block', 'pause_block'];
+    this.header = document.createElement('header');
+    this.pHeader = document.createElement('p');
+    this.spanHeader = document.createElement('span');
+    this.btnHeader = document.createElement('button');
+    this.headerDivInnerHTML = ['<p class="time_text">Time: <span class="time_value">00:00</span></p>', '<p class="move_text">Move: <span class="move_value">0</span></p>', '<button class="pause_btn">Pause Game</button>'];
     this.arrayBoxes = [];
     this.fragment = [];
     this.randomArray = [];
@@ -54,10 +60,17 @@ class CreatePuzzle {
       this.ul.append(this.li);
     }
 
+    for (let i = 0; i < 3; i += 1) {
+      this.headerDiv = document.createElement('div');
+      this.headerDiv.classList.add(this.headerArray[i]);
+      this.headerDiv.innerHTML = this.headerDivInnerHTML[i];
+      this.header.append(this.headerDiv);
+    }
+
     this.navBox.append(this.ul);
     this.mainBox.append(...this.createBoxes());
     this.main.append(this.mainBox, this.navBox);
-    document.body.append(this.main);
+    document.body.append(this.header, this.main);
   }
 
   getRandom() {
