@@ -19,6 +19,11 @@ header {
           align-items: center;
 }
 
+header > div > p > span {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
+
 .pause_btn {
   padding: 0.5vw;
   font-size: 1.1rem;
@@ -27,11 +32,23 @@ header {
   cursor: pointer;
   outline: none;
   border-radius: 5px;
+  visibility: hidden;
 }
 
 .pause_btn_click {
   background-color: #561592;
   color: white;
+}
+
+.overlay {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 4.1vw;
+  left: 30.1vw;
+  border-radius: 5px 0 0 5px;
+  z-index: 10;
 }
 
 .menu_game {
@@ -72,6 +89,7 @@ main {
 }
 
 .main_box {
+  pointer-events: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: thistle;
