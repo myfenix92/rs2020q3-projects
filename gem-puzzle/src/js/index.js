@@ -36,7 +36,7 @@ class CreatePuzzle {
     this.main = document.createElement('main');
     this.box = this.mainBox.querySelectorAll('.box');
     this.ul = document.createElement('ul');
-    this.liArray = ['New Game', 'Saved Game', 'Best Scores', 'Rules', 'Setting'];
+    this.liArray = ['New Game', 'Saved Game', 'Best Scores', 'Rules', 'Settings'];
     this.arrayBoxes = [];
     this.fragment = [];
     this.randomArray = [];
@@ -169,7 +169,11 @@ class Move {
         createPuzzle.randomArray[this.activeBox - createPuzzle.level] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
       }
-      document.querySelector('.move_value').textContent = this.moveValue;
+      if (this.moveValue === undefined) {
+        document.querySelector('.move_value').textContent = 0;
+      } else {
+        document.querySelector('.move_value').textContent = this.moveValue;
+      }
     }
   }
 }
