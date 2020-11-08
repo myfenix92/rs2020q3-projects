@@ -2,47 +2,21 @@
 import '../css/style.css';
 import '../css/style.scss';
 
-let min = 0;
-let sec = 0;
-
-// document.querySelector('.pause_btn').addEventListener('click', () => {
-//   const initTimer = setInterval(() => {
-//     sec += 1;
-//     if (sec >= 60) {
-//       min += 1;
-//       sec -= 60;
-//     }
-//     if (sec < 10) {
-//       if (min < 10) {
-//         document.querySelector('.time_value').innerHTML = `0${min}:0${sec}`;
-//       } else {
-//         document.querySelector('.time_value').innerHTML = `${min}:0${sec}`;
-//       }
-//     } else if (min < 10) {
-//       document.querySelector('.time_value').innerHTML = `0${min}:${sec}`;
-//     } else {
-//       document.querySelector('.time_value').innerHTML = `${min}:${sec}`;
-//     }
-//     if (createPuzzle.randomArray.join('') === createPuzzle.arrayBoxes.join('')) {
-//       clearInterval(initTimer);
-//     }
-//   }, 1000);
-// });
-
 class CreatePuzzle {
   constructor() {
     this.mainBox = document.createElement('div');
     this.navBox = document.createElement('div');
     this.main = document.createElement('main');
     this.box = this.mainBox.querySelectorAll('.box');
+    this.overlay = document.createElement('div');
     this.ul = document.createElement('ul');
     this.liArray = ['New Game', 'Saved Game', 'Best Scores', 'Rules', 'Settings'];
+    this.liValue = document.querySelector('li');
     this.headerArray = ['time_block', 'move_block', 'pause_block'];
     this.header = document.createElement('header');
-    this.pHeader = document.createElement('p');
-    this.spanHeader = document.createElement('span');
-    this.btnHeader = document.createElement('button');
-    this.headerDivInnerHTML = ['<p class="time_text">Time: <span class="time_value">00:00</span></p>', '<p class="move_text">Move: <span class="move_value">0</span></p>', '<button class="pause_btn">Pause Game</button>'];
+    this.btn = document.createElement('button');
+    this.btnHeader = document.querySelector('.pause_btn');
+    this.headerDivInnerHTML = ['<p class="time_text">Time: <span class="time_value">00:00</span></p>', '<p class="move_text">Move: <span class="move_value">0</span></p>'];
     this.arrayBoxes = [];
     this.fragment = [];
     this.randomArray = [];
@@ -54,22 +28,25 @@ class CreatePuzzle {
     this.mainBox.classList.add('main_box');
     this.navBox.classList.add('menu_game');
     this.ul.classList.add('menu_game_items');
+    this.btn.classList.add('pause_btn');
+    this.overlay.classList.add('overlay');
     for (let i = 0; i < 5; i += 1) {
       this.li = document.createElement('li');
       this.li.textContent = this.liArray[i];
       this.ul.append(this.li);
     }
 
-    for (let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 2; i += 1) {
       this.headerDiv = document.createElement('div');
       this.headerDiv.classList.add(this.headerArray[i]);
       this.headerDiv.innerHTML = this.headerDivInnerHTML[i];
       this.header.append(this.headerDiv);
     }
-
+    this.btn.textContent = 'Pause';
+    this.header.append(this.btn);
     this.navBox.append(this.ul);
     this.mainBox.append(...this.createBoxes());
-    this.main.append(this.mainBox, this.navBox);
+    this.main.append(this.overlay, this.mainBox, this.navBox);
     document.body.append(this.header, this.main);
   }
 
@@ -102,6 +79,8 @@ class CreatePuzzle {
   }
 
   createBoxes() {
+    this.fragment = [];
+    this.mainBox.innerHTML = '';
     this.getDefaultArray();
     this.getRandomArray();
 
@@ -244,10 +223,85 @@ function dragDrop(event) {
 }
 
 const move = new Move();
+let initTimer;
+function game(event) {
+  if (event.target.tagName === 'LI' && event.target.textContent === 'New Game') {
+    clearInterval(initTimer);
+    sec = 0;
+    min = 0;
+    document.querySelector('.time_value').textContent = '00:00';
+    document.querySelector('.move_value').textContent = 0;
+    createPuzzle.mainBox.append(...createPuzzle.createBoxes());
+    createPuzzle.btn.style.visibility = 'visible';
+    createPuzzle.mainBox.style.pointerEvents = 'auto';
+    createPuzzle.overlay.style.display = 'none';
+    initTimer = setInterval(() => {
+      sec += 1;
+      if (sec >= 60) {
+        min += 1;
+        sec -= 60;
+      }
+      if (sec < 10) {
+        if (min < 10) {
+          document.querySelector('.time_value').textContent = `0${min}:0${sec}`;
+        } else {
+          document.querySelector('.time_value').textContent = `${min}:0${sec}`;
+        }
+      } else if (min < 10) {
+        document.querySelector('.time_value').textContent = `0${min}:${sec}`;
+      } else {
+        document.querySelector('.time_value').textContent = `${min}:${sec}`;
+      }
+      if (createPuzzle.randomArray.join('') === createPuzzle.arrayBoxes.join('')) {
+        clearInterval(initTimer);
+      }
+    }, 1000);
+  }
+}
 
 createPuzzle.mainBox.addEventListener('mousedown', move.activeBoxes);
 createPuzzle.mainBox.addEventListener('mouseup', move.moveBoxes);
 createPuzzle.mainBox.addEventListener('mousedown', dragDrop);
+createPuzzle.ul.addEventListener('click', game);
+
+let min = 0;
+let sec = 0;
+
+createPuzzle.btn.addEventListener('click', () => {
+  createPuzzle.btn.classList.toggle('pause_btn_click');
+  if (createPuzzle.btn.textContent === 'Pause') {
+    clearInterval(initTimer);
+    createPuzzle.btn.textContent = 'Resume Game';
+    createPuzzle.mainBox.style.pointerEvents = 'none';
+    createPuzzle.overlay.style.display = 'block';
+  } else
+  if (createPuzzle.btn.textContent === 'Resume Game') {
+    createPuzzle.btn.textContent = 'Pause';
+    createPuzzle.mainBox.style.pointerEvents = 'auto';
+    createPuzzle.overlay.style.display = 'none';
+    initTimer = setInterval(() => {
+      sec += 1;
+      if (sec >= 60) {
+        min += 1;
+        sec -= 60;
+      }
+      if (sec < 10) {
+        if (min < 10) {
+          document.querySelector('.time_value').textContent = `0${min}:0${sec}`;
+        } else {
+          document.querySelector('.time_value').textContent = `${min}:0${sec}`;
+        }
+      } else if (min < 10) {
+        document.querySelector('.time_value').textContent = `0${min}:${sec}`;
+      } else {
+        document.querySelector('.time_value').textContent = `${min}:${sec}`;
+      }
+      if (createPuzzle.randomArray.join('') === createPuzzle.arrayBoxes.join('')) {
+        clearInterval(initTimer);
+      }
+    }, 1000);
+  }
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   createPuzzle.init();
