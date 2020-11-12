@@ -16,14 +16,20 @@ class CreatePuzzle {
     this.arrayBoxes = [];
     this.fragment = [];
     this.randomArray = [];
-    this.level = 4;
+    this.level = 0;
     this.activeBox = 0;
   }
 
   init() {
+    if (localStorage.getItem('puzzle') !== null) {
+      this.level = Math.sqrt(localStorage.getItem('puzzle').split(',').length);
+    } else {
+      this.level = 4;
+    }
     this.mainBox.classList.add('main_box');
     this.navBox.classList.add('menu_game');
     this.ul.classList.add('menu_game_items');
+    this.mainBox.style.gridTemplateColumns = `repeat(${this.level}, 1fr)`;
 
     for (let i = 0; i < this.liArray.length; i += 1) {
       this.li = document.createElement('li');
@@ -74,14 +80,16 @@ class CreatePuzzle {
 
   createBoxes() {
     this.fragment = [];
+    this.solutionNumber = 0;
     this.mainBox.innerHTML = '';
     this.getDefaultArray();
     this.getRandomArray();
     if (localStorage.getItem('puzzle') !== null) {
-      createPuzzle.randomArray = localStorage.getItem('puzzle').split(',').map((e) => Number(e));
+      this.randomArray = localStorage.getItem('puzzle').split(',').map((e) => Number(e));
     } else {
       this.getRandomArray();
     }
+
     for (let i = 0; i < this.randomArray.length; i += 1) {
       if (this.randomArray[i] === 0) {
         this.boxElement = document.createElement('div');
@@ -96,10 +104,20 @@ class CreatePuzzle {
       }
       this.fragment.push(this.boxElement);
     }
-    if (this.randomArray.join('') === this.arrayBoxes.join('')) {
-      this.fragment = [];
-      this.init();
+
+    for (let i = 0; i < this.randomArray.length; i += 1) {
+      for (let j = i + 1; j < this.randomArray.length; j += 1) {
+        if (this.randomArray[i] > this.randomArray[j] && this.randomArray[j] !== 0) {
+          this.solutionNumber += 1;
+        }
+      }
     }
+
+    if (this.randomArray.join('') === this.arrayBoxes.join('') || (this.solutionNumber + Math.trunc(this.randomArray.findIndex((el) => el === 0) / this.level + 1)) % 2 !== 0) {
+      this.fragment = [];
+      this.mainBox.append(...this.createBoxes());
+    }
+
     localStorage.setItem('puzzle', createPuzzle.randomArray);
     this.mainBox.classList.add('main_box_start');
     return this.fragment;
