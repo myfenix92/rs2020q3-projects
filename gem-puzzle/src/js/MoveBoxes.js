@@ -32,6 +32,8 @@ class MoveBoxes {
         createPuzzle.randomArray[this.activeBox + 1] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
         this.knockBox.play();
+        localStorage.setItem('puzzle', createPuzzle.randomArray);
+        localStorage.getItem('puzzle');
       } else if (createPuzzle.randomArray[this.activeBox - 1] === 0
       && (this.activeBox) % createPuzzle.level !== 0) {
         document.querySelectorAll('.box')[this.activeBox - 1].before(document.querySelectorAll('.box')[this.activeBox]);
@@ -40,6 +42,8 @@ class MoveBoxes {
         createPuzzle.randomArray[this.activeBox - 1] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
         this.knockBox.play();
+        localStorage.setItem('puzzle', createPuzzle.randomArray);
+        localStorage.getItem('puzzle');
       } else if (createPuzzle.randomArray[this.activeBox + createPuzzle.level] === 0) {
         this.numBufferBox = this.activeBox;
         document.querySelectorAll('.box')[this.activeBox + createPuzzle.level].before(document.querySelectorAll('.box')[this.activeBox]);
@@ -50,6 +54,8 @@ class MoveBoxes {
         createPuzzle.randomArray[this.activeBox + createPuzzle.level] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
         this.knockBox.play();
+        localStorage.setItem('puzzle', createPuzzle.randomArray);
+        localStorage.getItem('puzzle');
       } else if (createPuzzle.randomArray[this.activeBox - createPuzzle.level] === 0) {
         this.numBufferBox = this.activeBox;
         document.querySelectorAll('.box')[this.activeBox - createPuzzle.level].after(document.querySelectorAll('.box')[this.activeBox]);
@@ -60,6 +66,8 @@ class MoveBoxes {
         createPuzzle.randomArray[this.activeBox - createPuzzle.level] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
         this.knockBox.play();
+        localStorage.setItem('puzzle', createPuzzle.randomArray);
+        localStorage.getItem('puzzle');
       }
       if (this.moveValue === undefined) {
         document.querySelector('.move_value').textContent = 0;
