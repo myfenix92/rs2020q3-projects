@@ -5,10 +5,11 @@ class SettingPuzzle {
     this.chooseFieldSelect = document.createElement('select');
     this.chooseFieldBtn = document.createElement('btn');
     this.optionArray = ['threeField', 'fourField', 'fiveField', 'sixField', 'sevenField', 'eightField'];
+    this.fragment = '';
   }
 
   init() {
-    this.chooseFieldBox.classList.add('level');
+    this.chooseFieldBox.classList.add('level', 'hidden');
     this.chooseFieldBtn.classList.add('chooseField');
     this.chooseFieldBtn.textContent = 'OK';
 
@@ -22,6 +23,8 @@ class SettingPuzzle {
 
     this.chooseField.append(this.chooseFieldSelect);
     this.chooseFieldBox.append(this.chooseField, this.chooseFieldBtn);
+    this.fragment = this.chooseFieldBox;
+    return this.fragment;
   }
 }
 
