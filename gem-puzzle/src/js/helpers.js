@@ -92,6 +92,11 @@ function chooseFieldSelect() {
 }
 
 function closeSetting() {
+  localStorage.clear();
+  sec = 0;
+  min = 0;
+  localStorage.setItem('timeMin', min);
+  localStorage.setItem('timeSec', sec);
   document.querySelectorAll('li')[0].textContent = 'Start Game';
   game();
   document.querySelector('ul').classList.remove('hidden');
