@@ -44,7 +44,6 @@ const jsLoaders = () => {
 const config = {
   target: 'web',
   entry: {
-   // init: './src/js/init.js',
     index: './src/js/index.js',
   },
   output: {
@@ -155,6 +154,16 @@ const config = {
         },
       }],
     },
+    {
+      test: /\.(mp3)$/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          outputPath: 'audio',
+          name: '[name].[ext]',
+        },
+      }],
+    },
     ],
   },
 
@@ -168,7 +177,8 @@ const config = {
     }),
     new CopyWebpackPlugin([
       // {from: './src/static', to: './'},
-      // {from: './src/img', to: './img/'},
+      { from: './src/audio', to: './audio' },
+      { from: './src/img', to: './img' },
     ]),
   ],
 
