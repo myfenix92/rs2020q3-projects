@@ -81,6 +81,9 @@ function menuClick(event) {
     clearInterval(interval);
     createPuzzle.mainBox.style.pointerEvents = 'none';
     settingPuzzle.chooseFieldBox.classList.toggle('hidden');
+    document.querySelectorAll('.main_box > .box').forEach((element) => {
+      element.classList.add('box_pause');
+    });
   }
 }
 
@@ -112,10 +115,11 @@ function closeRules() {
 function closeWin() {
   winPuzzle.winBlock.classList.remove('show_win_block');
   winPuzzle.winBlock.classList.add('close_win_block');
+  localStorage.clear();
   createPuzzle.mainBox.append(...createPuzzle.createBoxes());
   document.querySelectorAll('li')[0].textContent = 'Start Game';
-  sec = 0;
-  min = 0;
+  localStorage.setItem('timeSec', 0);
+  localStorage.setItem('timeMin', 0);
   document.querySelector('.time_value').textContent = '00:00';
   document.querySelector('.move_value').textContent = 0;
 }
