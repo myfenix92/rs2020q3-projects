@@ -69,7 +69,7 @@ document.addEventListener('mousemove', () => {
 });
 createPuzzle.mainBox.addEventListener('mousedown', moveBoxes.activeBoxes);
 createPuzzle.mainBox.addEventListener('mouseup', moveBoxes.moveBoxes);
-createPuzzle.mainBox.addEventListener('dragstart', dragDrop);
+createPuzzle.mainBox.addEventListener('mousedown', dragDrop);
 createPuzzle.ul.addEventListener('click', menuClick);
 settingPuzzle.chooseFieldSelect.addEventListener('change', chooseFieldSelect);
 settingPuzzle.chooseFieldBtn.addEventListener('click', closeSetting);
