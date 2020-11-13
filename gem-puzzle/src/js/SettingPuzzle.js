@@ -4,6 +4,9 @@ class SettingPuzzle {
     this.chooseField = document.createElement('p');
     this.chooseFieldSelect = document.createElement('select');
     this.chooseFieldBtn = document.createElement('btn');
+    this.volumeMoveBox = document.createElement('input');
+    this.volumeLabel = document.createElement('label');
+    this.volumeText = document.createElement('span');
     this.optionArray = ['threeField', 'fourField', 'fiveField', 'sixField', 'sevenField', 'eightField'];
     this.fragment = '';
   }
@@ -11,8 +14,11 @@ class SettingPuzzle {
   init() {
     this.chooseFieldBox.classList.add('level', 'hidden');
     this.chooseFieldBtn.classList.add('chooseField');
+    this.volumeLabel.classList.add('volume');
+    this.volumeText.classList.add('text_volume');
+    this.volumeMoveBox.classList.add('check_volume');
     this.chooseFieldBtn.textContent = 'OK';
-
+    this.volumeMoveBox.setAttribute('type', 'checkbox');
     for (let i = 0; i < this.optionArray.length; i += 1) {
       this.chooseFieldOption = document.createElement('option');
       this.chooseFieldOption.setAttribute('value', i + 3);
@@ -21,8 +27,9 @@ class SettingPuzzle {
       this.chooseFieldSelect.append(this.chooseFieldOption);
     }
 
+    this.volumeLabel.append(this.volumeMoveBox, this.volumeText);
     this.chooseField.append(this.chooseFieldSelect);
-    this.chooseFieldBox.append(this.chooseField, this.chooseFieldBtn);
+    this.chooseFieldBox.append(this.chooseField, this.volumeLabel, this.chooseFieldBtn);
     this.fragment = this.chooseFieldBox;
     return this.fragment;
   }
