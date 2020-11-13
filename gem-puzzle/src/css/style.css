@@ -104,6 +104,8 @@ main {
   border-radius: 5px;
   cursor: pointer;
   font-size: 2.1rem;
+  -webkit-box-shadow: inset rgba(255, 255, 255, 0.2) 4px 4px 14px 5px, inset rgba(0, 0, 0, 0.5) -4px -4px 14px 5px;
+          box-shadow: inset rgba(255, 255, 255, 0.2) 4px 4px 14px 5px, inset rgba(0, 0, 0, 0.5) -4px -4px 14px 5px;
 }
 
 .box_start {
@@ -130,6 +132,8 @@ main {
   cursor: auto;
   color: transparent;
   padding: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .box:hover {
