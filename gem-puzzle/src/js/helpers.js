@@ -7,6 +7,7 @@ export const getVal = (val) => (val < 10 ? 0 : '');
 let interval;
 export let min = 0; let
   sec = 0;
+let isSoundCheck;
 
 function timer() {
   interval = setInterval(() => {
@@ -87,7 +88,8 @@ function menuClick(event) {
   }
 }
 
-function chooseFieldSelect() {
+function chooseFieldSelect(event) {
+  isSoundCheck = event.target.value;
   localStorage.clear();
   createPuzzle.level = +(document.querySelector('select').options[document.querySelector('select').selectedIndex].value);
   createPuzzle.mainBox.style.gridTemplateColumns = `repeat(${createPuzzle.level}, 1fr)`;
@@ -95,16 +97,23 @@ function chooseFieldSelect() {
 }
 
 function closeSetting() {
-  localStorage.clear();
-  sec = 0;
-  min = 0;
-  localStorage.setItem('timeMin', min);
-  localStorage.setItem('timeSec', sec);
-  document.querySelectorAll('li')[0].textContent = 'Start Game';
-  game();
-  document.querySelector('ul').classList.remove('hidden');
-  settingPuzzle.chooseFieldBox.classList.toggle('hidden');
-  createPuzzle.mainBox.style.pointerEvents = 'none';
+  if (isSoundCheck === undefined) {
+    document.querySelector('ul').classList.remove('hidden');
+    settingPuzzle.chooseFieldBox.classList.toggle('hidden');
+    createPuzzle.mainBox.style.pointerEvents = 'none';
+    document.querySelectorAll('li')[0].textContent = 'Start Game';
+  } else {
+    localStorage.clear();
+    sec = 0;
+    min = 0;
+    localStorage.setItem('timeMin', min);
+    localStorage.setItem('timeSec', sec);
+    game();
+    document.querySelectorAll('li')[0].textContent = 'Start Game';
+    document.querySelector('ul').classList.remove('hidden');
+    settingPuzzle.chooseFieldBox.classList.toggle('hidden');
+    createPuzzle.mainBox.style.pointerEvents = 'none';
+  }
 }
 
 function closeRules() {
