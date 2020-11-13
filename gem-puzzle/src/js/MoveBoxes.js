@@ -1,5 +1,6 @@
 import { createPuzzle } from './CreatePuzzle';
 import { checkEmptyBox } from './index';
+import { settingPuzzle } from './SettingPuzzle';
 
 class MoveBoxes {
   constructor() {
@@ -31,7 +32,11 @@ class MoveBoxes {
         createPuzzle.randomArray[this.activeBox] = createPuzzle.randomArray[this.activeBox + 1];
         createPuzzle.randomArray[this.activeBox + 1] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
-        this.knockBox.play();
+        if (settingPuzzle.volumeMoveBox.checked) {
+          this.knockBox.pause();
+        } else {
+          this.knockBox.play();
+        }
         localStorage.setItem('puzzle', createPuzzle.randomArray);
         localStorage.getItem('puzzle');
       } else if (createPuzzle.randomArray[this.activeBox - 1] === 0
@@ -41,7 +46,11 @@ class MoveBoxes {
         createPuzzle.randomArray[this.activeBox] = createPuzzle.randomArray[this.activeBox - 1];
         createPuzzle.randomArray[this.activeBox - 1] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
-        this.knockBox.play();
+        if (settingPuzzle.volumeMoveBox.checked) {
+          this.knockBox.pause();
+        } else {
+          this.knockBox.play();
+        }
         localStorage.setItem('puzzle', createPuzzle.randomArray);
         localStorage.getItem('puzzle');
       } else if (createPuzzle.randomArray[this.activeBox + createPuzzle.level] === 0) {
@@ -53,7 +62,11 @@ class MoveBoxes {
         + createPuzzle.level];
         createPuzzle.randomArray[this.activeBox + createPuzzle.level] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
-        this.knockBox.play();
+        if (settingPuzzle.volumeMoveBox.checked) {
+          this.knockBox.pause();
+        } else {
+          this.knockBox.play();
+        }
         localStorage.setItem('puzzle', createPuzzle.randomArray);
         localStorage.getItem('puzzle');
       } else if (createPuzzle.randomArray[this.activeBox - createPuzzle.level] === 0) {
@@ -65,7 +78,11 @@ class MoveBoxes {
         - createPuzzle.level];
         createPuzzle.randomArray[this.activeBox - createPuzzle.level] = this.numBufferBox;
         this.moveValue = +(document.querySelector('.move_value').textContent) + 1;
-        this.knockBox.play();
+        if (settingPuzzle.volumeMoveBox.checked) {
+          this.knockBox.pause();
+        } else {
+          this.knockBox.play();
+        }
         localStorage.setItem('puzzle', createPuzzle.randomArray);
         localStorage.getItem('puzzle');
       }
