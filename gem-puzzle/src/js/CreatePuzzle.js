@@ -8,7 +8,7 @@ class CreatePuzzle {
     this.main = document.createElement('main');
     this.box = this.mainBox.querySelectorAll('.box');
     this.ul = document.createElement('ul');
-    this.liArray = ['Start Game', 'New Game', 'Best Scores', 'Rules', 'Settings'];
+    this.liArray = ['Start Game', 'New Game', 'Rules', 'Settings'];
     this.liValue = document.querySelector('li');
     this.headerArray = ['time_block', 'move_block', 'pause_block'];
     this.header = document.createElement('header');
@@ -17,7 +17,6 @@ class CreatePuzzle {
     this.fragment = [];
     this.randomArray = [];
     this.level = 0;
-    this.activeBox = 0;
   }
 
   init() {
@@ -89,7 +88,6 @@ class CreatePuzzle {
     } else {
       this.getRandomArray();
     }
-
     for (let i = 0; i < this.randomArray.length; i += 1) {
       if (this.randomArray[i] === 0) {
         this.boxElement = document.createElement('div');
