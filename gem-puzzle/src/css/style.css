@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -142,13 +143,14 @@ main {
 
 .rules {
   position: absolute;
-  text-align: center;
 }
 
 .rules > p {
-  padding: 1vw;
-  line-height: 140%;
-  margin-bottom: 2vw;
+  height: 25vw;
+  padding: 0.4vw;
+  margin-bottom: 1vw;
+  font-size: 1rem;
+  overflow-y: scroll;
 }
 
 .level {
@@ -157,6 +159,24 @@ main {
   left: 10%;
   top: 10%;
   font-size: 1rem;
+}
+
+.volume {
+  height: 3vw;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.text_volume::after {
+  content: "Звук вкл";
+  font-size: 1rem;
+  padding-left: 1.5vw;
+  cursor: pointer;
+}
+
+.check_volume:checked + .text_volume::after {
+  content: "Звук выкл";
 }
 
 .hidden {
