@@ -1,8 +1,8 @@
-import { createPuzzle } from './CreatePuzzle';
-import { checkEmptyBox } from './index';
-import { settingPuzzle } from './SettingPuzzle';
+import { createPuzzle, settingPuzzle } from '../constants';
+import { checkEmptyBox } from '../index';
 
-class MoveBoxes {
+// eslint-disable-next-line import/prefer-default-export
+export const MoveBoxes = class {
   constructor() {
     this.activeBox = 0;
   }
@@ -93,8 +93,4 @@ class MoveBoxes {
       }
     }
   }
-}
-
-const moveBoxes = new MoveBoxes();
-
-export { moveBoxes };
+};
