@@ -1,7 +1,7 @@
-import { settingPuzzle } from './SettingPuzzle';
-import { rulesPuzzle } from './Rules';
+/* eslint-disable import/prefer-default-export */
+import { rulesPuzzle, settingPuzzle } from '../constants';
 
-class CreatePuzzle {
+export const CreatePuzzle = class {
   constructor() {
     this.mainBox = document.createElement('div');
     this.navBox = document.createElement('div');
@@ -116,12 +116,8 @@ class CreatePuzzle {
       this.mainBox.append(...this.createBoxes());
     }
 
-    localStorage.setItem('puzzle', createPuzzle.randomArray);
+    localStorage.setItem('puzzle', this.randomArray);
     this.mainBox.classList.add('main_box_start');
     return this.fragment;
   }
-}
-
-const createPuzzle = new CreatePuzzle();
-
-export { createPuzzle };
+};
