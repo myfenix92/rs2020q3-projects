@@ -1,13 +1,13 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable no-inner-declarations */
 import '../css/style.css';
 import '../css/style.scss';
-import { createPuzzle } from './CreatePuzzle';
-import { moveBoxes } from './MoveBoxes';
-import { winPuzzle } from './WinPuzzle';
-import { settingPuzzle } from './SettingPuzzle';
-import { rulesPuzzle } from './Rules';
+import {
+  createPuzzle, moveBoxes, rulesPuzzle, settingPuzzle, winPuzzle,
+} from './constants';
 import {
   closeWin, closeRules, closeSetting, chooseFieldSelect, menuClick, getVal,
-} from './helpers';
+} from './utils/helpers';
 
 export let checkEmptyBox = true;
 
@@ -43,8 +43,8 @@ function dragDrop(event) {
       }
     }
 
-    function onMouseMove(event) {
-      moveAt(event.pageX, event.pageY);
+    function onMouseMove(e) {
+      moveAt(e.pageX, e.pageY);
     }
 
     document.addEventListener('mousemove', onMouseMove);
