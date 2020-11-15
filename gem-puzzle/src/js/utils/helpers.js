@@ -1,7 +1,4 @@
-import { createPuzzle } from './CreatePuzzle';
-import { winPuzzle } from './WinPuzzle';
-import { settingPuzzle } from './SettingPuzzle';
-import { rulesPuzzle } from './Rules';
+import { createPuzzle, rulesPuzzle, settingPuzzle, winPuzzle } from '../constants';
 
 export const getVal = (val) => (val < 10 ? 0 : '');
 let interval;
