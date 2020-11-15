@@ -1,4 +1,5 @@
-class SettingPuzzle {
+/* eslint-disable import/prefer-default-export */
+export const SettingPuzzle = class {
   constructor() {
     this.chooseFieldBox = document.createElement('div');
     this.chooseField = document.createElement('p');
@@ -33,8 +34,4 @@ class SettingPuzzle {
     this.fragment = this.chooseFieldBox;
     return this.fragment;
   }
-}
-
-const settingPuzzle = new SettingPuzzle();
-
-export { settingPuzzle };
+};
