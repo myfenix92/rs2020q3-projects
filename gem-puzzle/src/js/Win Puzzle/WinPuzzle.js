@@ -1,4 +1,5 @@
-class WinPuzzle {
+/* eslint-disable import/prefer-default-export */
+export const WinPuzzle = class {
   constructor() {
     this.winBlock = document.createElement('div');
     this.closeBtnWinBlock = document.createElement('button');
@@ -24,8 +25,4 @@ class WinPuzzle {
     this.winBlock.append(this.closeBtnWinBlock, this.winTitle, this.winText, this.winImg);
     document.querySelector('body').append(this.winBlock);
   }
-}
-
-const winPuzzle = new WinPuzzle();
-
-export { winPuzzle };
+};
