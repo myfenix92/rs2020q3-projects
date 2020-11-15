@@ -1,4 +1,5 @@
-class RulesPuzzle {
+/* eslint-disable import/prefer-default-export */
+export const RulesPuzzle = class {
   constructor() {
     this.rulesBox = document.createElement('div');
     this.rulesText = document.createElement('p');
@@ -16,8 +17,4 @@ class RulesPuzzle {
     this.fragment = this.rulesBox;
     return this.fragment;
   }
-}
-
-const rulesPuzzle = new RulesPuzzle();
-
-export { rulesPuzzle };
+};
