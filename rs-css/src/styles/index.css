@@ -14,7 +14,7 @@ html {
   font-family: "Inter", sans-serif;
   color: #dae0e0;
   line-height: 1.4;
-  background-color: cadetblue;
+  background-color: #3c3d3d;
 }
 
 main {
@@ -23,8 +23,6 @@ main {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "layout layout level_b" "css html level_b";
-  grid-auto-columns: -webkit-max-content;
-  grid-auto-columns: max-content;
   grid-auto-rows: 23.15vw;
   gap: 0.5rem;
   -webkit-box-sizing: border-box;
@@ -45,13 +43,157 @@ main {
   background-image: linear-gradient(90deg, rgba(52, 3, 65, 0.5), rgba(4, 4, 231, 0.3), rgba(4, 4, 231, 0.3), rgba(122, 124, 6, 0.3)), url(../images/starfield.jpg);
 }
 
+.ufo_answer {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 60%;
+  right: 45%;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-animation: ufo-fly 10s infinite;
+          animation: ufo-fly 10s infinite;
+}
+
+@-webkit-keyframes ufo-fly {
+  0% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  50% {
+    -webkit-transform: translate(100px) rotate(30deg);
+            transform: translate(100px) rotate(30deg);
+  }
+  100% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+}
+
+@keyframes ufo-fly {
+  0% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  50% {
+    -webkit-transform: translate(100px) rotate(30deg);
+            transform: translate(100px) rotate(30deg);
+  }
+  100% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+}
+
+.ufo_error {
+  display: none;
+  background: url(../images/ufo_error.png) no-repeat;
+  -webkit-animation: shake 1s infinite;
+          animation: shake 1s infinite;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translate(2px, 1px) rotate(-30deg);
+            transform: translate(2px, 1px) rotate(-30deg);
+  }
+  10% {
+    -webkit-transform: translate(-1px, -2px) rotate(-31deg);
+            transform: translate(-1px, -2px) rotate(-31deg);
+  }
+  20% {
+    -webkit-transform: translate(-3px, 0px) rotate(-31deg);
+            transform: translate(-3px, 0px) rotate(-31deg);
+  }
+  30% {
+    -webkit-transform: translate(0px, 2px) rotate(-30deg);
+            transform: translate(0px, 2px) rotate(-30deg);
+  }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(-31deg);
+            transform: translate(1px, -1px) rotate(-31deg);
+  }
+  50% {
+    -webkit-transform: translate(-1px, 2px) rotate(-31deg);
+            transform: translate(-1px, 2px) rotate(-31deg);
+  }
+  60% {
+    -webkit-transform: translate(-3px, 1px) rotate(-30deg);
+            transform: translate(-3px, 1px) rotate(-30deg);
+  }
+  70% {
+    -webkit-transform: translate(2px, 1px) rotate(-31deg);
+            transform: translate(2px, 1px) rotate(-31deg);
+  }
+  80% {
+    -webkit-transform: translate(-1px, -1px) rotate(-31deg);
+            transform: translate(-1px, -1px) rotate(-31deg);
+  }
+  90% {
+    -webkit-transform: translate(2px, 2px) rotate(-30deg);
+            transform: translate(2px, 2px) rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-31deg);
+            transform: translate(1px, -2px) rotate(-31deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translate(2px, 1px) rotate(-30deg);
+            transform: translate(2px, 1px) rotate(-30deg);
+  }
+  10% {
+    -webkit-transform: translate(-1px, -2px) rotate(-31deg);
+            transform: translate(-1px, -2px) rotate(-31deg);
+  }
+  20% {
+    -webkit-transform: translate(-3px, 0px) rotate(-31deg);
+            transform: translate(-3px, 0px) rotate(-31deg);
+  }
+  30% {
+    -webkit-transform: translate(0px, 2px) rotate(-30deg);
+            transform: translate(0px, 2px) rotate(-30deg);
+  }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(-31deg);
+            transform: translate(1px, -1px) rotate(-31deg);
+  }
+  50% {
+    -webkit-transform: translate(-1px, 2px) rotate(-31deg);
+            transform: translate(-1px, 2px) rotate(-31deg);
+  }
+  60% {
+    -webkit-transform: translate(-3px, 1px) rotate(-30deg);
+            transform: translate(-3px, 1px) rotate(-30deg);
+  }
+  70% {
+    -webkit-transform: translate(2px, 1px) rotate(-31deg);
+            transform: translate(2px, 1px) rotate(-31deg);
+  }
+  80% {
+    -webkit-transform: translate(-1px, -1px) rotate(-31deg);
+            transform: translate(-1px, -1px) rotate(-31deg);
+  }
+  90% {
+    -webkit-transform: translate(2px, 2px) rotate(-30deg);
+            transform: translate(2px, 2px) rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-31deg);
+            transform: translate(1px, -2px) rotate(-31deg);
+  }
+}
+
+.ufo_win {
+  display: none;
+  background: url(../images/ufo_win.png) no-repeat;
+}
+
 .circle {
   display: none;
   border-radius: 50%;
-}
-
-.group {
-  display: none;
 }
 
 .circle:before {
@@ -66,98 +208,6 @@ main {
   -webkit-filter: blur(5px);
           filter: blur(5px);
   z-index: 2;
-}
-
-.earth_group {
-  width: 32%;
-  height: 30%;
-  top: 7%;
-  left: 58%;
-  position: absolute;
-  border-radius: 50%;
-  -webkit-animation: earth_group 1s linear infinite;
-          animation: earth_group 1s linear infinite;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.8), 23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.8), 23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(4, 4, 231, 0.3)), to(rgba(122, 124, 6, 0.3)));
-  background: linear-gradient(90deg, rgba(4, 4, 231, 0.3), rgba(122, 124, 6, 0.3));
-}
-
-@-webkit-keyframes earth_group {
-  0% {
-    -webkit-transform: rotate(-8deg) skew(0deg, 0deg) scaleY(1);
-            transform: rotate(-8deg) skew(0deg, 0deg) scaleY(1);
-  }
-  40% {
-    -webkit-transform: rotate(-8deg) skew(0deg, 0deg) scaleY(0.8);
-            transform: rotate(-8deg) skew(0deg, 0deg) scaleY(0.8);
-  }
-  100% {
-    -webkit-transform: rotate(-8deg) skew(4deg, 0deg) scaleX(1);
-            transform: rotate(-8deg) skew(4deg, 0deg) scaleX(1);
-  }
-}
-
-@keyframes earth_group {
-  0% {
-    -webkit-transform: rotate(-8deg) skew(0deg, 0deg) scaleY(1);
-            transform: rotate(-8deg) skew(0deg, 0deg) scaleY(1);
-  }
-  40% {
-    -webkit-transform: rotate(-8deg) skew(0deg, 0deg) scaleY(0.8);
-            transform: rotate(-8deg) skew(0deg, 0deg) scaleY(0.8);
-  }
-  100% {
-    -webkit-transform: rotate(-8deg) skew(4deg, 0deg) scaleX(1);
-            transform: rotate(-8deg) skew(4deg, 0deg) scaleX(1);
-  }
-}
-
-.giant_group {
-  width: 49%;
-  height: 41%;
-  top: 40%;
-  left: 0%;
-  position: absolute;
-  border-radius: 50%;
-  -webkit-animation: giant_group 1s linear infinite;
-          animation: giant_group 1s linear infinite;
-  -webkit-animation-delay: 0s, .5s;
-          animation-delay: 0s, .5s;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.8), 23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.8), 23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(52, 3, 65, 0.5)), to(rgba(4, 4, 231, 0.3)));
-  background: linear-gradient(90deg, rgba(52, 3, 65, 0.5), rgba(4, 4, 231, 0.3));
-}
-
-@-webkit-keyframes giant_group {
-  0% {
-    -webkit-transform: rotate(-20deg) skew(0deg, 0deg) scaleY(1);
-            transform: rotate(-20deg) skew(0deg, 0deg) scaleY(1);
-  }
-  40% {
-    -webkit-transform: rotate(-20deg) skew(0deg, 0deg) scaleY(0.8);
-            transform: rotate(-20deg) skew(0deg, 0deg) scaleY(0.8);
-  }
-  100% {
-    -webkit-transform: rotate(-20deg) skew(4deg, 0deg) scaleX(1);
-            transform: rotate(-20deg) skew(4deg, 0deg) scaleX(1);
-  }
-}
-
-@keyframes giant_group {
-  0% {
-    -webkit-transform: rotate(-20deg) skew(0deg, 0deg) scaleY(1);
-            transform: rotate(-20deg) skew(0deg, 0deg) scaleY(1);
-  }
-  40% {
-    -webkit-transform: rotate(-20deg) skew(0deg, 0deg) scaleY(0.8);
-            transform: rotate(-20deg) skew(0deg, 0deg) scaleY(0.8);
-  }
-  100% {
-    -webkit-transform: rotate(-20deg) skew(4deg, 0deg) scaleX(1);
-            transform: rotate(-20deg) skew(4deg, 0deg) scaleX(1);
-  }
 }
 
 .sun {
@@ -177,8 +227,8 @@ main {
             transform: scale(1);
   }
   70% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
   100% {
     -webkit-transform: scale(1);
@@ -192,8 +242,8 @@ main {
             transform: scale(1);
   }
   70% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
   100% {
     -webkit-transform: scale(1);
@@ -207,6 +257,8 @@ main {
   position: absolute;
   top: 11%;
   left: 85%;
+  background: -webkit-gradient(linear, left top, right top, from(#d4cfc9), to(#9999cc));
+  background: linear-gradient(90deg, #d4cfc9 0%, #9999cc 100%);
   -webkit-animation: mercury 1s 1.5s infinite ease-in-out;
           animation: mercury 1s 1.5s infinite ease-in-out;
 }
@@ -259,6 +311,8 @@ main {
   position: absolute;
   top: 13%;
   left: 76%;
+  background: -webkit-gradient(linear, right top, left top, color-stop(11%, #ff6699), to(#ff99ff));
+  background: linear-gradient(-90deg, #ff6699 11%, #ff99ff 100%);
   -webkit-animation: venus 1s 1.5s infinite;
           animation: venus 1s 1.5s infinite;
 }
@@ -311,6 +365,8 @@ main {
   position: absolute;
   top: 17%;
   left: 68%;
+  background: -webkit-gradient(linear, left top, right top, from(#66cc66), to(#2ae3fc));
+  background: linear-gradient(90deg, #66cc66 0%, #2ae3fc 100%);
   -webkit-animation: earth 1s 1.5s infinite;
           animation: earth 1s 1.5s infinite;
 }
@@ -357,14 +413,90 @@ main {
   }
 }
 
+.earth-moon {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 17%;
+  left: 72.5%;
+  background: -webkit-gradient(linear, left top, right top, from(#5e5c5b), color-stop(50%, #474443), to(#b4b1ae));
+  background: linear-gradient(90deg, #5e5c5b 0%, #474443 50%, #b4b1ae 100%);
+  -webkit-animation: moon 1s 1.5s infinite;
+          animation: moon 1s 1.5s infinite;
+}
+
 .mars {
   width: 40px;
   height: 40px;
   position: absolute;
   top: 23%;
   left: 60%;
+  background: -webkit-gradient(linear, left top, right top, from(#ff8e44), color-stop(50%, #ff3300), to(#993300));
+  background: linear-gradient(90deg, #ff8e44 0%, #ff3300 50%, #993300 100%);
   -webkit-animation: mars 1s 1.5s infinite;
           animation: mars 1s 1.5s infinite;
+}
+
+.mars-fobos {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 17%;
+  left: 63%;
+  background: -webkit-gradient(linear, left top, right top, from(#f3be9b), color-stop(50%, #70564f), to(#723c20));
+  background: linear-gradient(90deg, #f3be9b 0%, #70564f 50%, #723c20 100%);
+  -webkit-animation: moon 1s 1.5s infinite;
+          animation: moon 1s 1.5s infinite;
+}
+
+.mars-deimos {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 25%;
+  left: 58%;
+  background: -webkit-gradient(linear, left top, right top, from(#f3be9b), color-stop(50%, #70564f), to(#665f5b));
+  background: linear-gradient(90deg, #f3be9b 0%, #70564f 50%, #665f5b 100%);
+  -webkit-animation: moon 1s 1.5s infinite;
+          animation: moon 1s 1.5s infinite;
+}
+
+@-webkit-keyframes moon {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%);
+  }
+  66% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+}
+
+@keyframes moon {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%);
+  }
+  66% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
 }
 
 @-webkit-keyframes mars {
@@ -381,8 +513,8 @@ main {
     background: linear-gradient(90deg, #993300 0%, #ff8e44 50%, #ff3300 100%);
   }
   66% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
     background: -webkit-gradient(linear, left top, right top, from(#ff3300), color-stop(50%, #993300), to(#ff8e44));
     background: linear-gradient(90deg, #ff3300 0%, #993300 50%, #ff8e44 100%);
   }
@@ -408,8 +540,8 @@ main {
     background: linear-gradient(90deg, #993300 0%, #ff8e44 50%, #ff3300 100%);
   }
   66% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
     background: -webkit-gradient(linear, left top, right top, from(#ff3300), color-stop(50%, #993300), to(#ff8e44));
     background: linear-gradient(90deg, #ff3300 0%, #993300 50%, #ff8e44 100%);
   }
@@ -427,6 +559,8 @@ main {
   position: absolute;
   top: 30%;
   left: 38%;
+  background: -webkit-gradient(linear, left top, right top, from(#ffffcc), color-stop(62%, #cc9966), to(#996666));
+  background: linear-gradient(90deg, #ffffcc 0%, #cc9966 62%, #996666 100%);
   -webkit-animation: jupiter 1s 1s infinite;
           animation: jupiter 1s 1s infinite;
 }
@@ -491,6 +625,7 @@ main {
   position: absolute;
   top: 45%;
   left: 26%;
+  background: linear-gradient(60deg, #ff6666 0%, #ffcc66 50%, #cccc99 96%);
   -webkit-animation: saturn 1s 1s infinite;
           animation: saturn 1s 1s infinite;
 }
@@ -560,6 +695,7 @@ main {
   position: absolute;
   top: 60%;
   left: 15%;
+  background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
   -webkit-animation: uran 1s 2s infinite;
           animation: uran 1s 2s infinite;
 }
@@ -606,6 +742,7 @@ main {
   position: absolute;
   top: 70%;
   left: 5%;
+  background: linear-gradient(80deg, #09bbfe 0%, #5a42ec 100%);
   -webkit-animation: neptune 1s 2s infinite;
           animation: neptune 1s 2s infinite;
 }
@@ -650,6 +787,11 @@ main {
   display: block;
 }
 
+.animation_stop {
+  -webkit-animation: none;
+          animation: none;
+}
+
 .css_block {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
@@ -666,6 +808,62 @@ main {
   background-color: #0a0e14;
   position: relative;
   font-size: 0.94rem;
+}
+
+.html_text,
+.css_text {
+  position: absolute;
+  top: 2.2vw;
+  left: 1.5vw;
+  width: 100%;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.html_text textarea,
+.css_text textarea {
+  height: 18.5vw;
+  width: 80%;
+  background-color: #0a0e14;
+  color: white;
+  border: none;
+  resize: none;
+  outline: none;
+}
+
+.html_text div,
+.css_text div {
+  padding-left: 1rem;
+  cursor: pointer;
+  color: aqua;
+}
+
+.html_text span,
+.css_text span {
+  color: yellow;
+}
+
+.numbers {
+  font-size: 1rem;
+  font-family: monospace;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 1rem;
+  padding: 0.5rem 0.5rem 0 0;
+  border-right: 1px solid white;
+}
+
+.numbers li {
+  padding-bottom: 0.1rem;
 }
 
 .level_block {
@@ -717,10 +915,5 @@ form {
   padding: 0.05rem 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
-}
-
-.cm-s-material.CodeMirror,
-.cm-s-material.CodeMirror {
-  height: 100%;
 }
 /*# sourceMappingURL=index.css.map */
