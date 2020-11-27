@@ -1,7 +1,7 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+
 const paths = require('./paths');
 
 module.exports = {
@@ -13,6 +13,7 @@ module.exports = {
     path: paths.build,
     filename: '[name].bundle.js',
     publicPath: '',
+    assetModuleFilename: 'assets/images/[name][ext]',
   },
 
   // Customize the webpack build process
@@ -24,8 +25,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, '../src/images'),
-          to: 'assets/images',
+          from: `${paths.src}/images/`,
+          to: `${paths.build}/assets/images`,
           globOptions: {
             ignore: ['*.DS_Store'],
           },
@@ -60,7 +61,13 @@ module.exports = {
       },
 
       // Images: Copy image files to build folder
-      { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
+        // generator: {
+        //   filename: 'assets/[name][ext]',
+        // },
+      },
 
       // Fonts and SVGs: Inline files
       { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
