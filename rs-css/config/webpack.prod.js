@@ -17,7 +17,7 @@ module.exports = merge(common, {
     // Extracts CSS into separate files
     // Note: style-loader is for development, MiniCssExtractPlugin is for production
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
+      filename: '[name].css',
       chunkFilename: '[id].css',
     }),
   ],
@@ -46,9 +46,9 @@ module.exports = merge(common, {
     // Once your build outputs multiple chunks, this option will ensure they share the webpack runtime
     // instead of having their own. This also helps with long-term caching, since the chunks will only
     // change when actual code changes, not the webpack runtime.
-    runtimeChunk: {
-      name: 'runtime',
-    },
+    // runtimeChunk: {
+    //   name: 'runtime',
+    // },
   },
   performance: {
     hints: false,
