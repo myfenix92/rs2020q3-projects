@@ -3,14 +3,22 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 html {
+  height: 100%;
   font-family: $font-family;
   color: $font-color;
   line-height: 1.4;
   background-color: rgb(60, 61, 61);
   background-image: url(../images/starfield.jpg);
+}
+
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 main {
@@ -19,38 +27,44 @@ main {
   display: grid;
   grid-template-areas:
     "layout layout level_b"
-    "css html level_b";
+    "editor editor level_b";
   gap: 0.5rem;
-  box-sizing: border-box;
   justify-content: center;
+  grid-template-rows: minmax(max-content, 1fr);
+}
+
+.editor {
+  grid-area: editor;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3vw;
 }
 
 .layout_block {
   grid-area: layout;
-  width: 80vw;
-  margin-top: 1rem;
+  min-height: 18vw;
+  margin-top: 2vw;
   border-radius: 10px;
-  min-height: 20vw;
   position: relative;
-  background-image: linear-gradient(90deg,  rgba(52, 3, 65, 0.5),rgba(4, 4, 231, 0.3), rgba(4, 4, 231, 0.3), rgba(122, 124, 6, 0.3), ) , url(../images/starfield.jpg);
+  background-image: linear-gradient(90deg,  rgba(52, 3, 65, 0.5),rgba(4, 4, 231, 0.3), rgba(4, 4, 231, 0.3), rgba(122, 124, 6, 0.3), );
 }
 
 .ufo_answer {
-  width: 100px;
-  height: 100px;
+  width: 6vw;
+  height: 6vw;
   position: absolute;
-  top: 60%;
-  right: 45%;
- transform: rotate(-30deg);
- animation: ufo-fly 10s infinite;
+  top: 12vw;
+  right: 50vw;
+  transform: rotate(-30deg);
+  animation: ufo-fly 10s infinite;
 }
 
 .ufo_error {
-  animation: errorUfo 1s, ufo-fly 10s infinite;
+  animation: errorUfo 2s, ufo-fly 10s infinite;
 }
 
 .ufo_win {
-  animation: winUfo 1.5s, ufo-fly 10s infinite;
+  animation: winUfo 2s, ufo-fly 10s infinite;
 }
 
 @keyframes ufo-fly {
@@ -87,9 +101,14 @@ main {
   }
 }
 
+
 .circle {
-  display: none;
   border-radius: 50%;
+  position: relative;
+}
+
+.circle_hover {
+  box-shadow: 0 0 6px 5px rgba(184, 184, 184, 0.7);
 }
 
 .circle:before {
@@ -106,12 +125,12 @@ main {
 }
 
 .sun {
-  width: 90px;
-  height: 90px;
+  width: 4.7vw;
+  height: 4.7vw;
   position: absolute;
-  top: 3%;
-  left: 90%;
-  animation: sun 2s infinite;
+  top: 1vw;
+  right: 1vw;
+  animation: sun 2s 1s infinite;
   background: radial-gradient(circle at 50% 120%, #f5e870, #eb6750 10%, #fbff1a 100%);
 }
 
@@ -130,13 +149,13 @@ main {
 }
 
 .mercury {
-  width: 40px;
-  height: 40px;
+  width: 2.1vw;
+  height: 2.1vw;
   position: absolute;
-  top: 11%;
-  left: 85%;
+  top: 2.5vw;
+  right: 7vw;
   background: linear-gradient(90deg, #d4cfc9 0%, #9999cc 100%);
-  animation: mercury 2s infinite ease-in-out;
+  animation: mercury 2s 1s infinite;
 }
 
 @keyframes mercury {
@@ -157,13 +176,13 @@ main {
 }
 
 .venus {
-  width: 60px;
-  height: 60px;
+  width: 3.1vw;
+  height: 3.1vw;
   position: absolute;
-  top: 13%;
-  left: 76%;
+  top: 2.6vw;
+  right: 11vw;
   background: linear-gradient(-90deg, #ff6699 11%, #ff99ff 100%);
-  animation: venus 2s infinite;
+  animation: venus 2s 1s infinite;
 }
 
 @keyframes venus {
@@ -184,13 +203,13 @@ main {
 }
 
 .earth {
-  width: 50px;
-  height: 50px;
+  width: 2.6vw;
+  height: 2.6vw;
   position: absolute;
-  top: 17%;
-  left: 68%;
+  top: 3.4vw;
+  right: 17vw;
   background: linear-gradient(90deg, #66cc66 0%, #2ae3fc 100%);
-  animation: earth 2s infinite;
+  animation: earth 2s 1s infinite;
 }
 
 @keyframes earth {
@@ -210,44 +229,44 @@ main {
   }
 }
 
-.earth-moon {
-  width: 15px;
-  height: 15px;
+.moon {
+  width: 0.8vw;
+  height: 0.8vw;
   position: absolute;
-  top: 17%;
-  left: 72.5%;
+  top: 3vw;
+  right: 16vw;
   background: linear-gradient(90deg, #5e5c5b 0%, #474443 50%, #b4b1ae 100%);
-  animation: moon 2s infinite;
+  animation: moon 2s 1s infinite;
 }
 
 .mars {
-  width: 40px;
-  height: 40px;
+  width: 2.1vw;
+  height: 2.1vw;
   position: absolute;
-  top: 23%;
-  left: 60%;
+  top: 4vw;
+  right: 22vw;
   background: linear-gradient(90deg, #ff8e44 0%, #ff3300 50%, #993300 100%);
-  animation: mars 2s infinite;
+  animation: mars 2s 1s infinite;
 }
 
-.mars-fobos {
-  width: 15px;
-  height: 15px;
+.fobos {
+  width: 0.8vw;
+  height: 0.8vw;
   position: absolute;
-  top: 17%;
-  left: 63%;
+  top: 3.1vw;
+  right: 21.1vw;
   background: linear-gradient(90deg, #f3be9b 0%, #70564f 50%, #723c20 100%);
-  animation: moon 2s infinite;
+  animation: moon 2s 1s infinite;
 }
 
-.mars-deimos {
-  width: 15px;
-  height: 15px;
+.deimos {
+  width: 0.8vw;
+  height: 0.8vw;
   position: absolute;
-  top: 25%;
-  left: 58%;
+  top: 4.5vw;
+  right: 24.6vw;
   background: linear-gradient(90deg, #f3be9b 0%, #70564f 50%, #665f5b 100%);
-  animation: moon 2s infinite;
+  animation: moon 2s 1s infinite;
 }
 
 @keyframes moon {
@@ -291,13 +310,13 @@ main {
 }
 
 .jupiter {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 30%;
-  left: 38%;
+  top: 6vw;
+  left: 23vw;
   background: linear-gradient(90deg, #ffffcc 0%, #cc9966 62%, #996666 100%);
-  animation: jupiter 2s infinite;
+  animation: jupiter 2s 1s infinite;
 }
 
 @keyframes jupiter {
@@ -323,13 +342,13 @@ main {
 }
 
 .saturn {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 45%;
-  left: 26%;
+  top: 8vw;
+  left: 16vw;
   background: linear-gradient(60deg, #ff6666 0%, #ffcc66 50%, #cccc99 96%);
-  animation: saturn 2s infinite;
+  animation: saturn 2s 1s infinite;
 }
 
 @keyframes saturn {
@@ -355,9 +374,9 @@ main {
 }
 
 .rings {
-  width: 40%;
-  height: 50%;
-  margin: 30%;
+  width: 1.7vw;
+  height: 2vw;
+  margin: 1.1vw;
   border-radius: 100%;
   background: radial-gradient(circle at 50% 50%, #ffffff 0%, #e2d8d1 30%, #88939b 100%);
   transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg);
@@ -366,13 +385,13 @@ main {
 }
 
 .uran {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 60%;
-  left: 15%;
+  top: 10vw;
+  left: 9.5vw;
   background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
-  animation: uran 2s infinite;
+  animation: uran 2s 1s infinite;
 }
 
 @keyframes uran {
@@ -393,13 +412,13 @@ main {
 }
 
 .neptune {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 70%;
-  left: 5%;
+  top: 12vw;
+  left: 3vw;
   background: linear-gradient(80deg, #09bbfe 0%, #5a42ec 100%);
-  animation: neptune 2s infinite;
+  animation: neptune 2s 1s infinite;
 }
 
 @keyframes neptune {
@@ -419,40 +438,39 @@ main {
   }
 }
 
-.visible {
-  display: block;
-}
-
 .animation_stop {
   animation: none;
 }
 
 .css_block {
-  grid-area: css;
   background-color: #263238;
-  position: relative;
-  font-size: 0.94rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-top: 1px solid white;
+  width: 30vw;
+  margin-right: 1rem;
 }
 
 .html_block {
-  grid-area: html;
   background-color: #0a0e14;
   position: relative;
   font-size: 0.94rem;
+  width: 30vw;
 }
 
 .html_text,
 .css_text {
   position: absolute;
-  top: 2.2vw;
-  left: 1.5vw;
-  width: 100%;
+  top: 10.5%;
+  left: 9%;
   font-family: monospace;
   font-size: 1rem;
   line-height: 1.6em;
+  color: #fff;
 
   div {
-    padding-left: 1rem;
+    padding-left: 0.9rem;
     cursor: pointer;
     color: aqua;
   }
@@ -469,8 +487,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 1rem;
-  padding: 0.5rem 0.5rem 0 0;
+  width: 1.2rem;
+  padding: 0.35rem 0.1rem;
   border-right: 1px solid white;
 
   li {
@@ -480,8 +498,53 @@ main {
 
 .level_block {
   grid-area: level_b;
-  background-color: green;
+  background-color: transparent;
+  border-left: 1px solid white;
   margin-left: 2rem;
+  margin-top: 1rem;
+  color: lightgray;
+  text-align: center;
+}
+
+.level_title,
+.level_nav,
+.level_text {
+  border-bottom: 1px solid white;
+  padding: 1rem;
+}
+
+.level_title {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.level_nav {
+  li{
+  margin: 0.7em;
+  padding: 0.7em;
+  list-style: decimal;
+  list-style-position: inside;
+  text-align: left;
+  }
+
+  li:hover {
+    cursor: pointer;
+    color: khaki;
+  }
+}
+
+.right_answer {
+  text-decoration: line-through;
+  color: #66cc66;
+}
+
+.wrong_answer {
+  color: lightsalmon;
+}
+
+.win_text {
+  position: absolute;
+  padding: 2rem;
 }
 
 .title_css,
@@ -498,10 +561,7 @@ main {
 .css_input_selector {
   display: flex;
   justify-content: flex-start;
-  position: absolute;
-  top: 10%;
-  left: 3%;
-  width: 70%;
+  margin: 1rem;
 }
 
 .input_css {
@@ -511,14 +571,86 @@ main {
   border: none;
   width: 100%;
   background-color: honeydew;
+  font-size: 1.05em;
+}
+
+.color_css {
+  color: red;
 }
 
 .input_btn {
   padding: 0.05rem 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
+  color: white;
+  background-color: rgb(36, 36, 36);
+  outline: none;
 }
 
-.color {
-  color: white !important;
+.color_hover {
+  color: rgb(255, 255, 255) !important;
+}
+
+.level_text {
+  padding: 0.5rem;
+  text-align: left;
+  border-top: 1px solid white;
+  p {
+    text-align: left;
+  }
+  span {
+    background-color: rgb(76, 48, 236);
+    padding: 0 0.3em;
+    font-family: monospace;
+  }
+}
+
+.level_now {
+  border-bottom: 1px solid white;
+}
+
+.help_btn,
+.reset_btn {
+  padding: 0.3rem 1.5rem;
+  cursor: pointer;
+  margin: 1rem;
+  color: white;
+  background-color: rgb(36, 36, 36);
+  outline: none;
+}
+
+footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg,  rgba(88, 55, 97, 0.7), rgba(92, 92, 202, 0.5), rgba(4, 4, 231, 0.3), rgba(122, 124, 6, 0.5) );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    padding: 1rem 1rem 0 1rem;
+  }
+}
+
+.author {
+  color: white;
+   
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0 1rem;
+  }
+}
+
+.logo_img {
+  width: 20%;
+  height: 20%;
+}
+
+//media
+
+@media screen and (min-width: 1024px) {
+  .level_nav li {
+    padding: 0.5em;
+  }
 }

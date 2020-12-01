@@ -8,13 +8,25 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
+  height: 100%;
   font-family: "Inter", sans-serif;
   color: #dae0e0;
   line-height: 1.4;
   background-color: #3c3d3d;
+  background-image: url(../images/starfield.jpg);
+}
+
+body {
+  min-height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr auto;
+      grid-template-rows: 1fr auto;
 }
 
 main {
@@ -22,14 +34,27 @@ main {
   margin: 0 auto;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "layout layout level_b" "css html level_b";
-  grid-auto-rows: 23.15vw;
+      grid-template-areas: "layout layout level_b" "editor editor level_b";
   gap: 0.5rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-grid-rows: minmax(max-content, 1fr);
+      grid-template-rows: minmax(-webkit-max-content, 1fr);
+      grid-template-rows: minmax(max-content, 1fr);
+}
+
+.editor {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: editor;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .layout_block {
@@ -37,22 +62,34 @@ main {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: layout;
-  width: 80vw;
+  min-height: 18vw;
+  margin-top: 1rem;
+  border-radius: 10px;
   position: relative;
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(52, 3, 65, 0.5)), color-stop(rgba(4, 4, 231, 0.3)), color-stop(rgba(4, 4, 231, 0.3)), to(rgba(122, 124, 6, 0.3))), url(../images/starfield.jpg);
   background-image: linear-gradient(90deg, rgba(52, 3, 65, 0.5), rgba(4, 4, 231, 0.3), rgba(4, 4, 231, 0.3), rgba(122, 124, 6, 0.3)), url(../images/starfield.jpg);
 }
 
 .ufo_answer {
-  width: 100px;
-  height: 100px;
+  width: 6vw;
+  height: 6vw;
   position: absolute;
-  top: 60%;
-  right: 45%;
+  top: 12vw;
+  right: 50vw;
   -webkit-transform: rotate(-30deg);
           transform: rotate(-30deg);
   -webkit-animation: ufo-fly 10s infinite;
           animation: ufo-fly 10s infinite;
+}
+
+.ufo_error {
+  -webkit-animation: errorUfo 2s, ufo-fly 10s infinite;
+          animation: errorUfo 2s, ufo-fly 10s infinite;
+}
+
+.ufo_win {
+  -webkit-animation: winUfo 2s, ufo-fly 10s infinite;
+          animation: winUfo 2s, ufo-fly 10s infinite;
 }
 
 @-webkit-keyframes ufo-fly {
@@ -85,115 +122,54 @@ main {
   }
 }
 
-.ufo_error {
-  display: none;
-  background: url(../images/ufo_error.png) no-repeat;
-  -webkit-animation: shake 1s infinite;
-          animation: shake 1s infinite;
-}
-
-@-webkit-keyframes shake {
+@-webkit-keyframes winUfo {
   0% {
-    -webkit-transform: translate(2px, 1px) rotate(-30deg);
-            transform: translate(2px, 1px) rotate(-30deg);
-  }
-  10% {
-    -webkit-transform: translate(-1px, -2px) rotate(-31deg);
-            transform: translate(-1px, -2px) rotate(-31deg);
-  }
-  20% {
-    -webkit-transform: translate(-3px, 0px) rotate(-31deg);
-            transform: translate(-3px, 0px) rotate(-31deg);
-  }
-  30% {
-    -webkit-transform: translate(0px, 2px) rotate(-30deg);
-            transform: translate(0px, 2px) rotate(-30deg);
-  }
-  40% {
-    -webkit-transform: translate(1px, -1px) rotate(-31deg);
-            transform: translate(1px, -1px) rotate(-31deg);
-  }
-  50% {
-    -webkit-transform: translate(-1px, 2px) rotate(-31deg);
-            transform: translate(-1px, 2px) rotate(-31deg);
-  }
-  60% {
-    -webkit-transform: translate(-3px, 1px) rotate(-30deg);
-            transform: translate(-3px, 1px) rotate(-30deg);
-  }
-  70% {
-    -webkit-transform: translate(2px, 1px) rotate(-31deg);
-            transform: translate(2px, 1px) rotate(-31deg);
-  }
-  80% {
-    -webkit-transform: translate(-1px, -1px) rotate(-31deg);
-            transform: translate(-1px, -1px) rotate(-31deg);
-  }
-  90% {
-    -webkit-transform: translate(2px, 2px) rotate(-30deg);
-            transform: translate(2px, 2px) rotate(-30deg);
+    opacity: 1;
+    background: url(../images/ufo_win.png) no-repeat;
   }
   100% {
-    -webkit-transform: translate(1px, -2px) rotate(-31deg);
-            transform: translate(1px, -2px) rotate(-31deg);
+    background: url(../images/ufo.png) no-repeat;
   }
 }
 
-@keyframes shake {
+@keyframes winUfo {
   0% {
-    -webkit-transform: translate(2px, 1px) rotate(-30deg);
-            transform: translate(2px, 1px) rotate(-30deg);
-  }
-  10% {
-    -webkit-transform: translate(-1px, -2px) rotate(-31deg);
-            transform: translate(-1px, -2px) rotate(-31deg);
-  }
-  20% {
-    -webkit-transform: translate(-3px, 0px) rotate(-31deg);
-            transform: translate(-3px, 0px) rotate(-31deg);
-  }
-  30% {
-    -webkit-transform: translate(0px, 2px) rotate(-30deg);
-            transform: translate(0px, 2px) rotate(-30deg);
-  }
-  40% {
-    -webkit-transform: translate(1px, -1px) rotate(-31deg);
-            transform: translate(1px, -1px) rotate(-31deg);
-  }
-  50% {
-    -webkit-transform: translate(-1px, 2px) rotate(-31deg);
-            transform: translate(-1px, 2px) rotate(-31deg);
-  }
-  60% {
-    -webkit-transform: translate(-3px, 1px) rotate(-30deg);
-            transform: translate(-3px, 1px) rotate(-30deg);
-  }
-  70% {
-    -webkit-transform: translate(2px, 1px) rotate(-31deg);
-            transform: translate(2px, 1px) rotate(-31deg);
-  }
-  80% {
-    -webkit-transform: translate(-1px, -1px) rotate(-31deg);
-            transform: translate(-1px, -1px) rotate(-31deg);
-  }
-  90% {
-    -webkit-transform: translate(2px, 2px) rotate(-30deg);
-            transform: translate(2px, 2px) rotate(-30deg);
+    opacity: 1;
+    background: url(../images/ufo_win.png) no-repeat;
   }
   100% {
-    -webkit-transform: translate(1px, -2px) rotate(-31deg);
-            transform: translate(1px, -2px) rotate(-31deg);
+    background: url(../images/ufo.png) no-repeat;
   }
 }
 
-.ufo_win {
-  display: none;
-  background: url(../images/ufo_win.png) no-repeat;
+@-webkit-keyframes errorUfo {
+  0% {
+    opacity: 1;
+    background: url(../images/ufo_error.png) no-repeat;
+  }
+  100% {
+    background: url(../images/ufo.png) no-repeat;
+  }
+}
+
+@keyframes errorUfo {
+  0% {
+    opacity: 1;
+    background: url(../images/ufo_error.png) no-repeat;
+  }
+  100% {
+    background: url(../images/ufo.png) no-repeat;
+  }
 }
 
 .circle {
-  display: none;
   border-radius: 50%;
+  position: relative;
+}
+
+.circle_hover {
+  -webkit-box-shadow: 0 0 6px 5px rgba(184, 184, 184, 0.7);
+          box-shadow: 0 0 6px 5px rgba(184, 184, 184, 0.7);
 }
 
 .circle:before {
@@ -211,13 +187,13 @@ main {
 }
 
 .sun {
-  width: 90px;
-  height: 90px;
+  width: 4.7vw;
+  height: 4.7vw;
   position: absolute;
-  top: 3%;
-  left: 90%;
-  -webkit-animation: sun 2s infinite;
-          animation: sun 2s infinite;
+  top: 1vw;
+  right: 1vw;
+  -webkit-animation: sun 2s 1s infinite;
+          animation: sun 2s 1s infinite;
   background: radial-gradient(circle at 50% 120%, #f5e870, #eb6750 10%, #fbff1a 100%);
 }
 
@@ -252,15 +228,15 @@ main {
 }
 
 .mercury {
-  width: 40px;
-  height: 40px;
+  width: 2.1vw;
+  height: 2.1vw;
   position: absolute;
-  top: 11%;
-  left: 85%;
+  top: 2.5vw;
+  right: 7vw;
   background: -webkit-gradient(linear, left top, right top, from(#d4cfc9), to(#9999cc));
   background: linear-gradient(90deg, #d4cfc9 0%, #9999cc 100%);
-  -webkit-animation: mercury 1s 1.5s infinite ease-in-out;
-          animation: mercury 1s 1.5s infinite ease-in-out;
+  -webkit-animation: mercury 2s 1s infinite;
+          animation: mercury 2s 1s infinite;
 }
 
 @-webkit-keyframes mercury {
@@ -277,8 +253,8 @@ main {
     background: linear-gradient(90deg, #9999cc 0%, #d4cfc9 100%);
   }
   100% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#d4cfc9), to(#9999cc));
     background: linear-gradient(90deg, #d4cfc9 0%, #9999cc 100%);
   }
@@ -298,23 +274,23 @@ main {
     background: linear-gradient(90deg, #9999cc 0%, #d4cfc9 100%);
   }
   100% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#d4cfc9), to(#9999cc));
     background: linear-gradient(90deg, #d4cfc9 0%, #9999cc 100%);
   }
 }
 
 .venus {
-  width: 60px;
-  height: 60px;
+  width: 3.1vw;
+  height: 3.1vw;
   position: absolute;
-  top: 13%;
-  left: 76%;
+  top: 2.6vw;
+  right: 11vw;
   background: -webkit-gradient(linear, right top, left top, color-stop(11%, #ff6699), to(#ff99ff));
   background: linear-gradient(-90deg, #ff6699 11%, #ff99ff 100%);
-  -webkit-animation: venus 1s 1.5s infinite;
-          animation: venus 1s 1.5s infinite;
+  -webkit-animation: venus 2s 1s infinite;
+          animation: venus 2s 1s infinite;
 }
 
 @-webkit-keyframes venus {
@@ -331,8 +307,8 @@ main {
     background: linear-gradient(-90deg, #ff99ff 11%, #ff6699 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, right top, left top, color-stop(11%, #ff6699), to(#ff99ff));
     background: linear-gradient(-90deg, #ff6699 11%, #ff99ff 100%);
   }
@@ -352,23 +328,23 @@ main {
     background: linear-gradient(-90deg, #ff99ff 11%, #ff6699 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, right top, left top, color-stop(11%, #ff6699), to(#ff99ff));
     background: linear-gradient(-90deg, #ff6699 11%, #ff99ff 100%);
   }
 }
 
 .earth {
-  width: 50px;
-  height: 50px;
+  width: 2.6vw;
+  height: 2.6vw;
   position: absolute;
-  top: 17%;
-  left: 68%;
+  top: 3.4vw;
+  right: 17vw;
   background: -webkit-gradient(linear, left top, right top, from(#66cc66), to(#2ae3fc));
   background: linear-gradient(90deg, #66cc66 0%, #2ae3fc 100%);
-  -webkit-animation: earth 1s 1.5s infinite;
-          animation: earth 1s 1.5s infinite;
+  -webkit-animation: earth 2s 1s infinite;
+          animation: earth 2s 1s infinite;
 }
 
 @-webkit-keyframes earth {
@@ -385,8 +361,8 @@ main {
     background: linear-gradient(90deg, #2ae3fc 0%, #66cc66 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#66cc66), to(#2ae3fc));
     background: linear-gradient(90deg, #66cc66 0%, #2ae3fc 100%);
   }
@@ -406,59 +382,59 @@ main {
     background: linear-gradient(90deg, #2ae3fc 0%, #66cc66 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#66cc66), to(#2ae3fc));
     background: linear-gradient(90deg, #66cc66 0%, #2ae3fc 100%);
   }
 }
 
-.earth-moon {
-  width: 15px;
-  height: 15px;
+.moon {
+  width: 0.8vw;
+  height: 0.8vw;
   position: absolute;
-  top: 17%;
-  left: 72.5%;
+  top: 3vw;
+  right: 16vw;
   background: -webkit-gradient(linear, left top, right top, from(#5e5c5b), color-stop(50%, #474443), to(#b4b1ae));
   background: linear-gradient(90deg, #5e5c5b 0%, #474443 50%, #b4b1ae 100%);
-  -webkit-animation: moon 1s 1.5s infinite;
-          animation: moon 1s 1.5s infinite;
+  -webkit-animation: moon 2s 1s infinite;
+          animation: moon 2s 1s infinite;
 }
 
 .mars {
-  width: 40px;
-  height: 40px;
+  width: 2.1vw;
+  height: 2.1vw;
   position: absolute;
-  top: 23%;
-  left: 60%;
+  top: 4vw;
+  right: 22vw;
   background: -webkit-gradient(linear, left top, right top, from(#ff8e44), color-stop(50%, #ff3300), to(#993300));
   background: linear-gradient(90deg, #ff8e44 0%, #ff3300 50%, #993300 100%);
-  -webkit-animation: mars 1s 1.5s infinite;
-          animation: mars 1s 1.5s infinite;
+  -webkit-animation: mars 2s 1s infinite;
+          animation: mars 2s 1s infinite;
 }
 
-.mars-fobos {
-  width: 15px;
-  height: 15px;
+.fobos {
+  width: 0.8vw;
+  height: 0.8vw;
   position: absolute;
-  top: 17%;
-  left: 63%;
+  top: 3.1vw;
+  right: 21.1vw;
   background: -webkit-gradient(linear, left top, right top, from(#f3be9b), color-stop(50%, #70564f), to(#723c20));
   background: linear-gradient(90deg, #f3be9b 0%, #70564f 50%, #723c20 100%);
-  -webkit-animation: moon 1s 1.5s infinite;
-          animation: moon 1s 1.5s infinite;
+  -webkit-animation: moon 2s 1s infinite;
+          animation: moon 2s 1s infinite;
 }
 
-.mars-deimos {
-  width: 15px;
-  height: 15px;
+.deimos {
+  width: 0.8vw;
+  height: 0.8vw;
   position: absolute;
-  top: 25%;
-  left: 58%;
+  top: 4.5vw;
+  right: 24.6vw;
   background: -webkit-gradient(linear, left top, right top, from(#f3be9b), color-stop(50%, #70564f), to(#665f5b));
   background: linear-gradient(90deg, #f3be9b 0%, #70564f 50%, #665f5b 100%);
-  -webkit-animation: moon 1s 1.5s infinite;
-          animation: moon 1s 1.5s infinite;
+  -webkit-animation: moon 2s 1s infinite;
+          animation: moon 2s 1s infinite;
 }
 
 @-webkit-keyframes moon {
@@ -513,14 +489,14 @@ main {
     background: linear-gradient(90deg, #993300 0%, #ff8e44 50%, #ff3300 100%);
   }
   66% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#ff3300), color-stop(50%, #993300), to(#ff8e44));
     background: linear-gradient(90deg, #ff3300 0%, #993300 50%, #ff8e44 100%);
   }
   100% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
     background: -webkit-gradient(linear, left top, right top, from(#ff8e44), color-stop(50%, #ff3300), to(#993300));
     background: linear-gradient(90deg, #ff8e44 0%, #ff3300 50%, #993300 100%);
   }
@@ -540,29 +516,29 @@ main {
     background: linear-gradient(90deg, #993300 0%, #ff8e44 50%, #ff3300 100%);
   }
   66% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#ff3300), color-stop(50%, #993300), to(#ff8e44));
     background: linear-gradient(90deg, #ff3300 0%, #993300 50%, #ff8e44 100%);
   }
   100% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
     background: -webkit-gradient(linear, left top, right top, from(#ff8e44), color-stop(50%, #ff3300), to(#993300));
     background: linear-gradient(90deg, #ff8e44 0%, #ff3300 50%, #993300 100%);
   }
 }
 
 .jupiter {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 30%;
-  left: 38%;
+  top: 6vw;
+  left: 23vw;
   background: -webkit-gradient(linear, left top, right top, from(#ffffcc), color-stop(62%, #cc9966), to(#996666));
   background: linear-gradient(90deg, #ffffcc 0%, #cc9966 62%, #996666 100%);
-  -webkit-animation: jupiter 1s 1s infinite;
-          animation: jupiter 1s 1s infinite;
+  -webkit-animation: jupiter 2s 1s infinite;
+          animation: jupiter 2s 1s infinite;
 }
 
 @-webkit-keyframes jupiter {
@@ -579,14 +555,14 @@ main {
     background: linear-gradient(90deg, #996666 0%, #ffffcc 62%, #cc9966 100%);
   }
   66% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#cc9966), color-stop(62%, #996666), to(#ffffcc));
     background: linear-gradient(90deg, #cc9966 0%, #996666 62%, #ffffcc 100%);
   }
   100% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
     background: -webkit-gradient(linear, left top, right top, from(#ffffcc), color-stop(62%, #cc9966), to(#996666));
     background: linear-gradient(90deg, #ffffcc 0%, #cc9966 62%, #996666 100%);
   }
@@ -606,28 +582,28 @@ main {
     background: linear-gradient(90deg, #996666 0%, #ffffcc 62%, #cc9966 100%);
   }
   66% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: -webkit-gradient(linear, left top, right top, from(#cc9966), color-stop(62%, #996666), to(#ffffcc));
     background: linear-gradient(90deg, #cc9966 0%, #996666 62%, #ffffcc 100%);
   }
   100% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
     background: -webkit-gradient(linear, left top, right top, from(#ffffcc), color-stop(62%, #cc9966), to(#996666));
     background: linear-gradient(90deg, #ffffcc 0%, #cc9966 62%, #996666 100%);
   }
 }
 
 .saturn {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 45%;
-  left: 26%;
+  top: 8vw;
+  left: 16vw;
   background: linear-gradient(60deg, #ff6666 0%, #ffcc66 50%, #cccc99 96%);
-  -webkit-animation: saturn 1s 1s infinite;
-          animation: saturn 1s 1s infinite;
+  -webkit-animation: saturn 2s 1s infinite;
+          animation: saturn 2s 1s infinite;
 }
 
 @-webkit-keyframes saturn {
@@ -642,13 +618,13 @@ main {
     background: linear-gradient(60deg, #cccc99 0%, #ff6666 50%, #ffcc66 96%);
   }
   66% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: linear-gradient(60deg, #ffcc66 0%, #cccc99 50%, #ff6666 96%);
   }
   100% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
     background: linear-gradient(60deg, #ff6666 0%, #ffcc66 50%, #cccc99 96%);
   }
 }
@@ -665,21 +641,21 @@ main {
     background: linear-gradient(60deg, #cccc99 0%, #ff6666 50%, #ffcc66 96%);
   }
   66% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: linear-gradient(60deg, #ffcc66 0%, #cccc99 50%, #ff6666 96%);
   }
   100% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
     background: linear-gradient(60deg, #ff6666 0%, #ffcc66 50%, #cccc99 96%);
   }
 }
 
 .rings {
-  width: 40%;
-  height: 50%;
-  margin: 30%;
+  width: 1.7vw;
+  height: 2vw;
+  margin: 1.1vw;
   border-radius: 100%;
   background: radial-gradient(circle at 50% 50%, #ffffff 0%, #e2d8d1 30%, #88939b 100%);
   -webkit-transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg);
@@ -690,14 +666,14 @@ main {
 }
 
 .uran {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 60%;
-  left: 15%;
+  top: 10vw;
+  left: 9.5vw;
   background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
-  -webkit-animation: uran 1s 2s infinite;
-          animation: uran 1s 2s infinite;
+  -webkit-animation: uran 2s 1s infinite;
+          animation: uran 2s 1s infinite;
 }
 
 @-webkit-keyframes uran {
@@ -712,8 +688,8 @@ main {
     background: linear-gradient(80deg, #9999cc 0%, #253a4b 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
   }
 }
@@ -730,21 +706,21 @@ main {
     background: linear-gradient(80deg, #9999cc 0%, #253a4b 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
   }
 }
 
 .neptune {
-  width: 80px;
-  height: 80px;
+  width: 4.2vw;
+  height: 4.2vw;
   position: absolute;
-  top: 70%;
-  left: 5%;
+  top: 12vw;
+  left: 3vw;
   background: linear-gradient(80deg, #09bbfe 0%, #5a42ec 100%);
-  -webkit-animation: neptune 1s 2s infinite;
-          animation: neptune 1s 2s infinite;
+  -webkit-animation: neptune 2s 1s infinite;
+          animation: neptune 2s 1s infinite;
 }
 
 @-webkit-keyframes neptune {
@@ -759,8 +735,8 @@ main {
     background: linear-gradient(80deg, #5a42ec 0%, #09bbfe 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: linear-gradient(80deg, #09bbfe 0%, #5a42ec 100%);
   }
 }
@@ -777,14 +753,10 @@ main {
     background: linear-gradient(80deg, #5a42ec 0%, #09bbfe 100%);
   }
   100% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
     background: linear-gradient(80deg, #09bbfe 0%, #5a42ec 100%);
   }
-}
-
-.visible {
-  display: block;
 }
 
 .animation_stop {
@@ -793,55 +765,52 @@ main {
 }
 
 .css_block {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
   grid-area: css;
   background-color: #263238;
-  position: relative;
-  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-top: 1px solid white;
+  width: 30vw;
+  margin-right: 1rem;
 }
 
 .html_block {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: html;
   background-color: #0a0e14;
   position: relative;
   font-size: 0.94rem;
+  width: 30vw;
 }
 
 .html_text,
 .css_text {
   position: absolute;
-  top: 2.2vw;
-  left: 1.5vw;
-  width: 100%;
+  top: 9.6%;
+  left: 9%;
   font-family: monospace;
   font-size: 1rem;
-  line-height: 1.25rem;
-}
-
-.html_text textarea,
-.css_text textarea {
-  height: 18.5vw;
-  width: 80%;
-  background-color: #0a0e14;
-  color: white;
-  border: none;
-  resize: none;
-  outline: none;
+  line-height: 1.6em;
+  color: #fff;
 }
 
 .html_text div,
 .css_text div {
-  padding-left: 1rem;
+  padding-left: 0.9rem;
   cursor: pointer;
   color: aqua;
 }
 
-.html_text span,
-.css_text span {
-  color: yellow;
+.css_text {
+  top: 5.4vw;
+  color: #88939b;
 }
 
 .numbers {
@@ -857,13 +826,13 @@ main {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  width: 1rem;
-  padding: 0.5rem 0.5rem 0 0;
+  width: 1.2rem;
+  padding: 0.35rem 0.1rem;
   border-right: 1px solid white;
 }
 
 .numbers li {
-  padding-bottom: 0.1rem;
+  padding-bottom: 0.12rem;
 }
 
 .level_block {
@@ -871,15 +840,57 @@ main {
   -ms-grid-row-span: 2;
   -ms-grid-column: 3;
   grid-area: level_b;
-  background-color: green;
+  background-color: transparent;
+  border-left: 1px solid white;
   margin-left: 2rem;
+  margin-top: 1rem;
+  color: lightgray;
+  text-align: center;
+}
+
+.level_title,
+.level_nav,
+.level_text {
+  border-bottom: 1px solid white;
+  padding: 1rem;
+}
+
+.level_title {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.level_nav li {
+  margin: 0.7em;
+  padding: 0.7em;
+  list-style: decimal;
+  list-style-position: inside;
+  text-align: left;
+}
+
+.level_nav li:hover {
+  cursor: pointer;
+  color: khaki;
+}
+
+.right_answer {
+  text-decoration: line-through;
+  color: #66cc66;
+}
+
+.wrong_answer {
+  color: lightsalmon;
+}
+
+.win_text {
+  position: absolute;
+  padding: 2rem;
 }
 
 .title_css,
 .title_html {
   font-size: 1em;
   padding: 0.5rem 1rem 0.5rem;
-  margin: 0 0 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -887,19 +898,18 @@ main {
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: black;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
-.title_html {
-  margin: 0;
-}
-
-form {
+.css_input_selector {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 1rem;
 }
 
 .input_css {
@@ -909,11 +919,96 @@ form {
   border: none;
   width: 100%;
   background-color: honeydew;
+  font-size: 1.05em;
+}
+
+.color_css {
+  color: red;
 }
 
 .input_btn {
   padding: 0.05rem 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
+  color: white;
+  background-color: #242424;
+  outline: none;
+}
+
+.color_hover {
+  color: white !important;
+}
+
+.level_text {
+  padding: 0.5rem;
+  text-align: left;
+  border-top: 1px solid white;
+}
+
+.level_text p {
+  text-align: left;
+}
+
+.level_text span {
+  background-color: #4c30ec;
+  padding: 0 0.3em;
+  font-family: monospace;
+}
+
+.level_now {
+  border-bottom: 1px solid white;
+}
+
+.help_btn,
+.reset_btn {
+  padding: 0.3rem 1.5rem;
+  cursor: pointer;
+  margin: 1rem;
+  color: white;
+  background-color: #242424;
+  outline: none;
+}
+
+footer {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 3;
+  margin-top: 0.5rem;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(88, 55, 97, 0.7)), color-stop(rgba(92, 92, 202, 0.5)), color-stop(rgba(4, 4, 231, 0.3)), to(rgba(122, 124, 6, 0.5)));
+  background: linear-gradient(90deg, rgba(88, 55, 97, 0.7), rgba(92, 92, 202, 0.5), rgba(4, 4, 231, 0.3), rgba(122, 124, 6, 0.5));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer div {
+  padding: 1rem 1rem 0 1rem;
+}
+
+.author {
+  color: white;
+}
+
+.author a {
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+
+.logo_img {
+  width: 20%;
+  height: 20%;
+}
+
+@media screen and (min-width: 1024px) {
+  .level_nav li {
+    padding: 0.5em;
+  }
 }
 /*# sourceMappingURL=index.css.map */
