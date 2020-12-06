@@ -1,23 +1,25 @@
 import '../styles/index.scss';
 import {
-  ENTER_BTN, RESET_BTN, HELP_BTN, INPUT, NAV_LEVEL, LAYOUT, HTML_VIEWER, writeHTML, inputAnswer,
-} from './constants';
-import {
-  chooseLevelNav, helpAnswer, resetGame, layoutMouseOver, layoutMouseOut,
-  htmlBlockMouseOver, htmlBlockMouseOut, clickEnterBtn,
-} from './helpers/helpers';
+  RESET_BTN, HELP_BTN, HTML_VIEWER, inputAnswer, createLevel,
+} from './constants/index';
+import { HelpersClass } from './helpers/index';
 
-NAV_LEVEL.addEventListener('click', chooseLevelNav);
-HELP_BTN.addEventListener('click', helpAnswer);
-RESET_BTN.addEventListener('click', resetGame);
-LAYOUT.addEventListener('mouseover', layoutMouseOver);
-LAYOUT.addEventListener('mouseout', layoutMouseOut);
-HTML_VIEWER.addEventListener('mouseover', htmlBlockMouseOver);
-HTML_VIEWER.addEventListener('mouseout', htmlBlockMouseOut);
+const helpersClass = new HelpersClass();
 
-ENTER_BTN.addEventListener('click', clickEnterBtn);
-INPUT.addEventListener('keydown', clickEnterBtn);
+document.addEventListener('click', helpersClass.chooseLevelNav);
+HELP_BTN.addEventListener('click', HelpersClass.helpAnswer);
+RESET_BTN.addEventListener('click', HelpersClass.resetGame);
+document.addEventListener('mouseover', HelpersClass.layoutMouseOver);
+document.addEventListener('mouseout', HelpersClass.layoutMouseOut);
+HTML_VIEWER.addEventListener('mouseover', HelpersClass.htmlBlockMouseOver);
+HTML_VIEWER.addEventListener('mouseout', HelpersClass.htmlBlockMouseOut);
+document.addEventListener('click', HelpersClass.clickEnterBtn);
+document.addEventListener('keydown', HelpersClass.clickEnterBtn);
+document.querySelector('.menu__btn').addEventListener('click', HelpersClass.menuBurger);
+document.getElementById('overlay').addEventListener('click', HelpersClass.overlayClick);
 
 document.addEventListener('DOMContentLoaded', () => {
-  writeHTML.templateHTMLCode(inputAnswer.level);
+  createLevel.templateHTMLCode(inputAnswer.level);
+  document.querySelector('.ufo_answer > img').src = './assets/images/ufo.png';
+  document.querySelector('.logo_img').src = './assets/images/logo_rsschool.png';
 });
