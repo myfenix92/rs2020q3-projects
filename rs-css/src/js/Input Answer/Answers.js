@@ -25,7 +25,7 @@ export const InputAnswer = class {
       this.level = this.levelBuffer;
       setLocalStorageData('level', this.level);
       setLocalStorageData('level_item', document.querySelector('.level_nav').innerHTML);
-      if (this.level !== htmlTextLength) {
+      if (this.level !== htmlTextLength + 1) {
         createLevel.templateHTMLCode(this.level);
       } else {
         this.rightAnswers = 0;
