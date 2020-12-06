@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>RS-CSS</title>
 </head>
-
 <body>
   <main>
     <div class="layout_block"></div>
+    <div class="title hide"></div>
     <div class="ufo_answer">
-      <img src="../images/ufo.png" alt="">
+      <img alt="">
     </div>
     <div class="editor">
       <div class="css_block">
         <div class="css_input_selector">
-          <input type="text" class="input_css input_anim" placeholder="Type in a CSS selector">
+          <input type="text" class="input_css" placeholder="Type in a CSS selector">
           <button class="input_btn">Enter</button>
         </div>
         <p class="level_text"></p>
-        <!-- <p class="facts_text">Some text</p> -->
+        <p class="facts_text"></p>
       </div>
       <div class="html_block">
         <p class="title_html">HTML Viewer <span class="html_file">space.html</span></p>
@@ -49,7 +48,10 @@
         </div>
       </div>
     </div>
-
+      <input id="menu__toggle" type="checkbox" />
+    <label class="menu__btn" for="menu__toggle">
+      <span></span>
+    </label>
     <div class="level_block">
       <p class="level_title">Выберите уровень:</p>
       <ul class="level_nav">
@@ -57,11 +59,12 @@
       <button class="help_btn">Help</button>
       <button class="reset_btn">Reset</button>
     </div>
+    <div id="overlay"></div>
   </main>
   <footer>
     <div class="logo">
       <a href="https://rs.school/js/" target="_blank">
-        <img src="./images/logo_rsschool.png" alt="" class="logo_img">
+        <img alt="" class="logo_img">
       </a>
     </div>
     <div class="year">
@@ -70,8 +73,6 @@
     <div class="author">
       <a href="https://github.com/myfenix92">Github myfenix92</a>
     </div>
-
-
   </footer>
 </body>
 
