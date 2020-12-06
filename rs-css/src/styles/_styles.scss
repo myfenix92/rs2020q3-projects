@@ -21,6 +21,10 @@ body {
   grid-template-rows: 1fr auto;
 }
 
+#menu__toggle {
+	display: none;
+}
+
 main {
   width: 100%;
   margin: 0 auto;
@@ -42,7 +46,7 @@ main {
 
 .layout_block {
   grid-area: layout;
-  min-height: 18vw;
+  max-height: 30vw;
   margin-top: 2vw;
   border-radius: 10px;
   position: relative;
@@ -85,9 +89,11 @@ main {
   0% {
     opacity: 1;
     background: url(../images/ufo_win.png) no-repeat;
+    background-size: contain;
   }
   100% {
     background: url(../images/ufo.png) no-repeat;
+    background-size: contain;
   }
 }
 
@@ -95,9 +101,11 @@ main {
   0% {
     opacity: 1;
     background: url(../images/ufo_error.png) no-repeat;
+    background-size: contain;
   }
   100% {
     background: url(../images/ufo.png) no-repeat;
+    background-size: contain;
   }
 }
 
@@ -125,11 +133,11 @@ main {
 }
 
 .sun {
-  width: 4.7vw;
-  height: 4.7vw;
+  width: 5.3vw;
+  height: 5.3vw;
   position: absolute;
-  top: 1vw;
-  right: 1vw;
+  top: 0.5vw;
+  right: 0.5vw;
   animation: sun 2s 1s infinite;
   background: radial-gradient(circle at 50% 120%, #f5e870, #eb6750 10%, #fbff1a 100%);
 }
@@ -390,24 +398,24 @@ main {
   position: absolute;
   top: 10vw;
   left: 9.5vw;
-  background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
+  background: linear-gradient(80deg, #5a8ab1 0%, #9999cc 100%);
   animation: uran 2s 1s infinite;
 }
 
 @keyframes uran {
   0% {
     transform: scale(1);
-    background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
+    background: linear-gradient(80deg, #5a8ab1 0%, #9999cc 100%);
   }
 
   50% {
     transform: translateY(-30%);
-    background: linear-gradient(80deg, #9999cc 0%, #253a4b 100%);
+    background: linear-gradient(80deg, #9999cc 0%, #5a8ab1 100%);
   }
 
   100% {
     transform: scale(0.95);
-    background: linear-gradient(80deg, #253a4b 0%, #9999cc 100%);
+    background: linear-gradient(80deg, #5a8ab1 0%, #9999cc 100%);
   }
 }
 
@@ -455,14 +463,12 @@ main {
 .html_block {
   background-color: #0a0e14;
   position: relative;
-  font-size: 0.94rem;
-  width: 30vw;
+  width: 33vw;
 }
 
-.html_text,
-.css_text {
+.html_text {
   position: absolute;
-  top: 10.5%;
+  top: 9.5%;
   left: 9%;
   font-family: monospace;
   font-size: 1rem;
@@ -488,12 +494,22 @@ main {
   flex-direction: column;
   align-items: flex-end;
   width: 1.2rem;
-  padding: 0.35rem 0.1rem;
+  padding: 0 0.35rem 0.1rem;
   border-right: 1px solid white;
 
   li {
     padding-bottom: 0.12rem;
   }
+}
+
+.title_html {
+  font-size: 1em;
+  padding: 0.5rem 1rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .level_block {
@@ -520,7 +536,7 @@ main {
 
 .level_nav {
   li{
-  margin: 0.7em;
+  margin: 0.5em;
   padding: 0.7em;
   list-style: decimal;
   list-style-position: inside;
@@ -531,6 +547,34 @@ main {
     cursor: pointer;
     color: khaki;
   }
+}
+
+.color_hover {
+  color: rgb(255, 255, 255) !important;
+}
+
+.level_text,
+.facts_text {
+  padding: 0.5rem;
+  text-align: left;
+  border-top: 1px solid white;
+  p {
+    text-align: left;
+  }
+  span {
+    background-color: rgb(48, 236, 148);
+    color: black;
+    padding: 0 0.3em;
+    font-family: monospace;
+  }
+}
+
+.facts_text {
+  font-size: 0.9rem;
+}
+
+.level_now {
+  border-bottom: 1px solid white;
 }
 
 .right_answer {
@@ -545,17 +589,6 @@ main {
 .win_text {
   position: absolute;
   padding: 2rem;
-}
-
-.title_css,
-.title_html {
-  font-size: 1em;
-  padding: 0.5rem 1rem 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  background-color: black;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
 }
 
 .css_input_selector {
@@ -574,10 +607,6 @@ main {
   font-size: 1.05em;
 }
 
-.color_css {
-  color: red;
-}
-
 .input_btn {
   padding: 0.05rem 1rem;
   margin: 0 0.5rem;
@@ -587,33 +616,29 @@ main {
   outline: none;
 }
 
-.color_hover {
-  color: rgb(255, 255, 255) !important;
+.title {
+  position: absolute;
+  padding: 0.3em;
+  font-size: 0.8em;
+  background-color: rgb(127, 196, 228);
+  color: black;
+  border: 2px solid black;
+  text-align: center;
 }
 
-.level_text {
-  padding: 0.5rem;
-  text-align: left;
-  border-top: 1px solid white;
-  p {
-    text-align: left;
-  }
-  span {
-    background-color: rgb(76, 48, 236);
-    padding: 0 0.3em;
-    font-family: monospace;
-  }
+.show {
+  display: inline-block;
 }
 
-.level_now {
-  border-bottom: 1px solid white;
+.hide {
+  display: none;
 }
 
 .help_btn,
 .reset_btn {
   padding: 0.3rem 1.5rem;
   cursor: pointer;
-  margin: 1rem;
+  margin: 1rem 1rem 0.5rem;
   color: white;
   background-color: rgb(36, 36, 36);
   outline: none;
@@ -649,8 +674,340 @@ footer {
 
 //media
 
-@media screen and (min-width: 1024px) {
+@media (max-width: 1023px) and (min-width: 800px) {
+
+  .title {
+    padding: 0.2em;
+    font-size: 0.7em;
+  }
+
   .level_nav li {
     padding: 0.5em;
+  }
+  
+  .filter_menu {
+		background-color: #2D303A;
+    opacity: 50%;
+    width: 100vw;
+    height: 200vh;
+    position: fixed;
+		z-index: 6;
+	}
+
+	#menu__toggle {
+		opacity: 0;
+	}
+
+	#menu__toggle:checked~.menu__btn>span {
+		transform: rotate(45deg);
+	}
+
+	#menu__toggle:checked~.menu__btn>span::before {
+		top: 0;
+		transform: rotate(0);
+	}
+
+	#menu__toggle:checked~.menu__btn>span::after {
+		top: 0;
+		transform: rotate(90deg);
+	}
+
+	#menu__toggle:checked~.level_block {
+		visibility: visible;
+		right: 0;
+	}
+
+	.menu__btn {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top: 3vw;
+    right: 3vw;
+    width: 4vw;
+    height: 4vw;
+		cursor: pointer;
+		z-index: 11;
+	}
+
+	.menu__btn>span,
+	.menu__btn>span::before,
+	.menu__btn>span::after {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color: #fff;
+		transition-duration: .25s;
+	}
+
+	.menu__btn>span::before {
+		content: '';
+		top: -10px;
+	}
+
+	.menu__btn>span::after {
+		content: '';
+		top: 10px;
+	}
+
+	.level_block {
+		z-index: 10;
+		display: block;
+		position: fixed;
+		visibility: hidden;
+		top: 0;
+		right: -100%;
+		height: 100%;
+    margin: 0;
+    padding-top: 3.5rem;
+		background-image: url(../images/starfield.jpg);
+		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+		transition-duration: .25s;
+	}
+  
+  .ufo_answer > img {
+    width: 100%;
+  }
+  
+  .numbers,
+  .html_text {
+    font-size: 0.9rem;
+  }
+
+  .html_block,
+  .css_block {
+    width: 40vw;
+  }
+
+  .html_text {
+    top: 10.3%;
+    line-height: 1.13rem;
+  }
+}
+
+@media (max-width: 799px) and (min-width: 600px) {
+
+  .title {
+    padding: 0.2em;
+    font-size: 0.6em;
+  }
+  
+  .filter_menu {
+		background-color: #2D303A;
+    opacity: 50%;
+    width: 100vw;
+    height: 200vh;
+    position: fixed;
+		z-index: 6;
+	}
+
+	#menu__toggle {
+		opacity: 0;
+	}
+
+	#menu__toggle:checked~.menu__btn>span {
+		transform: rotate(45deg);
+	}
+
+	#menu__toggle:checked~.menu__btn>span::before {
+		top: 0;
+		transform: rotate(0);
+	}
+
+	#menu__toggle:checked~.menu__btn>span::after {
+		top: 0;
+		transform: rotate(90deg);
+	}
+
+	#menu__toggle:checked~.level_block {
+		visibility: visible;
+		right: 0;
+	}
+
+	.menu__btn {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top: 3vw;
+    right: 3vw;
+    width: 4vw;
+    height: 4vw;
+		cursor: pointer;
+		z-index: 11;
+	}
+
+	.menu__btn>span,
+	.menu__btn>span::before,
+	.menu__btn>span::after {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color: #fff;
+		transition-duration: .25s;
+	}
+
+	.menu__btn>span::before {
+		content: '';
+		top: -10px;
+	}
+
+	.menu__btn>span::after {
+		content: '';
+		top: 10px;
+	}
+
+	.level_block {
+		z-index: 10;
+		display: block;
+		position: fixed;
+		visibility: hidden;
+		top: 0;
+		right: -100%;
+		height: 100%;
+    margin: 0;
+    padding-top: 3.5rem;
+		background-image: url(../images/starfield.jpg);
+		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+		transition-duration: .25s;
+  }
+  
+  .ufo_answer > img {
+    width: 100%;
+  }
+
+  .numbers,
+  .html_text {
+    font-size: 0.9rem;
+  }
+
+  .html_block,
+  .css_block {
+    width: 40vw;
+  }
+
+  .html_text {
+    top: 10.3%;
+    line-height: 1.13rem;
+  }
+}
+
+@media (max-width: 699px) and (min-width: 500px) {
+
+  .title {
+    padding: 0.2em;
+    font-size: 0.6em;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .layout_block {
+    flex-basis: 30vw;
+  }
+  
+  .filter_menu {
+		background-color: #2D303A;
+    opacity: 50%;
+    width: 100vw;
+    height: 200vh;
+    position: fixed;
+		z-index: 6;
+	}
+
+	#menu__toggle {
+		opacity: 0;
+	}
+
+	#menu__toggle:checked~.menu__btn>span {
+		transform: rotate(45deg);
+	}
+
+	#menu__toggle:checked~.menu__btn>span::before {
+		top: 0;
+		transform: rotate(0);
+	}
+
+	#menu__toggle:checked~.menu__btn>span::after {
+		top: 0;
+		transform: rotate(90deg);
+	}
+
+	#menu__toggle:checked~.level_block {
+		visibility: visible;
+		right: 0;
+	}
+
+	.menu__btn {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top: 3vw;
+    right: 3vw;
+    width: 4vw;
+    height: 4vw;
+		cursor: pointer;
+		z-index: 11;
+	}
+
+	.menu__btn>span,
+	.menu__btn>span::before,
+	.menu__btn>span::after {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color: #fff;
+		transition-duration: .25s;
+	}
+
+	.menu__btn>span::before {
+		content: '';
+		top: -10px;
+	}
+
+	.menu__btn>span::after {
+		content: '';
+		top: 10px;
+	}
+
+	.level_block {
+		z-index: 10;
+		display: block;
+		position: fixed;
+		visibility: hidden;
+		top: 0;
+		right: -100%;
+		height: 100%;
+    margin: 0;
+    padding-top: 3.5rem;
+		background-image: url(../images/starfield.jpg);
+		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+		transition-duration: .25s;
+  }
+
+  .ufo_answer {
+    top: 20vw;
+  }
+  
+  .ufo_answer > img {
+    width: 100%;
+  }
+
+  .numbers,
+  .html_text {
+    font-size: 0.88rem;
+  }
+
+  .html_block,
+  .css_block {
+    flex-grow: 1;
+  }
+
+  .html_text {
+    top: 10.3%;
+    line-height: 1rem;
   }
 }
