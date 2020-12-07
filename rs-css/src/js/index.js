@@ -20,6 +20,4 @@ document.getElementById('overlay').addEventListener('click', HelpersClass.overla
 
 document.addEventListener('DOMContentLoaded', () => {
   createLevel.templateHTMLCode(inputAnswer.level);
-  document.querySelector('.ufo_answer > img').src = './assets/images/ufo.png';
-  document.querySelector('.logo_img').src = './assets/images/logo_rsschool.png';
 });
