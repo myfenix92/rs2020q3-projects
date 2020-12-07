@@ -12,7 +12,7 @@ html {
   color: $font-color;
   line-height: 1.4;
   background-color: rgb(60, 61, 61);
-  background-image: url(../images/starfield.jpg);
+  background-image: url(../assets/images/starfield.jpg);
 }
 
 body {
@@ -86,20 +86,20 @@ main {
 @keyframes winUfo {
   0% {
     opacity: 1;
-    background: url(../images/ufo_win.png) no-repeat;
+    background: url(../assets/images/ufo_win.png) no-repeat;
   }
   100% {
-    background: url(../images/ufo.png) no-repeat;
+    background: url(../assets/images/ufo.png) no-repeat;
   }
 }
 
 @keyframes errorUfo {
   0% {
     opacity: 1;
-    background: url(../images/ufo_error.png) no-repeat;
+    background: url(../assets/images/ufo_error.png) no-repeat;
   }
   100% {
-    background: url(../images/ufo.png) no-repeat;
+    background: url(../assets/images/ufo.png) no-repeat;
   }
 }
 
@@ -753,7 +753,7 @@ footer {
 		height: 100%;
     margin: 0;
     padding-top: 3.5rem;
-		background-image: url(../images/starfield.jpg);
+		background-image: url(../assets/images/starfield.jpg);
 		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
 		transition-duration: .25s;
 	}
@@ -860,7 +860,7 @@ footer {
 		height: 100%;
     margin: 0;
     padding-top: 3.5rem;
-		background-image: url(../images/starfield.jpg);
+		background-image: url(../assets/images/starfield.jpg);
 		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
 		transition-duration: .25s;
   }
@@ -976,7 +976,7 @@ footer {
 		height: 100%;
     margin: 0;
     padding-top: 3.5rem;
-		background-image: url(../images/starfield.jpg);
+		background-image: url(../assets/images/starfield.jpg);
 		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
 		transition-duration: .25s;
   }
