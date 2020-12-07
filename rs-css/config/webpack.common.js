@@ -25,7 +25,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `${paths.src}/images/`,
+          from: `${paths.src}/assets/images/`,
           to: `${paths.build}/assets/images`,
           globOptions: {
             ignore: ['*.DS_Store'],
