@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>COVID-19 Dashboard</h1>
+    </header>
+    <main>
+        <div class="container">
+            
+            <button class="full_screen table1">Full screen</button>
+            <div class="container_table1">
+            <div class="tableBlock">
+                <div class="tumblers">
+                <select class="table1select" name="selectMoodShow" id="selectMoodShow"></select>
+                </div>
+                <table class="table-scroll">
+                    <thead></thead>
+                    <tbody class="body-half-screen"></tbody>
+                </table>
+                <p class="nameCountry"></p>
+                <button class="btn_clear_country view_btn">Clear country</button>
+            </div>
+        </div>
+        </div>
+        <div class="countryBlock">
+            <button class="full_screen table2">Full screen</button>
+            <div class="searchCountryBlock">
+                <input type="text" class="searchCountryTable" placeholder="Search country">
+                <div class="tumblers">
+                <select class="table2select" name="chooseView" id="chooseView">
+                    <option value="Total confirmed">Total confirmed</option>
+                    <option value="Total death">Total death</option>
+                    <option value="Total recovered">Total recovered</option>
+                    <option value="New confirmed">New confirmed</option>
+                    <option value="New death">New death</option>
+                    <option value="New recovered">New recovered</option>
+                    <option value="Total confirmed 100K">Total confirmed 100K</option>
+                    <option value="Total death 100K">Total death 100K</option>
+                    <option value="Total recovered 100K">Total recovered 100K</option>
+                    <option value="New confirmed 100K">New confirmed 100K</option>
+                    <option value="New death 100K">New death 100K</option>
+                    <option value="New recovered 100K">New recovered 100K</option>
+                </select>
+            </div>
+                <ul class="countryListTable2"></ul>
+                <div class="table2">
+                    <table class="countryTable">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Country <span id="letter">↕</span></th><th>
+                                    <span id="number">↕</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="countryTbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="map_block">
+            <button class="full_screen map">Full screen</button>
+          <div class="tumblers">
+            <select class="mapSelect" name="chooseView" id="chooseView">
+                <option value="Total confirmed">Total confirmed</option>
+                <option value="Total death">Total death</option>
+                <option value="Total recovered">Total recovered</option>
+                <option value="New confirmed">New confirmed</option>
+                <option value="New death">New death</option>
+                <option value="New recovered">New recovered</option>
+                <option value="Total confirmed 100K">Total confirmed 100K</option>
+                <option value="Total death 100K">Total death 100K</option>
+                <option value="Total recovered 100K">Total recovered 100K</option>
+                <option value="New confirmed 100K">New confirmed 100K</option>
+                <option value="New death 100K">New death 100K</option>
+                <option value="New recovered 100K">New recovered 100K</option>
+            </select>
+          </div>
+          <div id = "map"></div>
+        </div>
+        <div class="graphic_block">
+            <button class="full_screen graphic_btn">Full screen</button>
+            <div class="tumblers">
+                <select class="graphic" name="chooseView" id="chooseView">
+                    <option value="Total confirmed">Total confirmed</option>
+                    <option value="Total death">Total death</option>
+                    <option value="Total recovered">Total recovered</option>
+                    <option value="New confirmed">New confirmed</option>
+                    <option value="New death">New death</option>
+                    <option value="New recovered">New recovered</option>
+                    <option value="Total confirmed 100K">Total confirmed 100K</option>
+                    <option value="Total death 100K">Total death 100K</option>
+                    <option value="Total recovered 100K">Total recovered 100K</option>
+                    <option value="New confirmed 100K">New confirmed 100K</option>
+                    <option value="New death 100K">New death 100K</option>
+                    <option value="New recovered 100K">New recovered 100K</option>
+                </select>
+              </div>
+            <canvas id="myChart"></canvas>
+            </div>
+    </main>
+    <footer>
+        <div class="footer_logo">
+            <a href="https://rs.school/"><img src="https://i.ibb.co/QkM8T61/logo-rsschool.png" alt="logo-rsschool"></a>
+        </div>
+        <div>
+            <a href="https://github.com/myfenix92">myfenix92</a>
+            <a href="https://github.com/https://github.com/IvannaHrytsiuk">IvannaHrytsiuk</a>
+        </div>
+    </footer>
+</body>
+</html>
