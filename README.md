@@ -7,4 +7,3 @@
 [Momentum](https://rolling-scopes-school.github.io/myfenix92-JS2020Q3/momentum/)  
 [RS-CSS](https://myfenix92-rs-css.netlify.app/)  
 [Калькулятор](https://rolling-scopes-school.github.io/myfenix92-JS2020Q3/calculator/)  
-[Covid Dashboard](https://myfenix92-covid-dashboard.netlify.app/)  
